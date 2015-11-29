@@ -1,0 +1,24 @@
+# Ignore compied js files
+compiled/
+
+# Ignore webpack-created javascript file
+dist/bundle.js
+dist/*.woff
+dist/*.woff2
+dist/*.svg
+dist/*.ttf
+dist/*.eot
+
+# Ignore map files everywhere (also all made by TypeScript)
+*.js.map
+
+# Ignore any emacs backup files
+*~
+
+# Ignore log files
+*.log
+npm-debug.log.*
+
+# Don't check in downloaded resources
+typings
+node_modules
