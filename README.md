@@ -2,8 +2,8 @@
 TODO
 
 * Tests
-* Add lint
-* Try flow
+* Finish reducer logic
+* Can we get visual studio code (or atom) to accept our syntax cleanly
 
 * What if more than one person clicks setup?
 

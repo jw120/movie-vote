@@ -1,3 +1,5 @@
+/* @flow */
+
 // Action codes (used by reducer and actionCreators)
 export const JOIN = "JOIN";
 export const VOTE = "VOTE";
