@@ -1,8 +1,6 @@
 
 TODO
 
-* Finish typing
-* Constructors for sub-types?
 * Tests
 * Finish reducer logic
 * Can we get visual studio code (or atom) to accept our syntax cleanly

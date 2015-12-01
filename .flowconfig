@@ -1,6 +1,6 @@
 [ignore]
-.*/node_modules/*.
-./compiled
+.*/node_modules/fbjs.*
+.*/compiled/.*js
 [include]
 
 [libs]

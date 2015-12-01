@@ -7,18 +7,28 @@
  * Only state change possible is recognizing a remote host
  */
 
-
 import {
   JOIN, START_SETUP, REMOTE_HOST_READY
 } from "./ActionTypes";
 
 import type { TAction } from "./actionCreators";
 import type { TState } from "./reducer";
+import { mkVoting } from "./votingMode";
 
 export type TSigninState = {
-   name?: string,
-   hostName?: string
- }
+   hostName: ?string
+}
+
+function promoteSignin(s: TSigninState): TState {
+  return {
+    mode: "SIGNIN",
+    signin: s
+  };
+}
+
+export function mkSignin(hostName: ?string): TState {
+  return promoteSignin({ hostName });
+}
 
 export function signinReducer(s: TSigninState, action: TAction): TState {
 
@@ -26,16 +36,7 @@ export function signinReducer(s: TSigninState, action: TAction): TState {
 
     case JOIN:
       if (s.hostName && typeof action.payload === "string") {
-        return {
-          mode: "VOTING",
-          voting: {
-            name: action.payload,
-            hostName: s.hostName,
-            movieA: null,
-            movieB: null,
-            voted: null
-          }
-        };
+        return mkVoting(action.payload, s.hostName, "AA", "BB", null);
       }
       break;
 
@@ -51,19 +52,11 @@ export function signinReducer(s: TSigninState, action: TAction): TState {
 
     case REMOTE_HOST_READY:
       if (typeof action.payload === "string") {
-        return {
-          mode: "SIGNIN",
-          signin: {
-            ...s,
-            hostName: action.payload
-          }
-        };
+        return mkSignin(action.payload);
       }
       break;
   }
 
-  return {
-    mode: "SIGNIN",
-    signin: s
-  };
+  return promoteSignin(s);
+
 }

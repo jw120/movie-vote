@@ -1,9 +1,17 @@
 /* @flow */
 
+declare module "debug" {
+  declare function debug(): any;
+}
+
+
+const Debug = require("debug");
+const d = Debug("mvc:socket");
+
 export function broadcastHostReady() {
-  console.log("Broadcast host ready");
+  d("Broadcast host ready");
 }
 
 export function broadcastVote(movie: string) {
-  console.log("Broadcast vote", movie);
+  d("Broadcast vote", movie);
 }

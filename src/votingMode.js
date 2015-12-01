@@ -18,10 +18,28 @@ import type { TState } from "./reducer";
 export type TVotingState = {
   name: string,
   hostName: string,
-  movieA: ?string,
-  movieB: ?string,
+  movieA: string,
+  movieB: string,
   voted: ?string
 }
+
+function promoteVoting(v: TVotingState): TState {
+  return {
+    mode: "VOTING",
+    voting: v
+  };
+}
+
+export function mkVoting(name: string, hostName: string, movieA: string, movieB: string, voted: ?string): TState {
+  return promoteVoting( {
+    name,
+    hostName,
+    movieA,
+    movieB,
+    voted
+  });
+}
+
 export function votingReducer(v: TVotingState, action: TAction): TState {
 
   switch (action.type) {
@@ -29,30 +47,16 @@ export function votingReducer(v: TVotingState, action: TAction): TState {
     case VOTE:
       if (typeof action.payload === "string") {
         let movie: string = action.payload;
-        if (movie === v.movieA || movie === v.movieB && v.voted === null) {
+        if (movie === v.movieA || movie === v.movieB && !v.voted) {
           broadcastVote(movie);
-          return {
-            mode: "VOTING",
-            voting: {
-              ...v,
-              voted: movie
-            }
-          };
+          return promoteVoting( { ...v, voted: movie });
         }
       }
       break;
 
     case REMOTE_NEXT:
       if (typeof action.payload !== "undefined" && typeof action.payload[0] === "string" && typeof action.payload[1] === "string") {
-        return {
-          mode: "VOTING",
-          voting: {
-            ...v,
-            movieA: action.payload[0],
-            movieB: action.payload[1],
-            voted: null
-          }
-        };
+        return promoteVoting( { ...v, movieA: action.payload[0], movieB: action.payload[1], voted: null });
       }
       break;
 
@@ -68,21 +72,5 @@ export function votingReducer(v: TVotingState, action: TAction): TState {
       break;
   }
 
-  return {
-    mode: "VOTING",
-    voting: v
-  };
+  return promoteVoting(v);
 }
-
-/*
- * Winner responds to TBD
- */
-// export function winnerReducer(state: StateType, action: TAction): StateType {
-//
-//   switch (action.type) {
-//
-//     case REMOTE_RESET:
-//
-//   }
-//   return state;
-// }
