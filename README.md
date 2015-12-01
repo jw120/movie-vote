@@ -2,6 +2,7 @@
 TODO
 
 * Reducer logic: work through modes - next = setup
+* Winner is same as signin - need to add name to state and allow name from their or JOIN action
 
 * What if more than one person clicks setup?
 

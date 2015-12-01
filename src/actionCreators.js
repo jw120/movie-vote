@@ -18,8 +18,7 @@ export type TAction = {
 import {
   JOIN, VOTE, NEXT, START_SETUP,
   HOST_START, HOST_QUEUE_ADD, HOST_QUEUE_DELETE,
-  REMOTE_HOST_READY, REMOTE_VOTE_RECEVIED, REMOTE_RESET,
-  REMOTE_NEXT, REMOTE_WINNER
+  REMOTE_HOST_READY, REMOTE_VOTE_RECEVIED, REMOTE_NEXT, REMOTE_WINNER
 } from "./actionTypes";
 
 // Join is triggered from UI and provides the name of the user
@@ -38,6 +37,7 @@ export function vote(movie: string): TAction {
   };
 }
 
+// Next is trigger from monitor UI
 export function next(): TAction {
   return {
     type: NEXT
@@ -83,16 +83,11 @@ export function remoteHostReady(hostName: string, movieA: string, movieB: string
   };
 }
 
+// REMOTE_VOTE_RECEVIED is triggered from participants onto monitor
 export function remoteVoteReceived (voter: string, movie: string): TAction {
   return {
     type: REMOTE_VOTE_RECEVIED,
     payload: { voter, movie }
-  };
-}
-
-export function remoteReset(): TAction {
-  return {
-    type: REMOTE_RESET
   };
 }
 
@@ -107,6 +102,7 @@ export function remoteNext(movieA: string, movieB: string): TAction {
   };
 }
 
+// REMOTE_Winner is triggered on clients by host (instead of next)
 export function remoteWinner(movie: string): TAction {
   return {
     type: REMOTE_WINNER,
@@ -124,7 +120,6 @@ export default {
   hostQueueDelete,
   remoteHostReady,
   remoteVoteReceived,
-  remoteReset,
   remoteNext,
   remoteWinner
 };
