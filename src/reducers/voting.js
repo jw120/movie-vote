@@ -2,11 +2,6 @@
 
 // State and reducer definitions for voting mode
 
-/*
- * Voting mode is ended by
- * Responds to VOTE and REMOTE_NEXT
- */
-
 import {
   VOTE, REMOTE_NEXT, REMOTE_WINNER
 } from "../actionTypes";
@@ -15,6 +10,7 @@ import { broadcastVote } from "../socket";
 import type { TAction } from "../actionCreators";
 
 import type { TState } from "./reducer";
+import { mkWinner } from "./winner";
 
 export type TVotingState = {
   name: string,
@@ -56,19 +52,20 @@ export function votingReducer(v: TVotingState, action: TAction): TState {
       break;
 
     case REMOTE_NEXT:
-      if (typeof action.payload !== "undefined" && typeof action.payload[0] === "string" && typeof action.payload[1] === "string") {
-        return promoteVoting( { ...v, movieA: action.payload[0], movieB: action.payload[1], voted: null });
+      if (action.payload && action.payload.movieA && action.payload.movieB &&
+          typeof action.payload.movieA === "string" && typeof action.payload.movieB === "string") {
+        return promoteVoting( {
+          ...v,
+          movieA: action.payload.movieA,
+          movieB: action.payload.movieB,
+          voted: null
+        });
       }
       break;
 
     case REMOTE_WINNER:
-      if (typeof action.payload === "string") {
-        return {
-          mode: "WINNER",
-          name: v.name,
-          hostName: v.hostName,
-          winner: action.payload
-        };
+      if (action.payload && typeof action.payload === "string") {
+        return mkWinner(v.name, v.hostName, action.payload);
       }
       break;
   }

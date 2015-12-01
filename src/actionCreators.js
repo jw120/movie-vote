@@ -30,6 +30,7 @@ export function join(name: string): TAction {
   };
 }
 
+// Vote is trigger from UI and provides the name of the movie selected
 export function vote(movie: string): TAction {
   return {
     type: VOTE,
@@ -92,6 +93,7 @@ export function remoteReset(): TAction {
   };
 }
 
+// REMOTE_NEXT is triggered on client by host
 export function remoteNext(movieA: string, movieB: string): TAction {
   return {
     type: REMOTE_NEXT,

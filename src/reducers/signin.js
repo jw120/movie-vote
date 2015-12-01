@@ -2,11 +2,6 @@
 
 // State and reducer definitions for signin mode
 
-/*
- * Signin mode is ended by joining a vote hosted elsewhere or by offering to setup a vote
- * Only state change possible is recognizing a remote host
- */
-
 import {
   JOIN, START_SETUP, REMOTE_HOST_READY
 } from "../actionTypes";
