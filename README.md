@@ -1,7 +1,7 @@
 
 TODO
 
-* Reducer logic: work through modes
+* Reducer logic: work through modes - next = setup
 
 * What if more than one person clicks setup?
 
