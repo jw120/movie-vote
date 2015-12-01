@@ -9,10 +9,11 @@
 
 import {
   VOTE, REMOTE_NEXT, REMOTE_WINNER
-} from "./ActionTypes";
+} from "../actionTypes";
 
-import { broadcastVote } from "./socket";
-import type { TAction } from "./actionCreators";
+import { broadcastVote } from "../socket";
+import type { TAction } from "../actionCreators";
+
 import type { TState } from "./reducer";
 
 export type TVotingState = {

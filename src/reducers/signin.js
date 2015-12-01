@@ -9,11 +9,12 @@
 
 import {
   JOIN, START_SETUP, REMOTE_HOST_READY
-} from "./ActionTypes";
+} from "../actionTypes";
 
-import type { TAction } from "./actionCreators";
+import type { TAction } from "../actionCreators";
+
 import type { TState } from "./reducer";
-import { mkVoting } from "./votingMode";
+import { mkVoting } from "./voting";
 
 export type TSigninState = {
    hostName: ?string

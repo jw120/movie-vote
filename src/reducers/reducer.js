@@ -2,11 +2,12 @@
 
 // Top-level state and reducer definitions
 
-import type { TAction } from "./actionCreators";
-import type { TSigninState } from "./signinMode";
-import { signinReducer, mkSignin } from "./signinMode";
-import type { TVotingState } from "./votingMode";
-import { votingReducer } from "./votingMode";
+import type { TAction } from "../actionCreators";
+
+import type { TSigninState } from "./signin";
+import { signinReducer, mkSignin } from "./signin";
+import type { TVotingState } from "./voting";
+import { votingReducer } from "./voting";
 
 export type TState =
   { mode: "SIGNIN", signin: TSigninState } |
