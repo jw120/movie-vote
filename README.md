@@ -1,9 +1,7 @@
 
 TODO
 
-* Tests
-* Finish reducer logic
-* Can we get visual studio code (or atom) to accept our syntax cleanly
+* Reducer logic: work through modes
 
 * What if more than one person clicks setup?
 
@@ -12,7 +10,7 @@ TODO
 Basic choices
 
 * Cooperative voting - no authentication
-* Client-side SPA for hosting and particpating
+* Client-side SPA for hosting and participating
 * Very light server just to just re-broadcast messages
 
 To consider

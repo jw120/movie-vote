@@ -20,8 +20,9 @@ import {
   HOST_START, HOST_QUEUE_ADD, HOST_QUEUE_DELETE,
   REMOTE_HOST_READY, REMOTE_VOTE_RECEVIED, REMOTE_RESET,
   REMOTE_NEXT, REMOTE_WINNER
-} from "./ActionTypes";
+} from "./actionTypes";
 
+// Join is triggered from UI and provides the name of the user
 export function join(name: string): TAction {
   return {
     type: JOIN,
@@ -42,6 +43,7 @@ export function next(): TAction {
   };
 }
 
+// StartSetup is triggered from UI and provides the name of the user
 export function startSetup(name: string): TAction {
   return {
     type: START_SETUP,
@@ -69,10 +71,11 @@ export function hostStart(): TAction {
   };
 }
 
-export function remoteHostReady(hostName: string): TAction {
+// REMOTE_HOST_READY is triggered be the remote host and provides host's name and the first two movies
+export function remoteHostReady(hostName: string, movieA: string, movieB: string): TAction {
   return {
     type: REMOTE_HOST_READY,
-    payload: hostName
+    payload: { hostName, movieA, movieB }
   };
 }
 

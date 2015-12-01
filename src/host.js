@@ -2,7 +2,7 @@
 //
 // import {
 //   HOST_START, HOST_QUEUE_ADD, HOST_QUEUE_DELETE, HOST_RESET, REMOTE_VOTE_RECEVIED
-// } from "./ActionTypes";
+// } from "./actionTypes";
 //
 // import { broadcastHostReady } from "./socket";
 // import type { TAction } from "./actionCreators";

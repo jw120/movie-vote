@@ -8,10 +8,11 @@ import type { TSigninState } from "./signin";
 import { signinReducer, mkSignin } from "./signin";
 import type { TVotingState } from "./voting";
 import { votingReducer } from "./voting";
+import type { TSetupState } from "./setup";
 
 export type TState =
   { mode: "SIGNIN", signin: TSigninState } |
-  { mode: "SETUP", name: string, queue: string[] } |
+  { mode: "SETUP", setup: TSetupState } |
   { mode: "VOTING", voting: TVotingState } |
   { mode: "MONITOR", name: string, movieA: string, movieB: string, scoreA: number, scoreB: number, queue: string[] } |
   { mode: "WINNER", name: string, hostName: string, winner: string };

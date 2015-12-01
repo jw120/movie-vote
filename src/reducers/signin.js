@@ -15,9 +15,12 @@ import type { TAction } from "../actionCreators";
 
 import type { TState } from "./reducer";
 import { mkVoting } from "./voting";
+import { mkSetup } from "./setup";
 
 export type TSigninState = {
-   hostName: ?string
+   hostName: ?string,
+   movieA: ?string,
+   movieB: ?string
 }
 
 function promoteSignin(s: TSigninState): TState {
@@ -27,8 +30,12 @@ function promoteSignin(s: TSigninState): TState {
   };
 }
 
-export function mkSignin(hostName: ?string): TState {
-  return promoteSignin({ hostName });
+export function mkSignin(hostName?: string, movieA?: string, movieB?: string): TState {
+  if (hostName !== undefined && movieA !== undefined && movieB !== undefined) {
+    return promoteSignin( { hostName, movieA, movieB } );
+  } else {
+    return promoteSignin( { hostName: null, movieA: null, movieB: null } );
+  }
 }
 
 export function signinReducer(s: TSigninState, action: TAction): TState {
@@ -36,24 +43,23 @@ export function signinReducer(s: TSigninState, action: TAction): TState {
   switch (action.type) {
 
     case JOIN:
-      if (s.hostName && typeof action.payload === "string") {
-        return mkVoting(action.payload, s.hostName, "AA", "BB", null);
+      if (s.hostName && typeof action.payload === "string" && action.payload && s.movieA && s.movieB) {
+        return mkVoting(action.payload, s.hostName, s.movieA, s.movieB, null);
       }
       break;
 
     case START_SETUP:
-      if (typeof action.payload === "string") {
-        return {
-          mode: "SETUP",
-          name: action.payload,
-          queue: []
-        };
+      if (action.payload && typeof action.payload === "string") {
+        return mkSetup(action.payload, []);
       }
       break;
 
     case REMOTE_HOST_READY:
-      if (typeof action.payload === "string") {
-        return mkSignin(action.payload);
+      if (action.payload && action.payload.hostName && action.payload.movieA && action.payload.movieB &&
+          typeof action.payload.hostName === "string" &&
+          typeof action.payload.movieA === "string" &&
+          typeof action.payload.movieB === "string") {
+        return mkSignin(action.payload.hostName, action.payload.movieA, action.payload.movieB);
       }
       break;
   }
