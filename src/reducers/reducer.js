@@ -12,7 +12,7 @@ import type { TWinnerState } from "./winner";
 
 import { signinReducer, mkSignin } from "./signin";
 import { votingReducer } from "./voting";
-
+import { setupReducer } from "./setup";
 
 export type TState =
   { mode: "SIGNIN", signin: TSigninState } |
@@ -30,6 +30,8 @@ export default function reducer(state: TState = INITIAL_STATE, action: TAction):
       return signinReducer(state.signin, action);
     case "VOTING":
       return votingReducer(state.voting, action);
+    case "SETUP":
+      return setupReducer(state.setup, action);
 
   }
 

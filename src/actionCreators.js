@@ -52,6 +52,7 @@ export function startSetup(name: string): TAction {
   };
 }
 
+// hostQueueAdd triggered from UI and adds a movie to the queue
 export function hostQueueAdd(movie: string): TAction {
   return {
     type: HOST_QUEUE_ADD,
@@ -59,6 +60,7 @@ export function hostQueueAdd(movie: string): TAction {
   };
 }
 
+// hostQueueDelete triggerd from the UI and removes a movie from the queue
 export function hostQueueDelete(movie: string): TAction {
   return {
     type: HOST_QUEUE_DELETE,
@@ -66,6 +68,7 @@ export function hostQueueDelete(movie: string): TAction {
   };
 }
 
+// hostStart triggered from UI and moves to monitor mode
 export function hostStart(): TAction {
   return {
     type: HOST_START
