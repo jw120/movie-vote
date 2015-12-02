@@ -65,7 +65,7 @@ export function votingReducer(v: TVotingState, action: TAction): TState {
 
     case REMOTE_WINNER:
       if (action.payload && typeof action.payload === "string") {
-        return mkWinner(v.name, v.hostName, action.payload);
+        return mkWinner(v.name, null, action.payload, null, null);
       }
       break;
   }

@@ -1,9 +1,13 @@
 
 TODO
 
-* Reducer logic: work through modes - next = setup
-* Winner is same as signin - need to add name to state and allow name from their or JOIN action
+* 1. reducers - DONE
+* 2. components/react
+* 3. server and sockets
 
+* Reducer logic: work through modes - next = setup
+* Can we unify winner and signin
+* Protect vs multiple votes (or allow them)
 * What if more than one person clicks setup?
 
 # Design

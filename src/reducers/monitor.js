@@ -44,7 +44,7 @@ export function monitorReducer(m: TMonitorState, action: TAction): TState {
         newQueue = m.queue.concat(m.movieB);
       }
       if (newQueue.length === 1) {
-        return mkWinner(m.name, m.name, newQueue[0]);
+        return mkWinner(m.name, null, newQueue[0], null, null);
       } else if (newQueue.length >= 2) {
         return mkMonitor(m.name, newQueue[0], newQueue[1], newQueue.slice(2), 0, 0);
       }

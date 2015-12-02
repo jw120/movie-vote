@@ -65,7 +65,7 @@ describe("voting reducer", () => {
   it("REMOTE_WINNER changes mode", () => {
     const s = mkVoting("alice", "host", "m1", "m2", null);
     const a = actionCreators.remoteWinner("m3");
-    const x = mkWinner("alice", "host", "m3");
+    const x = mkWinner("alice", null, "m3", null, null);
     expect(reducer(s, a)).to.deep.equal(x);
   });
 

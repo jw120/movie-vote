@@ -16,8 +16,8 @@ import {
   REMOTE_HOST_READY, REMOTE_VOTE_RECEVIED, REMOTE_NEXT, REMOTE_WINNER
 } from "./actionTypes";
 
-// Join is triggered from UI and provides the name of the user
-export function join(name: string): TAction {
+// Join is triggered from UI and provides the name of the user from signing (nothing from winner)
+export function join(name?: string): TAction {
   return {
     type: JOIN,
     payload: name
@@ -39,8 +39,8 @@ export function next(): TAction {
   };
 }
 
-// StartSetup is triggered from UI and provides the name of the user
-export function startSetup(name: string): TAction {
+// StartSetup is triggered from UI and provides the name of the user if called from signin
+export function startSetup(name?: string): TAction {
   return {
     type: START_SETUP,
     payload: name

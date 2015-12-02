@@ -55,13 +55,13 @@ describe("monitor reducer", () => {
   it("NEXT with 0 in queue and A ahead gives winner", () => {
     const s = mkMonitor("sid", "m1", "m2", [], 3, 2);
     const a = actionCreators.next();
-    const x = mkWinner("sid", "sid", "m1");
+    const x = mkWinner("sid", null, "m1", null, null);
     expect(reducer(s, a)).to.deep.equal(x);
   });
   it("NEXT with 0 in queue and B ahead gives winner", () => {
     const s = mkMonitor("sid", "m1", "m2", [], 0, 2);
     const a = actionCreators.next();
-    const x = mkWinner("sid", "sid", "m2");
+    const x = mkWinner("sid", null, "m2", null, null);
     expect(reducer(s, a)).to.deep.equal(x);
   });
   it("NEXT with 0 in queue and tie updates", () => {
