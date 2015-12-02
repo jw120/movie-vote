@@ -37,6 +37,14 @@ export function mkVoting(name: string, hostName: string, movieA: string, movieB:
   });
 }
 
+export function unwrapVoting(s: TState): TVotingState {
+  if (s.mode === "VOTING") {
+    return s.voting;
+  } else {
+    throw new Error("Failed in unwrapVoting, mode was " + s.mode);
+  }
+}
+
 export function votingReducer(v: TVotingState, action: TAction): TState {
 
   switch (action.type) {

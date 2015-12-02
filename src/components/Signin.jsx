@@ -14,8 +14,8 @@ const Signin = React.createClass({
       <form className="signin">
         <h3 className="signin-heading">Welcome to Movie Vote</h3>
         <Input className="signin-input" type="text" placeholder="Enter your name" />
-        <Button bsSize="large" bsStyle="primary" block type="submit">Join Eve's vote</Button>
-        <Button bsSize="large" bsStyle="primary" block type="submit">Host a new vote</Button>
+        <Button bsSize="large" bsStyle="primary" block>Join Eve's vote</Button>
+        <Button bsSize="large" bsStyle="primary" block>Host a new vote</Button>
       </form>
     );
   }
