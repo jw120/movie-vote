@@ -1,5 +1,7 @@
 [ignore]
 .*/node_modules/fbjs.*
+.*/node_modules/babel.*
+.*/node_modules/babylon.*
 .*/compiled/.*js
 [include]
 

@@ -2,10 +2,15 @@
 TODO
 
 * 1. reducers - DONE
-* 2. components/react
+* 2. components/react:
+
+  + Get first component on screen
+  + get first component React-bootstrapped
+  + tests for first component
+
 * 3. server and sockets
 
-* Reducer logic: work through modes - next = setup
+* Eliminate object rest spread? standardize reducers to use mk calls?
 * Can we unify winner and signin
 * Protect vs multiple votes (or allow them)
 * What if more than one person clicks setup?

@@ -33,6 +33,14 @@ export function mkSignin(hostName?: string, movieA?: string, movieB?: string): T
   }
 }
 
+export function unwrapSignin(s: TState): TSigninState {
+  if (s.mode === "SIGNIN") {
+    return s.signin;
+  } else {
+    throw new Error("Failed in unwrapSignin, mode was " + s.mode);
+  }
+}
+
 export function signinReducer(s: TSigninState, action: TAction): TState {
 
   switch (action.type) {

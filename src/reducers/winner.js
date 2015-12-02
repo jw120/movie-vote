@@ -12,7 +12,6 @@ import type { TState } from "./reducer";
 import { mkVoting } from "./voting";
 import { mkSetup } from "./setup";
 
-
 export type TWinnerState = {
    name: string,
    hostName: ?string,

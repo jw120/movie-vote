@@ -13,6 +13,8 @@
     "mochaTestDirs": "test/ test/reducers"
   },
   "scripts": {
+    "build": "webpack",
+    "build:dev": "webpack-dev-server",
     "compile": "babel $npm_package_config_babelInputDir --out-dir $npm_package_config_babelOutputDir",
     "compile:watch": "babel -w -q $npm_package_config_babelInputDir --out-dir $npm_package_config_babelOutputDir",
     "lint": "eslint $npm_package_config_babelInputDir $npm_package_config_mochaTestDirs",
