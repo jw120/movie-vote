@@ -4,7 +4,8 @@ TODO
 * 1. reducers - DONE
 * 2. components/react:
 
-  + Get first component on screen
+  + Get first component on screen - DONE
+  + Stateless functional components - DONE
   + get first component React-bootstrapped
   + tests for first component
 
