@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import actionCreators from "../actionCreators";
-import type { unwrapVoting } from "../reducers/voting";
+import { unwrapVoting } from "../reducers/voting";
 
 import Voting from "./Voting";
 

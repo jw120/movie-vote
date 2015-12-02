@@ -12,9 +12,7 @@ import * as MyDebug from "debug";
 MyDebug.enable("mvc:*");
 
 import reducer from "./reducers/reducer";
-// import SigninContainer from "./components/SigninContainer";
-import VotingContainer from "./components/VotingContainer";
-
+import RootContainer from "./components/RootContainer";
 import { remoteHostReady, join } from "./actionCreators";
 
 // Redux store created based on our reducer, adding our middleware and devtools (with persistState)
@@ -23,16 +21,9 @@ const store = createStore(reducer);
 store.dispatch(remoteHostReady("henry", "Frozen", "Platoon"));
 store.dispatch(join("bob"));
 
-//     <SigninContainer />
-
 ReactDOM.render(
   <Provider store={store}>
-    <VotingContainer />
+    <RootContainer />
   </Provider>,
   document.getElementById("root")
 );
-//
-// ReactDOM.render(
-//     <Signin />,
-//   document.getElementById("root")
-// );
