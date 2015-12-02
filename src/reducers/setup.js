@@ -27,6 +27,14 @@ export function mkSetup(name: string, queue: string[]): TState {
   return promoteSetup( { name, queue } );
 }
 
+export function unwrapSetup(s: TState): TSetupState {
+  if (s.mode === "SETUP") {
+    return s.setup;
+  } else {
+    throw new Error("Failed in unwrapSetup, mode was " + s.mode);
+  }
+}
+
 export function setupReducer(s: TSetupState, action: TAction): TState {
 
   switch (action.type) {

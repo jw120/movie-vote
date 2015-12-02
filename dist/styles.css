@@ -37,3 +37,14 @@ body {
   margin-bottom: 10px;
   font-size: smaller;
 }
+
+.setup {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.setup .setup-table {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
