@@ -1,10 +1,5 @@
 /* @flow */
 
-export type TVote = {
-  voter: string,
-  movie: string
-}
-
 export type TNext = {
   movieA: string,
   movieB: string
@@ -12,7 +7,7 @@ export type TNext = {
 
 export type TAction = {
   type: string,
-  payload?: string | TVote | TNext
+  payload?: string | TNext
 };
 
 import {
@@ -84,10 +79,10 @@ export function remoteHostReady(hostName: string, movieA: string, movieB: string
 }
 
 // REMOTE_VOTE_RECEVIED is triggered from participants onto monitor
-export function remoteVoteReceived (voter: string, movie: string): TAction {
+export function remoteVoteReceived (movie: string): TAction {
   return {
     type: REMOTE_VOTE_RECEVIED,
-    payload: { voter, movie }
+    payload: movie
   };
 }
 
