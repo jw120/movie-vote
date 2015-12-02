@@ -4,7 +4,8 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 
 // Load css via webpack
-//require("bootstrap.min.css");
+require("bootstrap.min.css");
+require("../dist/styles.css");
 
 // Start debugging
 import * as MyDebug from "debug";
