@@ -31,6 +31,14 @@ export function mkWinner(name: string, hostName: ?string, winner: string, movieA
   return promoteWinner( { name, hostName, winner, movieA, movieB } );
 }
 
+export function unwrapWinner(s: TState): TWinnerState {
+  if (s.mode === "WINNER") {
+    return s.winner;
+  } else {
+    throw new Error("Failed in unwrapWinner, mode was " + s.mode);
+  }
+}
+
 export function winnerReducer(w: TWinnerState, action: TAction): TState {
 
   switch (action.type) {

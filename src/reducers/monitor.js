@@ -30,6 +30,14 @@ export function mkMonitor(name: string, movieA: string, movieB: string, queue: s
   return promoteMonitor( { name, movieA, movieB, queue, scoreA, scoreB } );
 }
 
+export function unwrapMonitor(s: TState): TMonitorState {
+  if (s.mode === "MONITOR") {
+    return s.monitor;
+  } else {
+    throw new Error("Failed in unwrapMonitor, mode was " + s.mode);
+  }
+}
+
 export function monitorReducer(m: TMonitorState, action: TAction): TState {
 
   switch (action.type) {

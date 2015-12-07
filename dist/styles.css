@@ -48,3 +48,31 @@ body {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+.winner {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.winner .winner-announce {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.monitor {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.monitor .monitor-current {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.monitor .monitor-queue {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

@@ -13,17 +13,20 @@ MyDebug.enable("mvc:*");
 
 import reducer from "./reducers/reducer";
 import RootContainer from "./components/RootContainer";
-import { remoteHostReady, join, startSetup, hostQueueAdd } from "./actionCreators";
+import { remoteHostReady, join, startSetup, hostQueueAdd, hostStart, remoteWinner } from "./actionCreators";
 
 // Redux store created based on our reducer, adding our middleware and devtools (with persistState)
 const store = createStore(reducer);
 
-// store.dispatch(remoteHostReady("henry", "Frozen", "Platoon"));
-// store.dispatch(join("bob"));
-store.dispatch(startSetup("alice"));
-store.dispatch(hostQueueAdd("Frozen"));
-store.dispatch(hostQueueAdd("Walkabout"));
-store.dispatch(hostQueueAdd("Posiedon"));
+// Code to move into states for testing
+store.dispatch(remoteHostReady("henry", "Frozen", "Platoon"));
+store.dispatch(join("bob"));
+store.dispatch(remoteWinner("Platoon"));
+// store.dispatch(startSetup("alice"));
+// store.dispatch(hostQueueAdd("Frozen"));
+// store.dispatch(hostQueueAdd("Walkabout"));
+// store.dispatch(hostQueueAdd("Posiedon"));
+// store.dispatch(hostStart());
 
 ReactDOM.render(
   <Provider store={store}>

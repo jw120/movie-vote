@@ -17,7 +17,7 @@
     "build:dev": "webpack-dev-server",
     "compile": "babel $npm_package_config_babelInputDir --out-dir $npm_package_config_babelOutputDir",
     "compile:watch": "babel -w -q $npm_package_config_babelInputDir --out-dir $npm_package_config_babelOutputDir",
-    "lint": "eslint $npm_package_config_babelInputDir $npm_package_config_mochaTestDirs",
+    "lint": "eslint --ext .js,.jsx $npm_package_config_babelInputDir $npm_package_config_mochaTestDirs",
     "test": "mocha --compilers js:babel-core/register $npm_package_config_mochaTestDirs"
   },
   "author": "",

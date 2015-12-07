@@ -6,11 +6,15 @@ TODO
 
   + Get first component on screen - DONE
   + Stateless functional components - DONE
-  + get first component React-bootstrapped
-  + tests for first component
+  + get components React-bootstrapped - DONE
+  + tests for components?
+  + Add callbacks and connect states. Add react-devtools?
 
 * 3. server and sockets
 
+
+* fix eslintrc with ext and directory recursing
+* What is the significance of button types (submit etc?)
 * Eliminate object rest spread? standardize reducers to use mk calls?
 * Can we unify winner and signin
 * Protect vs multiple votes (or allow them)
