@@ -2,6 +2,8 @@
 
 // State and reducer definitions for voting mode
 
+import * as React from "react";
+
 import {
   VOTE, REMOTE_NEXT, REMOTE_WINNER
 } from "../actionTypes";
@@ -13,12 +15,20 @@ import type { TState } from "./reducer";
 import { mkWinner } from "./winner";
 
 export type TVotingState = {
-  name: string,
+  name:     string,
   hostName: string,
-  movieA: string,
-  movieB: string,
-  voted: ?string
+  movieA:   string,
+  movieB:   string,
+  voted:    ?string
 }
+
+export const VotingPropTypes = {
+  name:     React.proptypes.string.isRequired,
+  hostName: React.proptypes.string.isRequired,
+  movieA:   React.proptypes.string.isRequired,
+  movieB:   React.proptypes.string.isRequired,
+  voted:    React.proptypes.string
+};
 
 function promoteVoting(v: TVotingState): TState {
   return {

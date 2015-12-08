@@ -2,6 +2,8 @@
 
 // State and reducer definitions for setup mode
 
+import { propTypes } from "react";
+
 import {
   HOST_START, HOST_QUEUE_ADD, HOST_QUEUE_DELETE
 } from "../actionTypes";
@@ -15,6 +17,11 @@ export type TSetupState = {
    name: string,
    queue: string[]
 }
+
+export const SetupPropTypes = {
+  name: propTypes.string.isRequired,
+  queue: propTypes.arraryOf(propTypes.string).isRequired
+};
 
 function promoteSetup(s: TSetupState): TState {
   return {

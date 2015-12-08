@@ -12,8 +12,7 @@ TODO
 
 * 3. server and sockets
 
-
-* fix eslintrc with ext and directory recursing
+* Check import consistency - don't use defaults? what to use for React?
 * What is the significance of button types (submit etc?)
 * Eliminate object rest spread? standardize reducers to use mk calls?
 * Can we unify winner and signin

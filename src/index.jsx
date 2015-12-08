@@ -29,7 +29,7 @@ store.dispatch(remoteWinner("Platoon"));
 // store.dispatch(hostStart());
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={ store }>
     <RootContainer />
   </Provider>,
   document.getElementById("root")

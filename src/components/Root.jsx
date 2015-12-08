@@ -7,6 +7,7 @@ import MonitorContainer from "./MonitorContainer";
 import WinnerContainer  from "./WinnerContainer";
 
 import type { TState } from "../reducers/reducer";
+import { RootPropTypes } from "../reducers/reducer";
 
 export default function Root(props: TState) {
 
@@ -22,6 +23,8 @@ export default function Root(props: TState) {
     case "WINNER":
       return <WinnerContainer />;
   }
-  return <div>Unknown mode {props.mode}</div>;
+  return <div>Unknown mode { props.mode }</div>;
 
 }
+
+Root.propTypes = RootPropTypes;

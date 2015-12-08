@@ -3,6 +3,7 @@ import * as React from "react";
 import { Button, Table } from "react-bootstrap";
 
 import type { TMonitorState } from "../reducers/monitor";
+import { MonitorPropTypes } from "../reducers/monitor";
 
 function row(movie: string) {
   return (
@@ -36,7 +37,10 @@ export default function Monitor(props: TMonitorState) {
         </tbody>
       </Table>
 
-      <Table className="monitor-queue" condensed>
+      <Table
+        className="monitor-queue"
+        condensed={ true }
+      >
         <thead>
           <tr><th>Voting queue </th></tr>
         </thead>
@@ -45,7 +49,14 @@ export default function Monitor(props: TMonitorState) {
         </tbody>
       </Table>
 
-      <Button bsSize="large" bsStyle="primary" >Next Vote</Button>
+      <Button
+        bsSize="large"
+        bsStyle="primary"
+      >
+        Next Vote
+      </Button>
     </div>
   );
 }
+
+Monitor.propTypes = MonitorPropTypes;

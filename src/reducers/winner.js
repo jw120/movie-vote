@@ -2,6 +2,8 @@
 
 // State and reducer definitions for winner mode
 
+import * as React from "react";
+
 import {
   JOIN, START_SETUP, REMOTE_HOST_READY
 } from "../actionTypes";
@@ -19,6 +21,13 @@ export type TWinnerState = {
    movieA: ?string,
    movieB: ?string
 }
+
+export const WinnerPropTypes = {
+  winner:   React.PropTypes.string.isRequired,
+  hostName: React.PropTypes.string,
+  movieA:   React.PropTypes.string,
+  movieB:   React.PropTypes.string
+};
 
 function promoteWinner(w: TWinnerState): TState {
   return {
