@@ -2,7 +2,7 @@
 
 // State and reducer definitions for signin mode
 
-import { propTypes } from "react";
+import { PropTypes } from "react";
 
 import {
   JOIN, START_SETUP, REMOTE_HOST_READY
@@ -21,9 +21,9 @@ export type TSigninState = {
 }
 
 export const SigninProptypes = {
-  hostName: propTypes.string,
-  movieA:   propTypes.string,
-  movieB:  propTypes.string
+  hostName: PropTypes.string,
+  movieA:   PropTypes.string,
+  movieB:  PropTypes.string
 };
 
 function promoteSignin(s: TSigninState): TState {

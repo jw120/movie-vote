@@ -13,7 +13,7 @@ MyDebug.enable("mvc:*");
 
 import reducer from "./reducers/reducer";
 import RootContainer from "./components/RootContainer";
-import { remoteHostReady, join, startSetup, hostQueueAdd, hostStart, remoteWinner } from "./actionCreators";
+import { remoteHostReady, join, /* startSetup, hostQueueAdd, hostStart, */ remoteWinner } from "./actionCreators";
 
 // Redux store created based on our reducer, adding our middleware and devtools (with persistState)
 const store = createStore(reducer);

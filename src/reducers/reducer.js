@@ -2,7 +2,7 @@
 
 // Top-level state and reducer definitions
 
-import { propTypes } from "react";
+import { PropTypes } from "react";
 
 import type { TAction } from "../actionCreators";
 
@@ -26,12 +26,12 @@ export type TState =
   { mode: "WINNER", winner: TWinnerState };
 
 export const RootPropTypes = {
-  mode: propTypes.string.isRequired,
-  signin:  propTypes.object,
-  setup:   propTypes.object,
-  voting:  propTypes.object,
-  monitor: propTypes.object,
-  winner:  propTypes.object
+  mode: PropTypes.string.isRequired,
+  signin:  PropTypes.object,
+  setup:   PropTypes.object,
+  voting:  PropTypes.object,
+  monitor: PropTypes.object,
+  winner:  PropTypes.object
 };
 
 const INITIAL_STATE: TState = mkSignin();

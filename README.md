@@ -7,11 +7,14 @@ TODO
   + Get first component on screen - DONE
   + Stateless functional components - DONE
   + get components React-bootstrapped - DONE
-  + tests for components?
+  + tests for components? - STARTED
   + Add callbacks and connect states. Add react-devtools?
 
 * 3. server and sockets
 
+* Check hot loading works
+* why does shallow render give different spacing than full render with space around { .. }
+* Check propTypes does something (change a type and see warning? In tests?)
 * Check import consistency - don't use defaults? what to use for React?
 * What is the significance of button types (submit etc?)
 * Eliminate object rest spread? standardize reducers to use mk calls?

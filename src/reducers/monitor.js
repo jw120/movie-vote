@@ -2,7 +2,7 @@
 
 // State and reducer definitions for winner mode
 
-import { propTypes } from "react";
+import { PropTypes } from "react";
 
 import {
   NEXT, REMOTE_VOTE_RECEVIED
@@ -22,12 +22,12 @@ export type TMonitorState = {
 }
 
 export const MonitorPropTypes = {
-  name:   propTypes.string.isRequired,
-  movieA: propTypes.string.isRequired,
-  movieB: propTypes.string.isRequired,
-  queue:  propTypes.arrayOf(propTypes.string).isRequired,
-  scoreA: propTypes.number.isRequired,
-  scoreB: propTypes.number.isRequired
+  name:   PropTypes.string.isRequired,
+  movieA: PropTypes.string.isRequired,
+  movieB: PropTypes.string.isRequired,
+  queue:  PropTypes.arrayOf(PropTypes.string).isRequired,
+  scoreA: PropTypes.number.isRequired,
+  scoreB: PropTypes.number.isRequired
 };
 
 function promoteMonitor(m: TMonitorState): TState {

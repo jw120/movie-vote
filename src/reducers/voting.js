@@ -2,7 +2,7 @@
 
 // State and reducer definitions for voting mode
 
-import * as React from "react";
+import { PropTypes } from "react";
 
 import {
   VOTE, REMOTE_NEXT, REMOTE_WINNER
@@ -23,11 +23,11 @@ export type TVotingState = {
 }
 
 export const VotingPropTypes = {
-  name:     React.proptypes.string.isRequired,
-  hostName: React.proptypes.string.isRequired,
-  movieA:   React.proptypes.string.isRequired,
-  movieB:   React.proptypes.string.isRequired,
-  voted:    React.proptypes.string
+  name:     PropTypes.string.isRequired,
+  hostName: PropTypes.string.isRequired,
+  movieA:   PropTypes.string.isRequired,
+  movieB:   PropTypes.string.isRequired,
+  voted:    PropTypes.string
 };
 
 function promoteVoting(v: TVotingState): TState {

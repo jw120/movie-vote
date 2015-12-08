@@ -11,7 +11,7 @@ export default function Winner(props: TWinnerState) {
   return (
     <div className="winner">
       <div className="winner-announce">
-        The winner is{ props.winner }
+        The winner is { props.winner }
       </div>
       { ready ?
         <Button
