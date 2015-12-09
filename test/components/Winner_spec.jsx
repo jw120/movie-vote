@@ -1,58 +1,63 @@
 /* eslint-env mocha */
 
-import * as sd from "skin-deep";
+// import * as sd from "skin-deep";
+
 import * as React from "react";
 import { expect } from "chai";
+import { createRenderer } from "react-addons-test-utils";
 
 import Winner from "../../src/components/Winner";
 
+const shallowRenderer = createRenderer();
+
 describe("Winner component without host", () => {
 
-  const tree = sd.shallowRender(
+  shallowRenderer.render(
     <Winner
       name="bob"
       winner="Platoon"
     />
   );
-  const vdom = tree.getRenderOutput();
+  const v = shallowRenderer.getRenderOutput();
 
-  it("renders a top level div with class winner", () => {
-    expect(vdom.type).to.equal("div");
-    expect(vdom.props.className).to.equal("winner");
+  it("renders a top level .winner div with three children", () => {
+    expect(v.type).to.equal("div");
+    expect(v.props.className).to.equal("winner");
+    expect(v.props.children.length).to.equal(3);
   });
 
-  it("renders a second-level winner-announce div", () => {
-    let v = vdom.props.children[0];
-    expect(v.type).to.equal("div");
-    expect(v.props.className).to.equal("winner-announce");
-    expect(v.props.children.join("")).to.equal("The winner is Platoon");
+  it("renders a second-level .winner-announce div", () => {
+    let v0 = v.props.children[0];
+    expect(v0.type).to.equal("div");
+    expect(v0.props.className).to.equal("winner-announce");
+    expect(v0.props.children.join("")).to.equal("The winner is Platoon");
   });
 
   it("renders a second-level disabled join Button ", () => {
-    let v = vdom.props.children[1];
-    expect(v.type.displayName).to.equal("Button");
-    expect(v.props.bsSize).to.equal("large");
-    expect(v.props.bsStyle).to.equal("default");
-    expect(v.props.disabled).to.be.true;
-    expect(v.props.block).to.be.true;
-    expect(v.props.children).to.equal("No vote available to join");
+    let v1 = v.props.children[1];
+    expect(v1.type.displayName).to.equal("Button");
+    expect(v1.props.bsSize).to.equal("large");
+    expect(v1.props.bsStyle).to.equal("default");
+    expect(v1.props.disabled).to.be.true;
+    expect(v1.props.block).to.be.true;
+    expect(v1.props.children).to.equal("No vote available to join");
   });
 
   it("renders a second-level host Button ", () => {
-    let v = vdom.props.children[2];
-    expect(v.type.displayName).to.equal("Button");
-    expect(v.props.bsSize).to.equal("large");
-    expect(v.props.bsStyle).to.equal("primary");
-    expect(v.props.disabled).to.be.false;
-    expect(v.props.block).to.be.true;
-    expect(v.props.children).to.equal("Host a new vote");
+    let v2 = v.props.children[2];
+    expect(v2.type.displayName).to.equal("Button");
+    expect(v2.props.bsSize).to.equal("large");
+    expect(v2.props.bsStyle).to.equal("primary");
+    expect(v2.props.disabled).to.be.false;
+    expect(v2.props.block).to.be.true;
+    expect(v2.props.children).to.equal("Host a new vote");
   });
 
 });
 
 describe("Winner component with host", () => {
 
-  const tree = sd.shallowRender(
+  shallowRenderer.render(
     <Winner
       name="bob"
       hostName="henry"
@@ -61,38 +66,39 @@ describe("Winner component with host", () => {
       movieB="Angry men"
     />
   );
-  const vdom = tree.getRenderOutput();
+  const v = shallowRenderer.getRenderOutput();
 
-  it("renders a top level div with class winner", () => {
-    expect(vdom.type).to.equal("div");
-    expect(vdom.props.className).to.equal("winner");
-  });
-
-  it("renders a second-level winner-announce div", () => {
-    let v = vdom.props.children[0];
+  it("renders a top level .winner div with three children", () => {
     expect(v.type).to.equal("div");
-    expect(v.props.className).to.equal("winner-announce");
-    expect(v.props.children.join("")).to.equal("The winner is Platoon");
+    expect(v.props.className).to.equal("winner");
+    expect(v.props.children.length).to.equal(3);
   });
 
-  it("renders a second-level enabled join Button ", () => {
-    let v = vdom.props.children[1];
-    expect(v.type.displayName).to.equal("Button");
-    expect(v.props.bsSize).to.equal("large");
-    expect(v.props.bsStyle).to.equal("primary");
-    expect(v.props.disabled).to.be.false;
-    expect(v.props.block).to.be.true;
-    expect(v.props.children.join("")).to.equal("Join henry's vote");
+  it("renders a second-level .winner-announce div", () => {
+    let v0 = v.props.children[0];
+    expect(v0.type).to.equal("div");
+    expect(v0.props.className).to.equal("winner-announce");
+    expect(v0.props.children.join("")).to.equal("The winner is Platoon");
+  });
+
+  it("renders a second-level join Button ", () => {
+    let v1 = v.props.children[1];
+    expect(v1.type.displayName).to.equal("Button");
+    expect(v1.props.bsSize).to.equal("large");
+    expect(v1.props.bsStyle).to.equal("primary");
+    expect(v1.props.disabled).to.be.false;
+    expect(v1.props.block).to.be.true;
+    expect(v1.props.children.join("")).to.equal("Join henry's vote");
   });
 
   it("renders a second-level host Button ", () => {
-    let v = vdom.props.children[2];
-    expect(v.type.displayName).to.equal("Button");
-    expect(v.props.bsSize).to.equal("large");
-    expect(v.props.bsStyle).to.equal("primary");
-    expect(v.props.disabled).to.be.false;
-    expect(v.props.block).to.be.true;
-    expect(v.props.children).to.equal("Host a new vote");
+    let v2 = v.props.children[2];
+    expect(v2.type.displayName).to.equal("Button");
+    expect(v2.props.bsSize).to.equal("large");
+    expect(v2.props.bsStyle).to.equal("primary");
+    expect(v2.props.disabled).to.be.false;
+    expect(v2.props.block).to.be.true;
+    expect(v2.props.children).to.equal("Host a new vote");
   });
 
 });
