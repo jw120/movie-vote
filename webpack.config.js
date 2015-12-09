@@ -4,10 +4,9 @@ var path = require("path");
 var webpack = require("webpack");
 
 module.exports = {
-  devtool: "eval",
   entry: [
-    // "webpack-dev-server/client?http://localhost:3000",
-    // "webpack/hot/only-dev-server",
+    "webpack-dev-server/client?http://localhost:8080",
+    "webpack/hot/only-dev-server",
     "./src/index.jsx"
   ],
   output: {
@@ -15,17 +14,16 @@ module.exports = {
     filename: "bundle.js",
     publicPath: "/"
   },
-  devtool: 'source-map',
+  devtool: "source-map",
   devServer: {
     contentBase: "./dist",
     hot: true
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
+  // plugins: [
+  //   new webpack.HotModuleReplacementPlugin()
+  // ],
   resolve: {
     extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx"],
-    // fallback: path.join(__dirname, "node_modules/bootstrap/css")
     modulesDirectories: ["web_modules", "node_modules", path.join(__dirname, "node_modules/bootstrap/dist/css")]
   },
   module: {

@@ -12,8 +12,6 @@ TODO
 
 * 3. server and sockets
 
-* Check hot loading works
-* why does shallow render give different spacing than full render with space around { .. }
 * Check propTypes does something (change a type and see warning? In tests?)
 * Check import consistency - don't use defaults? what to use for React?
 * What is the significance of button types (submit etc?)
