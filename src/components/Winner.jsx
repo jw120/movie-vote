@@ -18,6 +18,7 @@ export default function Winner(props: TWinnerState) {
           bsSize="large"
           bsStyle="primary"
           block={ true }
+          onClick={ props.join }
         >
         Join { props.hostName }'s vote
         </Button> :
@@ -33,6 +34,7 @@ export default function Winner(props: TWinnerState) {
         bsSize="large"
         bsStyle="primary"
         block={ true }
+        onClick={ props.startSetup }
       >
       Host a new vote
       </Button>

@@ -22,6 +22,7 @@ const store = createStore(reducer);
 store.dispatch(remoteHostReady("henry", "Frozen", "Platoon"));
 store.dispatch(join("bob"));
 store.dispatch(remoteWinner("Platoon"));
+store.dispatch(remoteHostReady("henrietta", "Frozen 2", "Platoon Again"));
 // store.dispatch(startSetup("alice"));
 // store.dispatch(hostQueueAdd("Frozen"));
 // store.dispatch(hostQueueAdd("Walkabout"));
