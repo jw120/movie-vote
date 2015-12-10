@@ -7,11 +7,12 @@ TODO
   + Get first component on screen - DONE
   + Stateless functional components - DONE
   + get components React-bootstrapped - DONE
-  + tests for components? - STARTED
+  + tests for components? - DONE
   + Add callbacks and connect states. Add react-devtools?
 
 * 3. server and sockets
 
+* implement feedback and disabling voting agter voting
 * name vs displayName in component tests
 * tests for callbacks?
 * Check propTypes does something (change a type and see warning? In tests?)
