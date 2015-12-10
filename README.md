@@ -12,6 +12,7 @@ TODO
 
 * 3. server and sockets
 
+* name vs displayName in component tests
 * tests for callbacks?
 * Check propTypes does something (change a type and see warning? In tests?)
 * Check import consistency - don't use defaults? what to use for React?

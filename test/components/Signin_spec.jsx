@@ -34,6 +34,7 @@ describe("Signin component without host", () => {
     expect(v1.props.className).to.equal("signin-input");
     expect(v1.props.type).to.equal("text");
     expect(v1.props.placeholder).to.equal("Enter your name");
+    expect(v1.props.children).to.be.undefined;
   });
 
   it("renders a second-level disabled join Button ", () => {
@@ -88,6 +89,7 @@ describe("Signin component with host", () => {
     expect(v1.props.className).to.equal("signin-input");
     expect(v1.props.type).to.equal("text");
     expect(v1.props.placeholder).to.equal("Enter your name");
+    expect(v1.props.children).to.be.undefined;
   });
 
   it("renders a second-level join Button ", () => {

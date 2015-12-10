@@ -6,7 +6,6 @@ import type { TSetupState } from "../reducers/setup";
 import { SetupPropTypes } from "../reducers/setup";
 
 function row(movie: string) {
-  //console.log("Row called on", movie);
   return (
     <tr key={ movie }>
       <td>{ movie }</td>
@@ -49,7 +48,7 @@ export default function Setup(props: TSetupState) {
         bsStyle="primary"
         block={ true }
       >
-        Start Vote
+        Start vote
       </Button>
     </div>
   );
