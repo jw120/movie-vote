@@ -64,7 +64,7 @@ export function votingReducer(v: TVotingState, action: TAction): TState {
         let movie: string = action.payload;
         if (movie === v.movieA || movie === v.movieB && !v.voted) {
           broadcastVote(movie);
-          return promoteVoting( { ...v, voted: movie });
+          return mkVoting(v.name, v.hostName, v.movieA, v.movieB, movie);
         }
       }
       break;
@@ -72,12 +72,7 @@ export function votingReducer(v: TVotingState, action: TAction): TState {
     case REMOTE_NEXT:
       if (action.payload && action.payload.movieA && action.payload.movieB &&
           typeof action.payload.movieA === "string" && typeof action.payload.movieB === "string") {
-        return promoteVoting( {
-          ...v,
-          movieA: action.payload.movieA,
-          movieB: action.payload.movieB,
-          voted: null
-        });
+        return mkVoting(v.name, v.hostName, action.payload.movieA, action.payload.movieB, null);
       }
       break;
 

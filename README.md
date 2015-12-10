@@ -8,20 +8,24 @@ TODO
   + Stateless functional components - DONE
   + get components React-bootstrapped - DONE
   + tests for components? - DONE
-  + Add callbacks and connect states. Add react-devtools?
+  + Add callbacks and connect states. Add redux-devtools?
 
 * 3. server and sockets
 
-* implement feedback and disabling voting agter voting
-* name vs displayName in component tests
+
 * tests for callbacks?
 * Check propTypes does something (change a type and see warning? In tests?)
 * Check import consistency - don't use defaults? what to use for React?
 * What is the significance of button types (submit etc?)
-* Eliminate object rest spread? standardize reducers to use mk calls?
 * Can we unify winner and signin
 * Protect vs multiple votes (or allow them)
 * What if more than one person clicks setup?
+
+# Note
+
+* Shallow render tests - type.displayName works for most react-bootstrap types but Input needs type.name
+
+
 
 # Design
 
