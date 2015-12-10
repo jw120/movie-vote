@@ -17,9 +17,7 @@ export default function Monitor(props: TMonitorState) {
   return (
     <div className="monitor">
 
-      <div className="monitor-title">
-        <h2>Eve's movie vote</h2>
-      </div>
+      <h2 className="monitor-title">{ props.name }'s Movie Vote</h2>
 
       <Table className="monitor-current">
         <thead>
@@ -42,7 +40,7 @@ export default function Monitor(props: TMonitorState) {
         condensed={ true }
       >
         <thead>
-          <tr><th>Voting queue </th></tr>
+          <tr><th>Voting queue</th></tr>
         </thead>
         <tbody>
           { props.queue.map(row) }
@@ -53,7 +51,7 @@ export default function Monitor(props: TMonitorState) {
         bsSize="large"
         bsStyle="primary"
       >
-        Next Vote
+        Next vote
       </Button>
     </div>
   );

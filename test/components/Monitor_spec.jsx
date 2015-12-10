@@ -1,0 +1,146 @@
+/* eslint-env mocha */
+
+import * as React from "react";
+import { expect } from "chai";
+import { createRenderer } from "react-addons-test-utils";
+
+import Monitor from "../../src/components/Monitor";
+
+const shallowRenderer = createRenderer();
+
+describe("Monitor component", () => {
+
+  shallowRenderer.render(
+    <Monitor
+      name="Bob"
+      movieA="Platoon"
+      movieB="Frozen"
+      scoreA={ 3 }
+      scoreB={ 2 }
+      queue={ [ "Ascension", "Doom"] }
+    />
+  );
+  const v = shallowRenderer.getRenderOutput();
+
+  it("renders a top level .monitor div with four children", () => {
+    expect(v.type).to.equal("div");
+    expect(v.props.className).to.equal("monitor");
+    expect(v.props.children.length).to.equal(4);
+  });
+
+  it("renders a second-level .montior-title h2", () => {
+    const v0 = v.props.children[0];
+    expect(v0.type).to.equal("h2");
+    expect(v0.props.className).to.equal("monitor-title");
+    expect(v0.props.children.join("")).to.equal("Bob's Movie Vote");
+  });
+
+  const v1 = v.props.children[1];
+  it("renders a second-level .monitor-current Table ", () => {
+    expect(v1.type.displayName).to.equal("Table");
+    expect(v1.props.className).to.equal("monitor-current");
+  });
+
+  it("... with thead and tbody children ", () => {
+    expect(v1.props.children.length).to.equal(2);
+    expect(v1.props.children[0].type).to.equal("thead");
+    expect(v1.props.children[1].type).to.equal("tbody");
+  });
+
+  it("... with thead containing the header row ", () => {
+    const tr = v1.props.children[0].props.children;
+    expect(tr.type).to.equal("tr");
+    expect(tr.props.children.length).to.equal(2);
+    expect(tr.props.children[0].type).to.equal("th");
+    expect(tr.props.children[0].props.children).to.equal("Current vote");
+    expect(tr.props.children[1].type).to.equal("th");
+    expect(tr.props.children[1].props.children).to.be.undefined;
+  });
+
+  it("... with tbody containing two rows with scores ", () => {
+    const trs = v1.props.children[1].props.children;
+    expect(trs.length).to.equal(2);
+    expect(trs[0].type).to.equal("tr");
+    expect(trs[0].props.children[0].type).to.equal("td");
+    expect(trs[0].props.children[0].props.children).to.equal("Platoon");
+    expect(trs[0].type).to.equal("tr");
+    expect(trs[0].props.children[1].type).to.equal("td");
+    expect(trs[0].props.children[1].props.children).to.equal(3);
+    expect(trs[1].type).to.equal("tr");
+    expect(trs[1].props.children[0].type).to.equal("td");
+    expect(trs[1].props.children[0].props.children).to.equal("Frozen");
+    expect(trs[1].type).to.equal("tr");
+    expect(trs[1].props.children[1].type).to.equal("td");
+    expect(trs[1].props.children[1].props.children).to.equal(2);
+  });
+
+  const v2 = v.props.children[2];
+  it("renders a second-level .monitor-queue condensed Table ", () => {
+    expect(v2.type.displayName).to.equal("Table");
+    expect(v2.props.className).to.equal("monitor-queue");
+    expect(v2.props.condensed).to.be.true;
+  });
+
+  it("... with thead and tbody children ", () => {
+    expect(v2.props.children.length).to.equal(2);
+    expect(v2.props.children[0].type).to.equal("thead");
+    expect(v2.props.children[1].type).to.equal("tbody");
+  });
+
+  it("... with thead containing the header row ", () => {
+    let tr = v2.props.children[0].props.children;
+    expect(tr.type).to.equal("tr");
+    expect(tr.props.children.type).to.equal("th");
+    expect(tr.props.children.props.children).to.equal("Voting queue");
+    });
+
+  let trs = v2.props.children[1].props.children;
+  it("... with tbody containing two rows with queue ", () => {
+    expect(trs.length).to.equal(2);
+    expect(trs[0].type).to.equal("tr");
+    expect(trs[0].props.children.type).to.equal("td");
+    expect(trs[0].props.children.props.children).to.equal("Ascension");
+    expect(trs[1].type).to.equal("tr");
+    expect(trs[1].props.children.type).to.equal("td");
+    expect(trs[1].props.children.props.children).to.equal("Doom");
+  });
+
+  it("renders a second-level host Button ", () => {
+    let v3 = v.props.children[3];
+    expect(v3.type.displayName).to.equal("Button");
+    expect(v3.props.bsSize).to.equal("large");
+    expect(v3.props.bsStyle).to.equal("primary");
+    expect(v3.props.disabled).to.be.false;
+    expect(v3.props.block).to.be.false;
+    expect(v3.props.children).to.equal("Next vote");
+  });
+
+  //
+  // it("renders a second-level .winner-announce div", () => {
+  //   let v0 = v.props.children[0];
+  //   expect(v0.type).to.equal("div");
+  //   expect(v0.props.className).to.equal("winner-announce");
+  //   expect(v0.props.children.join("")).to.equal("The winner is Platoon");
+  // });
+  //
+  // it("renders a second-level disabled join Button ", () => {
+  //   let v1 = v.props.children[1];
+  //   expect(v1.type.displayName).to.equal("Button");
+  //   expect(v1.props.bsSize).to.equal("large");
+  //   expect(v1.props.bsStyle).to.equal("default");
+  //   expect(v1.props.disabled).to.be.true;
+  //   expect(v1.props.block).to.be.true;
+  //   expect(v1.props.children).to.equal("No vote available to join");
+  // });
+  //
+  // it("renders a second-level host Button ", () => {
+  //   let v2 = v.props.children[2];
+  //   expect(v2.type.displayName).to.equal("Button");
+  //   expect(v2.props.bsSize).to.equal("large");
+  //   expect(v2.props.bsStyle).to.equal("primary");
+  //   expect(v2.props.disabled).to.be.false;
+  //   expect(v2.props.block).to.be.true;
+  //   expect(v2.props.children).to.equal("Host a new vote");
+  // });
+
+});

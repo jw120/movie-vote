@@ -1,7 +1,5 @@
 /* eslint-env mocha */
 
-// import * as sd from "skin-deep";
-
 import * as React from "react";
 import { expect } from "chai";
 import { createRenderer } from "react-addons-test-utils";
