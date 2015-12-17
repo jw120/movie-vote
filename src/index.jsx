@@ -15,10 +15,13 @@ MyDebug.enable("mvc:*");
 
 import reducer from "./reducers/reducer";
 import RootContainer from "./components/RootContainer";
-import { /* remoteHostReady, join, */ startSetup, hostQueueAdd, hostStart /*, remoteWinner */ } from "./actionCreators";
+import { remoteHostReady /* , join, startSetup, hostQueueAdd, hostStart, remoteWinner */ } from "./actionCreators";
 
 // Redux store created based on our reducer, adding our middleware and devtools (with persistState)
 const store = createStore(reducer);
+
+// Move into Signin state wth host available
+store.dispatch(remoteHostReady("henry", "Frozen", "Platoon"));
 
 // Move into Voting state
 // store.dispatch(remoteHostReady("henry", "Frozen", "Platoon"));
@@ -28,11 +31,11 @@ const store = createStore(reducer);
 // store.dispatch(remoteHostReady("henrietta", "Frozen 2", "Platoon Again"));
 
 // Move into Monitor state
-store.dispatch(startSetup("alice"));
-store.dispatch(hostQueueAdd("Frozen"));
-store.dispatch(hostQueueAdd("Walkabout"));
-store.dispatch(hostQueueAdd("Posiedon"));
-store.dispatch(hostStart());
+// store.dispatch(startSetup("alice"));
+// store.dispatch(hostQueueAdd("Frozen"));
+// store.dispatch(hostQueueAdd("Walkabout"));
+// store.dispatch(hostQueueAdd("Posiedon"));
+// store.dispatch(hostStart());
 
 ReactDOM.render(
   <Provider store={ store }>

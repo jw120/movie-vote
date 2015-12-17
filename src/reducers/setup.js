@@ -1,6 +1,6 @@
 /* @flow */
 
-// State and reducer definitions for setup mode
+// Props and reducer definitions for setup mode
 
 import { PropTypes } from "react";
 
@@ -9,11 +9,11 @@ import {
 } from "../actionTypes";
 
 import type { TAction } from "../actionCreators";
-import type { TState } from "./reducer";
+import type { TRootProps } from "./reducer";
 
 import { mkMonitor } from "./monitor";
 
-export type TSetupState = {
+export type TSetupProps = {
    name: string,
    queue: string[]
 }
@@ -23,18 +23,18 @@ export const SetupPropTypes = {
   queue: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
-function promoteSetup(s: TSetupState): TState {
+function promoteSetup(s: TSetupProps): TRootProps {
   return {
     mode: "SETUP",
     setup: s
   };
 }
 
-export function mkSetup(name: string, queue: string[]): TState {
+export function mkSetup(name: string, queue: string[]): TRootProps {
   return promoteSetup( { name, queue } );
 }
 
-export function unwrapSetup(s: TState): TSetupState {
+export function unwrapSetup(s: TRootProps): TSetupProps {
   if (s.mode === "SETUP") {
     return s.setup;
   } else {
@@ -42,7 +42,7 @@ export function unwrapSetup(s: TState): TSetupState {
   }
 }
 
-export function setupReducer(s: TSetupState, action: TAction): TState {
+export function setupReducer(s: TSetupProps, action: TAction): TRootProps {
 
   switch (action.type) {
 

@@ -2,7 +2,7 @@
 
 import { connect } from "react-redux";
 
-import type { TState } from "../reducers/reducer";
+import type { TRootProps } from "../reducers/reducer";
 
 import Root from "./Root";
 
@@ -10,7 +10,7 @@ type TTagOnly = {
   mode: string
 };
 
-function stateToProps(s: TState): TTagOnly {
+function stateToProps(s: TRootProps): TTagOnly {
   if (!s.mode) {
     throw new Error("Unknown mode in RootContainer stateToProps");
   }

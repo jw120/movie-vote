@@ -1,6 +1,6 @@
 /* @flow */
 
-// State and reducer definitions for winner mode
+// Props and reducer definitions for winner mode
 
 import { PropTypes} from "react";
 
@@ -9,12 +9,12 @@ import {
 } from "../actionTypes";
 
 import type { TAction } from "../actionCreators";
-import type { TState } from "./reducer";
+import type { TRootProps } from "./reducer";
 
 import { mkVoting } from "./voting";
 import { mkSetup } from "./setup";
 
-export type TWinnerState = {
+export type TWinnerProps = {
    name: string,
    hostName: ?string,
    winner: string,
@@ -30,18 +30,18 @@ export const WinnerPropTypes = {
   movieB:   PropTypes.string
 };
 
-function promoteWinner(w: TWinnerState): TState {
+function promoteWinner(w: TWinnerProps): TRootProps {
   return {
     mode: "WINNER",
     winner: w
   };
 }
 
-export function mkWinner(name: string, hostName: ?string, winner: string, movieA: ?string, movieB: ?string): TState {
+export function mkWinner(name: string, hostName: ?string, winner: string, movieA: ?string, movieB: ?string): TRootProps {
   return promoteWinner( { name, hostName, winner, movieA, movieB } );
 }
 
-export function unwrapWinner(s: TState): TWinnerState {
+export function unwrapWinner(s: TRootProps): TWinnerProps {
   if (s.mode === "WINNER") {
     return s.winner;
   } else {
@@ -49,7 +49,7 @@ export function unwrapWinner(s: TState): TWinnerState {
   }
 }
 
-export function winnerReducer(w: TWinnerState, action: TAction): TState {
+export function winnerReducer(w: TWinnerProps, action: TAction): TRootProps {
 
   switch (action.type) {
 

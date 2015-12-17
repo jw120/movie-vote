@@ -6,11 +6,11 @@ import { PropTypes } from "react";
 
 import type { TAction } from "../actionCreators";
 
-import type { TSigninState } from "./signin";
-import type { TVotingState } from "./voting";
-import type { TSetupState } from "./setup";
-import type { TMonitorState } from "./monitor";
-import type { TWinnerState } from "./winner";
+import type { TSigninProps } from "./signin";
+import type { TVotingProps } from "./voting";
+import type { TSetupProps } from "./setup";
+import type { TMonitorProps } from "./monitor";
+import type { TWinnerProps } from "./winner";
 
 import { signinReducer, mkSignin } from "./signin";
 import { votingReducer } from "./voting";
@@ -18,12 +18,12 @@ import { setupReducer } from "./setup";
 import { monitorReducer } from "./monitor";
 import { winnerReducer } from "./winner";
 
-export type TState =
-  { mode: "SIGNIN", signin: TSigninState } |
-  { mode: "SETUP", setup: TSetupState } |
-  { mode: "VOTING", voting: TVotingState } |
-  { mode: "MONITOR", monitor: TMonitorState } |
-  { mode: "WINNER", winner: TWinnerState };
+export type TRootProps =
+  { mode: "SIGNIN", signin: TSigninProps } |
+  { mode: "SETUP", setup: TSetupProps } |
+  { mode: "VOTING", voting: TVotingProps } |
+  { mode: "MONITOR", monitor: TMonitorProps } |
+  { mode: "WINNER", winner: TWinnerProps };
 
 export const RootPropTypes = {
   mode: PropTypes.string.isRequired,
@@ -34,10 +34,10 @@ export const RootPropTypes = {
   winner:  PropTypes.object
 };
 
-const INITIAL_STATE: TState = mkSignin();
+const INITIAL_STATE: TRootProps = mkSignin();
 
-export default function reducer(state: TState = INITIAL_STATE, action: TAction): TState {
-
+export default function reducer(state: TRootProps = INITIAL_STATE, action: TAction): TRootProps {
+  console.log(action);
   switch (state.mode) {
     case "SIGNIN":
       return signinReducer(state.signin, action);

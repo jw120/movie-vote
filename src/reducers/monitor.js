@@ -1,6 +1,6 @@
 /* @flow */
 
-// State and reducer definitions for winner mode
+// Props and reducer definitions for winner mode
 
 import { PropTypes } from "react";
 
@@ -9,10 +9,10 @@ import {
 } from "../actionTypes";
 
 import type { TAction } from "../actionCreators";
-import type { TState } from "./reducer";
+import type { TRootProps } from "./reducer";
 import { mkWinner } from "./winner";
 
-export type TMonitorState = {
+export type TMonitorProps = {
    name: string,
    movieA: string,
    movieB: string,
@@ -30,18 +30,18 @@ export const MonitorPropTypes = {
   scoreB: PropTypes.number.isRequired
 };
 
-function promoteMonitor(m: TMonitorState): TState {
+function promoteMonitor(m: TMonitorProps): TRootProps {
   return {
     mode: "MONITOR",
     monitor: m
   };
 }
 
-export function mkMonitor(name: string, movieA: string, movieB: string, queue: string[], scoreA: number = 0, scoreB: number = 0): TState {
+export function mkMonitor(name: string, movieA: string, movieB: string, queue: string[], scoreA: number = 0, scoreB: number = 0): TRootProps {
   return promoteMonitor( { name, movieA, movieB, queue, scoreA, scoreB } );
 }
 
-export function unwrapMonitor(s: TState): TMonitorState {
+export function unwrapMonitor(s: TRootProps): TMonitorProps {
   if (s.mode === "MONITOR") {
     return s.monitor;
   } else {
@@ -49,7 +49,7 @@ export function unwrapMonitor(s: TState): TMonitorState {
   }
 }
 
-export function monitorReducer(m: TMonitorState, action: TAction): TState {
+export function monitorReducer(m: TMonitorProps, action: TAction): TRootProps {
 
   switch (action.type) {
 

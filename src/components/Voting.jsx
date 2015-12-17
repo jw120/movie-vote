@@ -4,11 +4,11 @@ import * as React from "react";
 
 import { Button } from "react-bootstrap";
 
-// import type { TVotingState } from "../reducers/voting";
+// import type { TVotingProps } from "../reducers/voting";
 // import type { TActionCreator } from "../actionCreators";
 import { VotingPropTypes } from "../reducers/voting";
 
-export default function Voting(props: Object /* TVotingState & TActionCreator */): React.Element {
+export default function Voting(props: Object /* TVotingProps & TActionCreator */): React.Element {
   let voted: boolean = props.voted === props.movieA || props.voted === props.movieB;
   return (
     <div className="voting">

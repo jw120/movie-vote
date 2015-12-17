@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { Button, Table } from "react-bootstrap";
 
-import type { TMonitorState } from "../reducers/monitor";
+import type { TMonitorProps } from "../reducers/monitor";
 import type { TActionCreator } from "../actionCreators";
 import { MonitorPropTypes } from "../reducers/monitor";
 
@@ -16,7 +16,7 @@ function row(movie: string) {
   );
 }
 
-export default function Monitor(props: TMonitorState & TActionCreator): React.Element {
+export default function Monitor(props: TMonitorProps & TActionCreator): React.Element {
   return (
     <div className="monitor">
 
@@ -53,6 +53,7 @@ export default function Monitor(props: TMonitorState & TActionCreator): React.El
       <Button
         bsSize="large"
         bsStyle="primary"
+        onClick={ function() { return props.next(); } }
       >
         Next vote
       </Button>

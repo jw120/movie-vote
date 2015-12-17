@@ -1,6 +1,6 @@
 /* @flow */
 
-// State and reducer definitions for voting mode
+// Props and reducer definitions for voting mode
 
 import { PropTypes } from "react";
 
@@ -11,10 +11,10 @@ import {
 import { broadcastVote } from "../socket";
 import type { TAction } from "../actionCreators";
 
-import type { TState } from "./reducer";
+import type { TRootProps } from "./reducer";
 import { mkWinner } from "./winner";
 
-export type TVotingState = {
+export type TVotingProps = {
    name: string,
    hostName: string,
    movieA: string,
@@ -29,14 +29,14 @@ export const VotingPropTypes = {
   voted:    PropTypes.string
 };
 
-function promoteVoting(v: TVotingState): TState {
+function promoteVoting(v: TVotingProps): TRootProps {
   return {
     mode: "VOTING",
     voting: v
   };
 }
 
-export function mkVoting(name: string, hostName: string, movieA: string, movieB: string, voted: ?string): TState {
+export function mkVoting(name: string, hostName: string, movieA: string, movieB: string, voted: ?string): TRootProps {
   return promoteVoting( {
     name,
     hostName,
@@ -46,7 +46,7 @@ export function mkVoting(name: string, hostName: string, movieA: string, movieB:
   });
 }
 
-export function unwrapVoting(s: TState): TVotingState {
+export function unwrapVoting(s: TRootProps): TVotingProps {
   if (s.mode === "VOTING") {
     return s.voting;
   } else {
@@ -54,7 +54,7 @@ export function unwrapVoting(s: TState): TVotingState {
   }
 }
 
-export function votingReducer(v: TVotingState, action: TAction): TState {
+export function votingReducer(v: TVotingProps, action: TAction): TRootProps {
 
   switch (action.type) {
 

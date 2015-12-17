@@ -1,6 +1,6 @@
 /* @flow */
 
-// State and reducer definitions for signin mode
+// Props and reducer definitions for signin mode
 
 import { PropTypes } from "react";
 
@@ -10,11 +10,11 @@ import {
 
 import type { TAction } from "../actionCreators";
 
-import type { TState } from "./reducer";
+import type { TRootProps } from "./reducer";
 import { mkVoting } from "./voting";
 import { mkSetup } from "./setup";
 
-export type TSigninState = {
+export type TSigninProps = {
    hostName: ?string,
    movieA:   ?string,
    movieB:   ?string
@@ -26,14 +26,14 @@ export const SigninProptypes = {
   movieB:  PropTypes.string
 };
 
-function promoteSignin(s: TSigninState): TState {
+function promoteSignin(s: TSigninProps): TRootProps {
   return {
     mode: "SIGNIN",
     signin: s
   };
 }
 
-export function mkSignin(hostName?: string, movieA?: string, movieB?: string): TState {
+export function mkSignin(hostName?: string, movieA?: string, movieB?: string): TRootProps {
   if (hostName !== undefined && movieA !== undefined && movieB !== undefined) {
     return promoteSignin( { hostName, movieA, movieB } );
   } else {
@@ -41,7 +41,7 @@ export function mkSignin(hostName?: string, movieA?: string, movieB?: string): T
   }
 }
 
-export function unwrapSignin(s: TState): TSigninState {
+export function unwrapSignin(s: TRootProps): TSigninProps {
   if (s.mode === "SIGNIN") {
     return s.signin;
   } else {
@@ -49,7 +49,7 @@ export function unwrapSignin(s: TState): TSigninState {
   }
 }
 
-export function signinReducer(s: TSigninState, action: TAction): TState {
+export function signinReducer(s: TSigninProps, action: TAction): TRootProps {
 
   switch (action.type) {
 

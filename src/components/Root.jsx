@@ -8,10 +8,10 @@ import SetupContainer   from "./SetupContainer";
 import MonitorContainer from "./MonitorContainer";
 import WinnerContainer  from "./WinnerContainer";
 
-import type { TState } from "../reducers/reducer";
+import type { TRootProps } from "../reducers/reducer";
 import { RootPropTypes } from "../reducers/reducer";
 
-export default function Root(props: TState) {
+export default function Root(props: TRootProps) {
 
   switch (props.mode) {
     case "SIGNIN":
