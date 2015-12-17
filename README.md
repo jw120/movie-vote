@@ -1,6 +1,9 @@
 
 TODO
 
+* Flow check (chec works with @flow in 2nd line as in tests)
+* Run flow suggest on all (can we automate this?)
+
 * 1. reducers - DONE
 * 2. components/react:
 
@@ -8,10 +11,19 @@ TODO
   + Stateless functional components - DONE
   + get components React-bootstrapped - DONE
   + tests for components? - DONE
-  + Add callbacks and connect states. Add redux-devtools?
+  + Add callbacks and connect states
+
+    * Signin - TODO 2x onClicks (with Form), TODO - sending 1x remote   <-- NEXT #3
+    * Winner - TODO 2x onClicks, TODO - sending 1x remote   <-- NEXT #2
+    * Setup - TODO 3x onClicks (with Form) <-- NEXT #4
+    * Monitor - TODO 1x onClicks, TODO - sending 1x remote   <-- NEXT #1
+    * Voting - onClicks done. TODO - sending of 2x remotes
+
+  Add redux-devtools?
 
 * 3. server and sockets
 
+* Fix typing for Winner()
 
 * tests for callbacks?
 * Check propTypes does something (change a type and see warning? In tests?)

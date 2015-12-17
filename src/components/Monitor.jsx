@@ -1,8 +1,11 @@
+/* @flow */
+
 import * as React from "react";
 
 import { Button, Table } from "react-bootstrap";
 
 import type { TMonitorState } from "../reducers/monitor";
+import type { TActionCreator } from "../actionCreators";
 import { MonitorPropTypes } from "../reducers/monitor";
 
 function row(movie: string) {
@@ -13,7 +16,7 @@ function row(movie: string) {
   );
 }
 
-export default function Monitor(props: TMonitorState) {
+export default function Monitor(props: TMonitorState & TActionCreator): React.Element {
   return (
     <div className="monitor">
 

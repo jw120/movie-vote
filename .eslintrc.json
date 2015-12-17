@@ -6,6 +6,7 @@
       "quotes": [ 2, "double" ],
       "linebreak-style": [ 2,"unix" ],
       "semi": [ 2,"always" ],
+      "no-inner-declarations": 0,
       "react/forbid-prop-types": 2,
       "react/jsx-boolean-value": [2, "always"],
       "react/jsx-closing-bracket-location": 2,

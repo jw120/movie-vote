@@ -1,4 +1,5 @@
 /* eslint-env mocha */
+/* @flow */
 
 import * as React from "react";
 import { expect } from "chai";

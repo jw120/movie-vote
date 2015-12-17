@@ -1,10 +1,16 @@
+/* @flow */
+
 import { connect } from "react-redux";
 
 import type { TState } from "../reducers/reducer";
 
 import Root from "./Root";
 
-function stateToProps(s: TState) {
+type TTagOnly = {
+  mode: string
+};
+
+function stateToProps(s: TState): TTagOnly {
   if (!s.mode) {
     throw new Error("Unknown mode in RootContainer stateToProps");
   }

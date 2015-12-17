@@ -10,6 +10,20 @@ export type TAction = {
   payload?: string | TNext
 };
 
+export type TActionCreator = {
+  join: (name?: string) => TAction;
+  vote: (movie: string) => TAction;
+  next: () => TAction;
+  startSetup: (name?: string) => TAction;
+  hostQueueAdd: (movie: string) => TAction;
+  hostQueueDelete: (movie: string) => TAction;
+  hostStart: () => TAction;
+  remoteHostReady: (hostName: string, movieA: string, movieB: string) => TAction;
+  remoteVoteReceived: (movie: string) => TAction;
+  remoteNext: (movieA: string, movieB: string) => TAction;
+  remoteWinner: (movie: string) => TAction;
+}
+
 import {
   JOIN, VOTE, NEXT, START_SETUP,
   HOST_START, HOST_QUEUE_ADD, HOST_QUEUE_DELETE,
@@ -105,7 +119,7 @@ export function remoteWinner(movie: string): TAction {
   };
 }
 
-export default {
+const actionCreators: TActionCreator = {
   join,
   vote,
   next,
@@ -118,3 +132,5 @@ export default {
   remoteNext,
   remoteWinner
 };
+
+export default actionCreators;

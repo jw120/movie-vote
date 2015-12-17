@@ -60,7 +60,8 @@ export function setupReducer(s: TSetupState, action: TAction): TState {
 
     case HOST_QUEUE_DELETE:
       if (typeof action.payload === "string" && action.payload && s.queue.indexOf(action.payload) > -1) {
-        return mkSetup(s.name, s.queue.filter(x => x !== action.payload));
+        function notPayload(x: string): boolean { return x !== action.payload; }
+        return mkSetup(s.name, s.queue.filter(notPayload));
       }
       break;
 

@@ -15,13 +15,12 @@ import type { TState } from "./reducer";
 import { mkWinner } from "./winner";
 
 export type TVotingState = {
-  name:     string,
-  hostName: string,
-  movieA:   string,
-  movieB:   string,
-  voted:    ?string
+   name: string,
+   hostName: string,
+   movieA: string,
+   movieB: string,
+   voted:  ?string
 }
-
 export const VotingPropTypes = {
   name:     PropTypes.string.isRequired,
   hostName: PropTypes.string.isRequired,

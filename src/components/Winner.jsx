@@ -1,13 +1,15 @@
+/* @flow */
+
 import * as React from "react";
 
 import { Button } from "react-bootstrap";
 
 import type { TWinnerState } from "../reducers/winner";
+import type { TActionCreator } from "../actionCreators";
 import { WinnerPropTypes } from "../reducers/winner";
 
-
-export default function Winner(props: TWinnerState) {
-  let ready = props.hostName && props.movieA && props.movieB;
+export default function Winner(props: TWinnerState & TActionCreator): React.Element {
+  let ready: boolean = !!(props.hostName && props.movieA && props.movieB);
   return (
     <div className="winner">
       <div className="winner-announce">

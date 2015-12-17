@@ -1,3 +1,5 @@
+/* @flow */
+
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { createStore } from "redux";
@@ -13,21 +15,24 @@ MyDebug.enable("mvc:*");
 
 import reducer from "./reducers/reducer";
 import RootContainer from "./components/RootContainer";
-import { remoteHostReady, join, /* startSetup, hostQueueAdd, hostStart, */ remoteWinner } from "./actionCreators";
+import { /* remoteHostReady, join, */ startSetup, hostQueueAdd, hostStart /*, remoteWinner */ } from "./actionCreators";
 
 // Redux store created based on our reducer, adding our middleware and devtools (with persistState)
 const store = createStore(reducer);
 
-// Code to move into states for testing
-store.dispatch(remoteHostReady("henry", "Frozen", "Platoon"));
-store.dispatch(join("bob"));
-store.dispatch(remoteWinner("Platoon"));
-store.dispatch(remoteHostReady("henrietta", "Frozen 2", "Platoon Again"));
-// store.dispatch(startSetup("alice"));
-// store.dispatch(hostQueueAdd("Frozen"));
-// store.dispatch(hostQueueAdd("Walkabout"));
-// store.dispatch(hostQueueAdd("Posiedon"));
-// store.dispatch(hostStart());
+// Move into Voting state
+// store.dispatch(remoteHostReady("henry", "Frozen", "Platoon"));
+// store.dispatch(join("bob"));
+
+// store.dispatch(remoteWinner("Platoon"));
+// store.dispatch(remoteHostReady("henrietta", "Frozen 2", "Platoon Again"));
+
+// Move into Monitor state
+store.dispatch(startSetup("alice"));
+store.dispatch(hostQueueAdd("Frozen"));
+store.dispatch(hostQueueAdd("Walkabout"));
+store.dispatch(hostQueueAdd("Posiedon"));
+store.dispatch(hostStart());
 
 ReactDOM.render(
   <Provider store={ store }>

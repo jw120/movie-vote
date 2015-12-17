@@ -1,8 +1,11 @@
+/* @flow */
+
 import * as React from "react";
 
 import { Button, Input, Table } from "react-bootstrap";
 
 import type { TSetupState } from "../reducers/setup";
+import type { TActionCreator } from "../actionCreators";
 import { SetupPropTypes } from "../reducers/setup";
 
 function row(movie: string) {
@@ -21,7 +24,7 @@ function row(movie: string) {
   );
 }
 
-export default function Setup(props: TSetupState) {
+export default function Setup(props: TSetupState & TActionCreator): React.Element {
   // console.log("Queue is", props.queue);
   return (
     <div className="setup">
