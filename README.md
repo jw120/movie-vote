@@ -1,5 +1,7 @@
 TODO
 
+Get delete to work in setup
+
 * 1. reducers - DONE
 * 2. components/react:
 
@@ -21,7 +23,7 @@ TODO
 
 * Fix typing for Winner()
 
-* tests for callbacks?
+* How best to do react tests? tests for callbacks?
 * Check propTypes does something (change a type and see warning? In tests?)
 * Check import consistency - don't use defaults? what to use for React?
 * What is the significance of button types (submit etc?)
