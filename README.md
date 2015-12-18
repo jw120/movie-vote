@@ -1,7 +1,5 @@
 TODO
 
-Get delete to work in setup
-
 * 1. reducers - DONE
 * 2. components/react:
 

@@ -12,6 +12,23 @@ type TSetupState = {
   movie: string;
 };
 
+function renderRow(movie: string): React.Element {
+  return (
+    <tr key={ movie }>
+      <td>{ movie }</td>
+      <td>
+        <Button
+          bsSize="xsmall"
+          bsStyle="link"
+          onClick={ this.handleDeleteClick(movie) }
+        >
+          Delete
+        </Button>
+      </td>
+    </tr>
+  );
+}
+
 class Setup extends React.Component<TSetupProps & TActionCreator, TSetupState> {
 
   // $FlowSuppressExperimentalWarning
@@ -33,27 +50,16 @@ class Setup extends React.Component<TSetupProps & TActionCreator, TSetupState> {
   };
 
   // $FlowSuppressExperimentalWarning
+  handleDeleteClick = (movie: string) => () => {
+    this.props.hostQueueDelete(movie);
+  };
+
+  // $FlowSuppressExperimentalWarning
   handleSubmit: ((e: React.Event) => void) = (e: React.Event) => {
     e.preventDefault();
     this.props.hostQueueAdd(this.state.movie.trim());
     this.setState({ movie: "" });
   };
-
-  renderRow(movie: string): React.Element {
-    return (
-      <tr key={ movie }>
-        <td>{ movie }</td>
-        <td>
-          <Button
-            bsSize="xsmall"
-            bsStyle="link"
-          >
-            Delete
-          </Button>
-        </td>
-      </tr>
-    );
-  }
 
   renderTable(): React.Element {
     return (
@@ -62,7 +68,7 @@ class Setup extends React.Component<TSetupProps & TActionCreator, TSetupState> {
           <tr><th>Movies listed for the vote</th><th></th></tr>
         </thead>
         <tbody>
-          { this.props.queue.map(this.renderRow) }
+          { this.props.queue.map(renderRow, this) }
         </tbody>
       </Table>
     );
