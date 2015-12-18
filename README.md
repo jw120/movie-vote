@@ -1,7 +1,4 @@
-
 TODO
-
-* Better type for React Component?
 
 * 1. reducers - DONE
 * 2. components/react:
@@ -14,7 +11,7 @@ TODO
 
     * Signin - onClicks (with Form) done, TODO - sending 1x remote
     * Winner - onClicks done, TODO - sending 1x remote
-    * Setup - TODO 3x onClicks (with Form) <-- NEXT #4
+    * Setup - 3x onClicks (with Form) done
     * Monitor - onClicks done, TODO - sending 1x remote
     * Voting - onClicks done. TODO - sending of 2x remotes
 

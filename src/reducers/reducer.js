@@ -37,7 +37,6 @@ export const RootPropTypes = {
 const INITIAL_STATE: TRootProps = mkSignin();
 
 export default function reducer(state: TRootProps = INITIAL_STATE, action: TAction): TRootProps {
-  console.log(action);
   switch (state.mode) {
     case "SIGNIN":
       return signinReducer(state.signin, action);
