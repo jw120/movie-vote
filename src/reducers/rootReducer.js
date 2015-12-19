@@ -18,14 +18,14 @@ import { setupReducer } from "./setup";
 import { monitorReducer } from "./monitor";
 import { winnerReducer } from "./winner";
 
-export type TRootProps =
+export type TMovieAppProps =
   { mode: "SIGNIN", signin: TSigninProps } |
   { mode: "SETUP", setup: TSetupProps } |
   { mode: "VOTING", voting: TVotingProps } |
   { mode: "MONITOR", monitor: TMonitorProps } |
   { mode: "WINNER", winner: TWinnerProps };
 
-export const RootPropTypes = {
+export const MovieAppPropTypes = {
   mode: PropTypes.string.isRequired,
   signin:  PropTypes.object,
   setup:   PropTypes.object,
@@ -34,9 +34,9 @@ export const RootPropTypes = {
   winner:  PropTypes.object
 };
 
-const INITIAL_STATE: TRootProps = mkSignin();
+const INITIAL_STATE: TMovieAppProps = mkSignin();
 
-export default function reducer(state: TRootProps = INITIAL_STATE, action: TAction): TRootProps {
+export default function rootReducer(state: TMovieAppProps = INITIAL_STATE, action: TAction): TMovieAppProps {
   switch (state.mode) {
     case "SIGNIN":
       return signinReducer(state.signin, action);

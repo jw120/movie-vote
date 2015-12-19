@@ -10,7 +10,7 @@ import {
 
 import type { TAction } from "../actionCreators";
 
-import type { TRootProps } from "./reducer";
+import type { TMovieAppProps } from "./rootReducer";
 import { mkVoting } from "./voting";
 import { mkSetup } from "./setup";
 
@@ -26,14 +26,14 @@ export const SigninProptypes = {
   movieB:  PropTypes.string
 };
 
-function promoteSignin(s: TSigninProps): TRootProps {
+function promoteSignin(s: TSigninProps): TMovieAppProps {
   return {
     mode: "SIGNIN",
     signin: s
   };
 }
 
-export function mkSignin(hostName?: string, movieA?: string, movieB?: string): TRootProps {
+export function mkSignin(hostName?: string, movieA?: string, movieB?: string): TMovieAppProps {
   if (hostName !== undefined && movieA !== undefined && movieB !== undefined) {
     return promoteSignin( { hostName, movieA, movieB } );
   } else {
@@ -41,7 +41,7 @@ export function mkSignin(hostName?: string, movieA?: string, movieB?: string): T
   }
 }
 
-export function unwrapSignin(s: TRootProps): TSigninProps {
+export function unwrapSignin(s: TMovieAppProps): TSigninProps {
   if (s.mode === "SIGNIN") {
     return s.signin;
   } else {
@@ -49,7 +49,7 @@ export function unwrapSignin(s: TRootProps): TSigninProps {
   }
 }
 
-export function signinReducer(s: TSigninProps, action: TAction): TRootProps {
+export function signinReducer(s: TSigninProps, action: TAction): TMovieAppProps {
 
   switch (action.type) {
 

@@ -11,7 +11,7 @@ import {
 import { broadcastVote } from "../socket";
 import type { TAction } from "../actionCreators";
 
-import type { TRootProps } from "./reducer";
+import type { TMovieAppProps } from "./rootReducer";
 import { mkWinner } from "./winner";
 
 export type TVotingProps = {
@@ -29,14 +29,14 @@ export const VotingPropTypes = {
   voted:    PropTypes.string
 };
 
-function promoteVoting(v: TVotingProps): TRootProps {
+function promoteVoting(v: TVotingProps): TMovieAppProps {
   return {
     mode: "VOTING",
     voting: v
   };
 }
 
-export function mkVoting(name: string, hostName: string, movieA: string, movieB: string, voted: ?string): TRootProps {
+export function mkVoting(name: string, hostName: string, movieA: string, movieB: string, voted: ?string): TMovieAppProps {
   return promoteVoting( {
     name,
     hostName,
@@ -46,7 +46,7 @@ export function mkVoting(name: string, hostName: string, movieA: string, movieB:
   });
 }
 
-export function unwrapVoting(s: TRootProps): TVotingProps {
+export function unwrapVoting(s: TMovieAppProps): TVotingProps {
   if (s.mode === "VOTING") {
     return s.voting;
   } else {
@@ -54,7 +54,7 @@ export function unwrapVoting(s: TRootProps): TVotingProps {
   }
 }
 
-export function votingReducer(v: TVotingProps, action: TAction): TRootProps {
+export function votingReducer(v: TVotingProps, action: TAction): TMovieAppProps {
 
   switch (action.type) {
 

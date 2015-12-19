@@ -9,7 +9,7 @@ import {
 } from "../actionTypes";
 
 import type { TAction } from "../actionCreators";
-import type { TRootProps } from "./reducer";
+import type { TMovieAppProps } from "./rootReducer";
 
 import { mkMonitor } from "./monitor";
 
@@ -23,18 +23,18 @@ export const SetupPropTypes = {
   queue: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
-function promoteSetup(s: TSetupProps): TRootProps {
+function promoteSetup(s: TSetupProps): TMovieAppProps {
   return {
     mode: "SETUP",
     setup: s
   };
 }
 
-export function mkSetup(name: string, queue: string[]): TRootProps {
+export function mkSetup(name: string, queue: string[]): TMovieAppProps {
   return promoteSetup( { name, queue } );
 }
 
-export function unwrapSetup(s: TRootProps): TSetupProps {
+export function unwrapSetup(s: TMovieAppProps): TSetupProps {
   if (s.mode === "SETUP") {
     return s.setup;
   } else {
@@ -42,7 +42,7 @@ export function unwrapSetup(s: TRootProps): TSetupProps {
   }
 }
 
-export function setupReducer(s: TSetupProps, action: TAction): TRootProps {
+export function setupReducer(s: TSetupProps, action: TAction): TMovieAppProps {
 
   switch (action.type) {
 

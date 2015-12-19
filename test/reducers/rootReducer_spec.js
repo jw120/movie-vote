@@ -3,14 +3,14 @@
 
 import { expect } from "chai";
 
-import reducer from "../../src/reducers/reducer";
+import rootReducer from "../../src/reducers/rootReducer";
 import actionCreators from "../../src/actionCreators";
 import { mkSignin } from "../../src/reducers/signin";
 
 describe("top-level reducer", () => {
 
   it("provides a default state", () => {
-    const nextState = reducer(undefined, actionCreators.next());
+    const nextState = rootReducer(undefined, actionCreators.next());
     const expectedState = mkSignin(null);
     expect(nextState).to.deep.equal(expectedState);
   });

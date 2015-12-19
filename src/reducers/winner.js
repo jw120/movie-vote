@@ -9,7 +9,7 @@ import {
 } from "../actionTypes";
 
 import type { TAction } from "../actionCreators";
-import type { TRootProps } from "./reducer";
+import type { TMovieAppProps } from "./rootReducer";
 
 import { mkVoting } from "./voting";
 import { mkSetup } from "./setup";
@@ -30,18 +30,18 @@ export const WinnerPropTypes = {
   movieB:   PropTypes.string
 };
 
-function promoteWinner(w: TWinnerProps): TRootProps {
+function promoteWinner(w: TWinnerProps): TMovieAppProps {
   return {
     mode: "WINNER",
     winner: w
   };
 }
 
-export function mkWinner(name: string, hostName: ?string, winner: string, movieA: ?string, movieB: ?string): TRootProps {
+export function mkWinner(name: string, hostName: ?string, winner: string, movieA: ?string, movieB: ?string): TMovieAppProps {
   return promoteWinner( { name, hostName, winner, movieA, movieB } );
 }
 
-export function unwrapWinner(s: TRootProps): TWinnerProps {
+export function unwrapWinner(s: TMovieAppProps): TWinnerProps {
   if (s.mode === "WINNER") {
     return s.winner;
   } else {
@@ -49,7 +49,7 @@ export function unwrapWinner(s: TRootProps): TWinnerProps {
   }
 }
 
-export function winnerReducer(w: TWinnerProps, action: TAction): TRootProps {
+export function winnerReducer(w: TWinnerProps, action: TAction): TMovieAppProps {
 
   switch (action.type) {
 

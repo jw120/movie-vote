@@ -1,5 +1,10 @@
 TODO
 
+stanardize new components
+why container vs components
+work out hot reducer replacement in configureStore.dev
+more conventional reducer state and reducers layout? immutable?
+
 * 1. reducers - DONE
 * 2. components/react:
 
@@ -21,6 +26,7 @@ TODO
 
 * Fix typing for Winner()
 
+* Production build - use uglify?
 * How best to do react tests? tests for callbacks?
 * Check propTypes does something (change a type and see warning? In tests?)
 * Check import consistency - don't use defaults? what to use for React?

@@ -9,7 +9,7 @@ import {
 } from "../actionTypes";
 
 import type { TAction } from "../actionCreators";
-import type { TRootProps } from "./reducer";
+import type { TMovieAppProps } from "./rootReducer";
 import { mkWinner } from "./winner";
 
 export type TMonitorProps = {
@@ -30,18 +30,18 @@ export const MonitorPropTypes = {
   scoreB: PropTypes.number.isRequired
 };
 
-function promoteMonitor(m: TMonitorProps): TRootProps {
+function promoteMonitor(m: TMonitorProps): TMovieAppProps {
   return {
     mode: "MONITOR",
     monitor: m
   };
 }
 
-export function mkMonitor(name: string, movieA: string, movieB: string, queue: string[], scoreA: number = 0, scoreB: number = 0): TRootProps {
+export function mkMonitor(name: string, movieA: string, movieB: string, queue: string[], scoreA: number = 0, scoreB: number = 0): TMovieAppProps {
   return promoteMonitor( { name, movieA, movieB, queue, scoreA, scoreB } );
 }
 
-export function unwrapMonitor(s: TRootProps): TMonitorProps {
+export function unwrapMonitor(s: TMovieAppProps): TMonitorProps {
   if (s.mode === "MONITOR") {
     return s.monitor;
   } else {
@@ -49,7 +49,7 @@ export function unwrapMonitor(s: TRootProps): TMonitorProps {
   }
 }
 
-export function monitorReducer(m: TMonitorProps, action: TAction): TRootProps {
+export function monitorReducer(m: TMonitorProps, action: TAction): TMovieAppProps {
 
   switch (action.type) {
 

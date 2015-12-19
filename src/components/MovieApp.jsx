@@ -8,10 +8,10 @@ import SetupContainer   from "./SetupContainer";
 import MonitorContainer from "./MonitorContainer";
 import WinnerContainer  from "./WinnerContainer";
 
-import type { TRootProps } from "../reducers/reducer";
-import { RootPropTypes } from "../reducers/reducer";
+import type { TMovieAppProps } from "../reducers/rootReducer";
+import { MovieAppPropTypes } from "../reducers/rootReducer";
 
-export default function Root(props: TRootProps) {
+export default function MovieApp(props: TMovieAppProps) {
 
   switch (props.mode) {
     case "SIGNIN":
@@ -29,4 +29,4 @@ export default function Root(props: TRootProps) {
 
 }
 
-Root.propTypes = RootPropTypes;
+MovieApp.propTypes = MovieAppPropTypes;

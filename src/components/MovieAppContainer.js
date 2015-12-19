@@ -2,23 +2,23 @@
 
 import { connect } from "react-redux";
 
-import type { TRootProps } from "../reducers/reducer";
+import type { TMovieAppProps } from "../reducers/rootReducer";
 
-import Root from "./Root";
+import MovieApp from "./MovieApp";
 
 type TTagOnly = {
   mode: string
 };
 
-function stateToProps(s: TRootProps): TTagOnly {
+function stateToProps(s: TMovieAppProps): TTagOnly {
   if (!s.mode) {
-    throw new Error("Unknown mode in RootContainer stateToProps");
+    throw new Error("Unknown mode in MovieAppContainer stateToProps");
   }
   return {
     mode: s.mode
   };
 }
 
-const RootContainer = connect(stateToProps)(Root);
+const MovieAppContainer = connect(stateToProps)(MovieApp);
 
-export default RootContainer;
+export default MovieAppContainer;

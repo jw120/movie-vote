@@ -2,8 +2,7 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
+import configureStore from "./store/configureStore";
 
 // Load css via webpack
 require("bootstrap.min.css");
@@ -13,12 +12,13 @@ require("../dist/styles.css");
 import * as MyDebug from "debug";
 MyDebug.enable("mvc:*");
 
-import reducer from "./reducers/reducer";
-import RootContainer from "./components/RootContainer";
+import Root from "./components/Root";
+// import { mkSignin } from "./reducers/signin";
 import { /* remoteHostReady, /* , join, */ startSetup /*, hostQueueAdd, hostStart, remoteWinner */ } from "./actionCreators";
+// import type TMovieAppProps from "./reducers/rootReducer";
 
-// Redux store created based on our reducer, adding our middleware and devtools (with persistState)
-const store = createStore(reducer);
+// const INITIAL_STATE: TMovieAppProps = mkSignin();
+const store = configureStore();
 
 // Move into Signin state wth host available
 // store.dispatch(remoteHostReady("henry", "Frozen", "Platoon"));
@@ -41,8 +41,6 @@ store.dispatch(startSetup("alice"));
 // store.dispatch(hostStart());
 
 ReactDOM.render(
-  <Provider store={ store }>
-    <RootContainer />
-  </Provider>,
+  <Root store={ store }/>,
   document.getElementById("root")
 );
