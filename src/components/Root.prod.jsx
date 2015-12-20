@@ -1,19 +1,18 @@
 /* @flow */
 
-import React, { Component } from "react";
+import React from "react";
 import { Provider } from "react-redux";
 import MovieAppContainer from "./MovieAppContainer";
 import storeShape from "react-redux/lib/utils/storeShape";
 
-export default class Root extends Component {
-  render() {
-    const { store } = this.props;
-    return (
-      <Provider store={ store }>
-        <MovieAppContainer />
-      </Provider>
-    );
-  }
+import type TStore from "./Root.dev";
+
+export default function Root(props: { store: TStore }) {
+  return (
+    <Provider store={ props.store }>
+      <MovieAppContainer />
+    </Provider>
+  );
 }
 
 Root.propTypes = {

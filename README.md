@@ -1,9 +1,6 @@
 TODO
 
-stanardize new components
-why container vs components
-work out hot reducer replacement in configureStore.dev
-more conventional reducer state and reducers layout? immutable?
+# Next
 
 * 1. reducers - DONE
 * 2. components/react:
@@ -20,13 +17,16 @@ more conventional reducer state and reducers layout? immutable?
     * Monitor - onClicks done, TODO - sending 1x remote
     * Voting - onClicks done. TODO - sending of 2x remotes
 
-  Add redux-devtools?
-
 * 3. server and sockets
 
-* Fix typing for Winner()
+# Sometime
 
+* Fix typing for Winner()
+* Consider splitting containers and components (two different directories, fewer containers)
+* more conventional reducer state and reducers layout? immutable?
 * Production build - use uglify?
+* refactor state to be single tree?
+* work out hot reducer replacement in configureStore.dev
 * How best to do react tests? tests for callbacks?
 * Check propTypes does something (change a type and see warning? In tests?)
 * Check import consistency - don't use defaults? what to use for React?

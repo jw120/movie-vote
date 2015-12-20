@@ -1,5 +1,9 @@
+/* @flow */
+
 import { createStore, /* applyMiddleware, */ compose } from "redux";
 import rootReducer from "../reducers/rootReducer";
+
+import type TStore from "../components/Root.dev";
 
 const finalCreateStore = compose(
   // Middleware you want to use in production:
@@ -7,6 +11,6 @@ const finalCreateStore = compose(
   // Other store enhancers if you use any
 )(createStore);
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState: any): TStore {
   return finalCreateStore(rootReducer, initialState);
 }

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 /* @flow */
 
-import * as React from "react";
+import React from "react";
 import { expect } from "chai";
 import { createRenderer } from "react-addons-test-utils";
 

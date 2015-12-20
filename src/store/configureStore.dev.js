@@ -1,7 +1,11 @@
+/* @flow */
+
 import { createStore, /* applyMiddleware, */ compose } from "redux";
 import { persistState } from "redux-devtools";
 import rootReducer from "../reducers/rootReducer";
 import DevTools from "../components/DevTools";
+
+import type TStore from "../components/Root.dev";
 
 const finalCreateStore = compose(
   // Middleware you want to use in development:
@@ -19,15 +23,16 @@ function getDebugSessionKey() {
   return (matches && matches.length > 0)? matches[1] : null;
 }
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState?: any): TStore {
   const store = finalCreateStore(rootReducer, initialState);
 
   // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
-  // if (module.hot) {
-  //   module.hot.accept("../reducers", () =>
-  //     store.replaceReducer(require("../reducers")/*.default if you use Babel 6+ */)
-  //   );
-  // }
+  // Taken from redux-devtools example, not clear if it does anything...
+  if (module.hot) {
+    module.hot.accept("../reducers/rootReducer", () =>
+      store.replaceReducer(require("../reducers/rootReducer")/*.default if you use Babel 6+ */)
+    );
+  }
 
   return store;
 }

@@ -2,8 +2,6 @@
 /* @flow */
 
 import React from "react";
-
-// import * as React from "react";
 import { Button, ButtonInput, Input, Table } from "react-bootstrap";
 import chai, { expect } from "chai";
 import jsxChai from "jsx-chai";
@@ -61,6 +59,7 @@ describe("Setup component", () => {
               <Button
                 bsSize="xsmall"
                 bsStyle="link"
+                onClick={ dummyCallback }
               >
                 Delete
               </Button>
@@ -72,6 +71,7 @@ describe("Setup component", () => {
               <Button
                 bsSize="xsmall"
                 bsStyle="link"
+                onClick={ dummyCallback }
               >
                 Delete
               </Button>

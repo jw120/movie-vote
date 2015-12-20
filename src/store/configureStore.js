@@ -1,4 +1,3 @@
-/* @flow */
 /* global process */
 
 if (process.env.NODE_ENV === "production") {
