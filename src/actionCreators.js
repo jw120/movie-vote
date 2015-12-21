@@ -31,6 +31,7 @@ import {
 } from "./actionTypes";
 
 // Join is triggered from UI and provides the name of the user from signing (nothing from winner)
+// No remote
 export function join(name?: string): TAction {
   return {
     type: JOIN,
@@ -39,6 +40,7 @@ export function join(name?: string): TAction {
 }
 
 // Vote is trigger from UI and provides the name of the movie selected
+// Broadcasts REMOTE_VOTE_RECEVIED
 export function vote(movie: string): TAction {
   return {
     type: VOTE,
@@ -47,6 +49,7 @@ export function vote(movie: string): TAction {
 }
 
 // Next is trigger from monitor UI
+// Broadcasts REMOTE_NEXT or REMOTE_WINNER
 export function next(): TAction {
   return {
     type: NEXT
@@ -54,6 +57,7 @@ export function next(): TAction {
 }
 
 // StartSetup is triggered from UI and provides the name of the user if called from signin
+// No remote
 export function startSetup(name?: string): TAction {
   return {
     type: START_SETUP,
@@ -62,6 +66,7 @@ export function startSetup(name?: string): TAction {
 }
 
 // hostQueueAdd triggered from UI and adds a movie to the queue
+// No remote
 export function hostQueueAdd(movie: string): TAction {
   return {
     type: HOST_QUEUE_ADD,
@@ -70,6 +75,7 @@ export function hostQueueAdd(movie: string): TAction {
 }
 
 // hostQueueDelete triggerd from the UI and removes a movie from the queue
+// No remote
 export function hostQueueDelete(movie: string): TAction {
   return {
     type: HOST_QUEUE_DELETE,
@@ -78,6 +84,7 @@ export function hostQueueDelete(movie: string): TAction {
 }
 
 // hostStart triggered from UI and moves to monitor mode
+// Broadcasts REMOTE_HOST_READY
 export function hostStart(): TAction {
   return {
     type: HOST_START
@@ -111,7 +118,7 @@ export function remoteNext(movieA: string, movieB: string): TAction {
   };
 }
 
-// REMOTE_Winner is triggered on clients by host (instead of next)
+// REMOTE_WINNER triggered on clients by host (instead of next)
 export function remoteWinner(movie: string): TAction {
   return {
     type: REMOTE_WINNER,

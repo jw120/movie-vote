@@ -5,12 +5,13 @@
 import { PropTypes } from "react";
 
 import {
-  NEXT, REMOTE_VOTE_RECEVIED
+  NEXT, REMOTE_VOTE_RECEVIED, REMOTE_NEXT, REMOTE_WINNER
 } from "../actionTypes";
 
 import type { TAction } from "../actionCreators";
 import type { TMovieAppProps } from "./rootReducer";
 import { mkWinner } from "./winner";
+import { broadcast } from "../socket";
 
 export type TMonitorProps = {
    name: string,
@@ -63,8 +64,10 @@ export function monitorReducer(m: TMonitorProps, action: TAction): TMovieAppProp
         newQueue = m.queue.concat(m.movieB);
       }
       if (newQueue.length === 1) {
+        broadcast(REMOTE_WINNER, newQueue[0]);
         return mkWinner(m.name, null, newQueue[0], null, null);
       } else if (newQueue.length >= 2) {
+        broadcast(REMOTE_NEXT, newQueue[0], newQueue[1]);
         return mkMonitor(m.name, newQueue[0], newQueue[1], newQueue.slice(2), 0, 0);
       }
       break;

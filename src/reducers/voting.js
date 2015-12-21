@@ -5,10 +5,10 @@
 import { PropTypes } from "react";
 
 import {
-  VOTE, REMOTE_NEXT, REMOTE_WINNER
+  VOTE, REMOTE_NEXT, REMOTE_WINNER, REMOTE_VOTE_RECEVIED
 } from "../actionTypes";
 
-import { broadcastVote } from "../socket";
+import { broadcast } from "../socket";
 import type { TAction } from "../actionCreators";
 
 import type { TMovieAppProps } from "./rootReducer";
@@ -62,7 +62,7 @@ export function votingReducer(v: TVotingProps, action: TAction): TMovieAppProps 
       if (typeof action.payload === "string") {
         let movie: string = action.payload;
         if (movie === v.movieA || movie === v.movieB && !v.voted) {
-          broadcastVote(movie);
+          broadcast(REMOTE_VOTE_RECEVIED, movie);
           return mkVoting(v.name, v.hostName, v.movieA, v.movieB, movie);
         }
       }

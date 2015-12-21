@@ -5,13 +5,14 @@
 import { PropTypes } from "react";
 
 import {
-  HOST_START, HOST_QUEUE_ADD, HOST_QUEUE_DELETE
+  HOST_START, HOST_QUEUE_ADD, HOST_QUEUE_DELETE, REMOTE_HOST_READY
 } from "../actionTypes";
 
 import type { TAction } from "../actionCreators";
 import type { TMovieAppProps } from "./rootReducer";
 
 import { mkMonitor } from "./monitor";
+import { broadcast } from "../socket";
 
 export type TSetupProps = {
    name: string,
@@ -48,6 +49,7 @@ export function setupReducer(s: TSetupProps, action: TAction): TMovieAppProps {
 
     case HOST_START:
       if (s.queue.length >= 2) {
+        broadcast(REMOTE_HOST_READY, s.name, s.queue[0], s.queue[1]);
         return mkMonitor(s.name, s.queue[0], s.queue[1], s.queue.slice(2));
       }
       break;

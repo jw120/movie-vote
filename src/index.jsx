@@ -12,13 +12,17 @@ require("../dist/styles.css");
 import * as MyDebug from "debug";
 MyDebug.enable("mvc:*");
 
+// const INITIAL_STATE: TMovieAppProps = mkSignin();
+const store = configureStore();
+
+// Setup socket client
+import { initSocketClient } from "./socket";
+initSocketClient(store);
+
 import Root from "./components/Root";
 // import { mkSignin } from "./reducers/signin";
 import { /* remoteHostReady, /* , join, */ startSetup /*, hostQueueAdd, hostStart, remoteWinner */ } from "./actionCreators";
 // import type TMovieAppProps from "./reducers/rootReducer";
-
-// const INITIAL_STATE: TMovieAppProps = mkSignin();
-const store = configureStore();
 
 // Move into Signin state wth host available
 // store.dispatch(remoteHostReady("henry", "Frozen", "Platoon"));
@@ -39,6 +43,8 @@ store.dispatch(startSetup("alice"));
 // store.dispatch(hostQueueAdd("Walkabout"));
 // store.dispatch(hostQueueAdd("Posiedon"));
 // store.dispatch(hostStart());
+
+//
 
 ReactDOM.render(
   <Root store={ store }/>,
