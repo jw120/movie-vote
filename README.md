@@ -1,5 +1,9 @@
 TODO
 
+* Check works with prod mode
+* Reselect? Can we make state non-modal
+* expect=jsx for tests - not chai?
+
 # Next
 
 * 1. reducers - DONE

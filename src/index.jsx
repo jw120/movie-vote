@@ -21,7 +21,7 @@ initSocketClient(store);
 
 import Root from "./components/Root";
 // import { mkSignin } from "./reducers/signin";
-import { /* remoteHostReady, /* , join, */ startSetup /*, hostQueueAdd, hostStart, remoteWinner */ } from "./actionCreators";
+//import { /* remoteHostReady, /* , join, */ startSetup /*, hostQueueAdd, hostStart, remoteWinner */ } from "./actionCreators";
 // import type TMovieAppProps from "./reducers/rootReducer";
 
 // Move into Signin state wth host available
@@ -35,7 +35,7 @@ import { /* remoteHostReady, /* , join, */ startSetup /*, hostQueueAdd, hostStar
 // store.dispatch(remoteHostReady("henrietta", "Frozen 2", "Platoon Again"));
 
 // Move into Setup state
-store.dispatch(startSetup("alice"));
+// store.dispatch(startSetup("alice"));
 
 // Move into Monitor state
 // store.dispatch(startSetup("alice"));
