@@ -29,4 +29,4 @@ export default function MovieApp(props: TMovieAppProps) {
 
 }
 
-MovieApp.propTypes = MovieAppPropTypes;
+// MovieApp.propTypes = MovieAppPropTypes;

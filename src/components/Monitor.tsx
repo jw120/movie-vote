@@ -61,4 +61,4 @@ export default function Monitor(props: TMonitorProps & TActionCreator): JSX.Elem
   );
 }
 
-Monitor.propTypes = MonitorPropTypes;
+// Monitor.propTypes = MonitorPropTypes;

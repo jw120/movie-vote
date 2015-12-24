@@ -46,7 +46,7 @@ class Setup extends React.Component<TSetupProps & TActionCreator, TSetupState> {
 
   // $FlowSuppressExperimentalWarning
   handleStartClick: (() => void) = () => {
-    this.props.hostStart(this.state.movie.trim());
+    this.props.hostStart();
   };
 
   // $FlowSuppressExperimentalWarning
@@ -93,7 +93,6 @@ class Setup extends React.Component<TSetupProps & TActionCreator, TSetupState> {
         type="submit"
         bsSize="large"
         bsStyle="primary"
-        block={ false }
       >
         Add movie
       </ButtonInput>

@@ -23,7 +23,7 @@ class Signin extends React.Component<TSigninProps & TActionCreator, TSigninState
   props: TSigninProps & TActionCreator;
 
   // $FlowSuppressExperimentalWarning
-  handleTextChange: ((e: React.Event) => void) = (e: React.Event) => {
+  handleTextChange: ((e: React.SyntheticEvent) => void) = (e: React.SyntheticEvent) => {
     this.setState({ name: e.currentTarget.value });
   };
 
@@ -38,7 +38,7 @@ class Signin extends React.Component<TSigninProps & TActionCreator, TSigninState
   };
 
   // $FlowSuppressExperimentalWarning
-  handleSubmit: ((e: React.Event) => void) = (e: React.Event) => {
+  handleSubmit: ((e: React.SyntheticEvent) => void) = (e: React.SyntheticEvent) => {
     e.preventDefault();
     //  Do nothing
   };

@@ -4,7 +4,7 @@
 
 import { PropTypes } from "react";
 
-import { TAction } from "../actionCreators";
+import { IAction } from "../actionCreators";
 
 import { TSigninProps } from "./signin";
 import { TVotingProps } from "./voting";
@@ -38,7 +38,7 @@ export const MovieAppPropTypes = {
 
 const INITIAL_STATE: TMovieAppProps = mkSignin();
 
-export default function rootReducer(state: TMovieAppProps = INITIAL_STATE, action: TAction): TMovieAppProps {
+export default function rootReducer(state: TMovieAppProps = INITIAL_STATE, action: IAction): TMovieAppProps {
   switch (state.mode) {
     case "SIGNIN":
       return signinReducer(state.signin, action);

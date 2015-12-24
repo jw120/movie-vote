@@ -44,4 +44,4 @@ export default function Winner(props: TWinnerProps & TActionCreator): JSX.Elemen
   );
 }
 
-Winner.propTypes = WinnerPropTypes;
+// Winner.propTypes = WinnerPropTypes;

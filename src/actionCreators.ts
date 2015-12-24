@@ -6,6 +6,8 @@ import {
   REMOTE_NEXT, REMOTE_WINNER
 } from "./actionTypes";
 
+import { MapDispatchToPropsObject } from "react-redux";
+
 // Base interface for Actions
 export interface IAction {
   type: string;
@@ -174,7 +176,7 @@ export function remoteWinner(movie: string): IRemoteWinnerAction {
   };
 }
 
-const actionCreators: TActionCreator = {
+const actionCreators: MapDispatchToPropsObject = { //TActionCreator = {
   join,
   vote,
   next,

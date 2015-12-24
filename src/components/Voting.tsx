@@ -4,11 +4,11 @@ import * as React from "react";
 
 import { Button } from "react-bootstrap";
 
-// import type { TVotingProps } from "../reducers/voting";
-// import type { TActionCreator } from "../actionCreators";
+import { TVotingProps } from "../reducers/voting";
+import { TActionCreator } from "../actionCreators";
 import { VotingPropTypes } from "../reducers/voting";
 
-export default function Voting(props: Object /* TVotingProps & TActionCreator */): JSX.Element {
+export default function Voting(props: TVotingProps & TActionCreator): JSX.Element {
   let voted: boolean = props.voted === props.movieA || props.voted === props.movieB;
   return (
     <div className="voting">
@@ -37,4 +37,4 @@ export default function Voting(props: Object /* TVotingProps & TActionCreator */
   );
 }
 
-Voting.propTypes = VotingPropTypes;
+// Voting.propTypes = VotingPropTypes;

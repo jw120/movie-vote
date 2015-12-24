@@ -2,7 +2,8 @@ TODO
 
 * TSC conversion
 
-  + Finish actionCreators, remove actionTypes, use these action types everywhere
+  + Remove stateless components
+  + DONE Finish actionCreators, remove actionTypes, use these action types everywhere
   + Apply same to state and props
   + Improve .d.ts files in myTypings
   + Restore conditional imports for Root and configureStore (and fix hot modules reloading in configure store)
