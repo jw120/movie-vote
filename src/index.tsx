@@ -1,12 +1,12 @@
 /* @flow */
 
-import React from "react";
-import ReactDOM from "react-dom";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 import configureStore from "./store/configureStore";
 
 // Load css via webpack
-require("bootstrap.min.css");
-require("../dist/styles.css");
+// require("bootstrap.min.css");
+// require("../dist/styles.css");
 
 // Start debugging
 import * as MyDebug from "debug";

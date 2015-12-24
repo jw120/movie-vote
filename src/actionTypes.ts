@@ -9,6 +9,6 @@ export const HOST_START: string = "HOST_START";
 export const HOST_QUEUE_ADD: string = "HOST_QUEUE_ADD";
 export const HOST_QUEUE_DELETE: string = "HOST_QUEUE_DELETE";
 export const REMOTE_HOST_READY: string = "REMOTE_HOST_READY";
-export const REMOTE_VOTE_RECEVIED: string = "REMOTE_VOTE_RECEIVED";
+export const REMOTE_VOTE_RECEIVED: string = "REMOTE_VOTE_RECEIVED";
 export const REMOTE_NEXT: string = "REMOTE_NEXT";
 export const REMOTE_WINNER: string = "REMOTE_WINNER";

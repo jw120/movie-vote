@@ -1,6 +1,6 @@
 /* @flow */
 
-import React from "react";
+import * as React from "react";
 
 import SigninContainer  from "./SigninContainer";
 import VotingContainer  from "./VotingContainer";
@@ -8,7 +8,7 @@ import SetupContainer   from "./SetupContainer";
 import MonitorContainer from "./MonitorContainer";
 import WinnerContainer  from "./WinnerContainer";
 
-import type { TMovieAppProps } from "../reducers/rootReducer";
+import { TMovieAppProps } from "../reducers/rootReducer";
 import { MovieAppPropTypes } from "../reducers/rootReducer";
 
 export default function MovieApp(props: TMovieAppProps) {

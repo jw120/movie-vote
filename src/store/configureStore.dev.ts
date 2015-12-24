@@ -5,7 +5,7 @@ import { persistState } from "redux-devtools";
 import rootReducer from "../reducers/rootReducer";
 import DevTools from "../components/DevTools";
 
-import type TStore from "../components/Root.dev";
+import { TStore } from "../components/Root.dev";
 
 const finalCreateStore = compose(
   // Middleware you want to use in development:
@@ -28,11 +28,11 @@ export default function configureStore(initialState?: any): TStore {
 
   // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
   // Taken from redux-devtools example, not clear if it does anything...
-  if (module.hot) {
-    module.hot.accept("../reducers/rootReducer", () =>
-      store.replaceReducer(require("../reducers/rootReducer")/*.default if you use Babel 6+ */)
-    );
-  }
+  // if (module.hot) {
+  //   module.hot.accept("../reducers/rootReducer", () =>
+  //     store.replaceReducer(require("../reducers/rootReducer")/*.default if you use Babel 6+ */)
+  //   );
+  // }
 
   return store;
 }

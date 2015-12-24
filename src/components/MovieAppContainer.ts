@@ -2,7 +2,7 @@
 
 import { connect } from "react-redux";
 
-import type { TMovieAppProps } from "../reducers/rootReducer";
+import { TMovieAppProps } from "../reducers/rootReducer";
 
 import MovieApp from "./MovieApp";
 

@@ -4,13 +4,13 @@
 
 import { PropTypes } from "react";
 
-import type { TAction } from "../actionCreators";
+import { TAction } from "../actionCreators";
 
-import type { TSigninProps } from "./signin";
-import type { TVotingProps } from "./voting";
-import type { TSetupProps } from "./setup";
-import type { TMonitorProps } from "./monitor";
-import type { TWinnerProps } from "./winner";
+import { TSigninProps } from "./signin";
+import { TVotingProps } from "./voting";
+import { TSetupProps } from "./setup";
+import { TMonitorProps } from "./monitor";
+import { TWinnerProps } from "./winner";
 
 import { signinReducer, mkSignin } from "./signin";
 import { votingReducer } from "./voting";
@@ -18,12 +18,14 @@ import { setupReducer } from "./setup";
 import { monitorReducer } from "./monitor";
 import { winnerReducer } from "./winner";
 
-export type TMovieAppProps =
-  { mode: "SIGNIN", signin: TSigninProps } |
-  { mode: "SETUP", setup: TSetupProps } |
-  { mode: "VOTING", voting: TVotingProps } |
-  { mode: "MONITOR", monitor: TMonitorProps } |
-  { mode: "WINNER", winner: TWinnerProps };
+export type TMovieAppProps = {
+  mode: string,
+  signin?: TSigninProps,
+  setup?: TSetupProps,
+  voting?: TVotingProps,
+  monitor?: TMonitorProps,
+  winner?: TWinnerProps
+};
 
 export const MovieAppPropTypes = {
   mode: PropTypes.string.isRequired,

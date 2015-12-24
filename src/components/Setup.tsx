@@ -1,18 +1,18 @@
 /* @flow */
 
-import React from "react";
+import * as React from "react";
 
 import { Button, ButtonInput, Input, Table } from "react-bootstrap";
 
-import type { TSetupProps } from "../reducers/setup";
-import type { TActionCreator } from "../actionCreators";
+import { TSetupProps } from "../reducers/setup";
+import { TActionCreator } from "../actionCreators";
 import { SetupPropTypes } from "../reducers/setup";
 
 type TSetupState = {
   movie: string;
 };
 
-function renderRow(movie: string): React.Element {
+function renderRow(movie: string): JSX.Element {
   return (
     <tr key={ movie }>
       <td>{ movie }</td>
@@ -40,7 +40,7 @@ class Setup extends React.Component<TSetupProps & TActionCreator, TSetupState> {
   props: TSetupProps & TActionCreator;
 
   // $FlowSuppressExperimentalWarning
-  handleTextChange: ((e: React.Event) => void) = (e: React.Event) => {
+  handleTextChange: ((e: React.SyntheticEvent) => void) = (e: React.SyntheticEvent) => {
     this.setState({ movie: e.currentTarget.value });
   };
 
@@ -55,13 +55,13 @@ class Setup extends React.Component<TSetupProps & TActionCreator, TSetupState> {
   };
 
   // $FlowSuppressExperimentalWarning
-  handleSubmit: ((e: React.Event) => void) = (e: React.Event) => {
+  handleSubmit: ((e: React.SyntheticEvent) => void) = (e: React.SyntheticEvent) => {
     e.preventDefault();
     this.props.hostQueueAdd(this.state.movie.trim());
     this.setState({ movie: "" });
   };
 
-  renderTable(): React.Element {
+  renderTable(): JSX.Element {
     return (
       <Table className="setup-table">
         <thead>
@@ -74,7 +74,7 @@ class Setup extends React.Component<TSetupProps & TActionCreator, TSetupState> {
     );
   }
 
-  renderStartButton(): React.Element {
+  renderStartButton(): JSX.Element {
     return (
       <Button
         bsSize="large"
@@ -87,7 +87,7 @@ class Setup extends React.Component<TSetupProps & TActionCreator, TSetupState> {
     );
   }
 
-  renderAddButtonInput(): React.Element {
+  renderAddButtonInput(): JSX.Element {
     return (
       <ButtonInput
         type="submit"
@@ -101,7 +101,7 @@ class Setup extends React.Component<TSetupProps & TActionCreator, TSetupState> {
   }
 
 
-  render(): React.Element {
+  render(): JSX.Element {
     return (
       <div className="setup">
         <form

@@ -3,7 +3,7 @@
 import { createStore, /* applyMiddleware, */ compose } from "redux";
 import rootReducer from "../reducers/rootReducer";
 
-import type TStore from "../components/Root.dev";
+import { TStore } from "../components/Root.dev";
 
 const finalCreateStore = compose(
   // Middleware you want to use in production:

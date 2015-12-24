@@ -1,11 +1,11 @@
 /* @flow */
 
-import React from "react";
+import * as React from "react";
 import { Provider } from "react-redux";
 import MovieAppContainer from "./MovieAppContainer";
 import storeShape from "react-redux/lib/utils/storeShape";
 
-import type TStore from "./Root.dev";
+import TStore from "./Root.dev";
 
 export default function Root(props: { store: TStore }) {
   return (

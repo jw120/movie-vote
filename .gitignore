@@ -1,5 +1,10 @@
-# Ignore compied js files
+# Ignore compiled js files
 compiled/
+src/*.js
+src/components/*.js
+src/containers/*.js
+src/reducers/*.js
+src/store/*.js
 
 # Ignore webpack-created javascript file
 dist/bundle.js

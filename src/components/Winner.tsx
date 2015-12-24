@@ -1,14 +1,14 @@
 /* @flow */
 
-import React from "react";
+import * as React from "react";
 
 import { Button } from "react-bootstrap";
 
-import type { TWinnerProps } from "../reducers/winner";
-import type { TActionCreator } from "../actionCreators";
+import { TWinnerProps } from "../reducers/winner";
+import { TActionCreator } from "../actionCreators";
 import { WinnerPropTypes } from "../reducers/winner";
 
-export default function Winner(props: TWinnerProps & TActionCreator): React.Element {
+export default function Winner(props: TWinnerProps & TActionCreator): JSX.Element {
   let ready: boolean = !!(props.hostName && props.movieA && props.movieB);
   return (
     <div className="winner">

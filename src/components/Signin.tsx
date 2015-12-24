@@ -1,11 +1,11 @@
 /* @flow */
 
-import React from "react";
+import * as React from "react";
 
 import { Button, Input } from "react-bootstrap";
 
-import type { TSigninProps } from "../reducers/signin";
-import type { TActionCreator } from "../actionCreators";
+import { TSigninProps } from "../reducers/signin";
+import { TActionCreator } from "../actionCreators";
 import { SigninProptypes } from "../reducers/signin";
 
 type TSigninState = {
@@ -43,7 +43,7 @@ class Signin extends React.Component<TSigninProps & TActionCreator, TSigninState
     //  Do nothing
   };
 
-  renderInput(): React.Element {
+  renderInput(): JSX.Element {
     return (
       <Input
         className="signin-input"
@@ -55,7 +55,7 @@ class Signin extends React.Component<TSigninProps & TActionCreator, TSigninState
     );
   }
 
-  renderActiveJoinButton(): React.Element {
+  renderActiveJoinButton(): JSX.Element {
     return (
       <Button
         bsSize="large"
@@ -68,7 +68,7 @@ class Signin extends React.Component<TSigninProps & TActionCreator, TSigninState
     );
   }
 
-  renderInactiveJoinButton(): React.Element {
+  renderInactiveJoinButton(): JSX.Element {
     return (
       <Button
         bsSize="large"
@@ -80,7 +80,7 @@ class Signin extends React.Component<TSigninProps & TActionCreator, TSigninState
     );
   }
 
-  renderHostButton(): React.Element {
+  renderHostButton(): JSX.Element {
     return (
       <Button
         bsSize="large"
@@ -93,7 +93,7 @@ class Signin extends React.Component<TSigninProps & TActionCreator, TSigninState
     );
   }
 
-  render(): React.Element {
+  render(): JSX.Element {
     let ready: boolean = !!(this.props.hostName && this.props.movieA && this.props.movieB);
     return (
       <form
