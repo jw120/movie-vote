@@ -6,7 +6,6 @@ import configureStore from "./store/configureStore";
 
 import { Store } from "redux";
 import { Provider } from "react-redux";
-import App from "./containers/App";
 import SigninContainer from "./containers/SigninContainer";
 import DevTools from "./components/DevTools";
 
@@ -53,7 +52,6 @@ initSocketClient(store);
 ReactDOM.render(
   <Provider store={ store }>
     <div>
-      <App />
       <SigninContainer />
       <DevTools />
     </div>

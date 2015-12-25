@@ -2,6 +2,8 @@ TODO
 
 * TSC conversion
 
+  + Name consistency I for intergaces?
+  + Subtypes for states? (same as isJoinAction etc?)
   + Make reducer/signin work somehow
   + DONE Remove stateless components
   + DONE Finish actionCreators, remove actionTypes, use these action types everywhere

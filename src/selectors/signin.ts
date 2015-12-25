@@ -8,7 +8,7 @@ export interface SigninPropData {
    movieB:   string
 }
 
-export function signinSelector(s: StoreState): { signin: SigninPropData } {
+export function signinSelector(s: RootData): { signin: SigninPropData } {
   return {
     signin: {
       hostName: s.hostName,
