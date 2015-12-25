@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from "react";
 
 import { Button, Input } from "react-bootstrap";
@@ -10,7 +8,7 @@ interface SigninProps extends SigninPropData {
   onStartSetup: (name: string) => void;
 }
 
-type SigninState = {
+interface SigninState {
   name: string;
 };
 

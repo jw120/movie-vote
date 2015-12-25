@@ -4,13 +4,13 @@ import * as React from "react";
 
 import { Button } from "react-bootstrap";
 
-import { TWinnerProps } from "../reducers/winner";
-import { TActionCreator } from "../actionCreators";
-import { WinnerPropTypes } from "../reducers/winner";
-type NoState = {};
+import { WinnerPropData } from "../selectors/winner";
+interface WinnerProps extends WinnerPropData {
+  onJoin: (name: string) => void;
+  onStartSetup: (name: string) => void;
+}
 
-//export default function Winner(props: TWinnerProps & TActionCreator): JSX.Element {
-export default class Winner extends React.Component<TWinnerProps & TActionCreator, NoState> {
+export default class Winner extends React.Component<WinnerProps, {}> {
   render() {
     let ready: boolean = !!(this.props.hostName && this.props.movieA && this.props.movieB);
     return (
@@ -23,7 +23,7 @@ export default class Winner extends React.Component<TWinnerProps & TActionCreato
             bsSize="large"
             bsStyle="primary"
             block={ true }
-            onClick={ this.props.join }
+            onClick={ this.props.onJoin }
           >
           Join { this.props.hostName }'s vote
           </Button> :
@@ -39,7 +39,7 @@ export default class Winner extends React.Component<TWinnerProps & TActionCreato
           bsSize="large"
           bsStyle="primary"
           block={ true }
-          onClick={ this.props.startSetup }
+          onClick={ this.props.onStartSetup }
         >
         Host a new vote
         </Button>
@@ -47,5 +47,3 @@ export default class Winner extends React.Component<TWinnerProps & TActionCreato
     );
   }
 }
-
-// Winner.propTypes = WinnerPropTypes;

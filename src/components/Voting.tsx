@@ -1,16 +1,13 @@
-/* @flow */
-
 import * as React from "react";
 
 import { Button } from "react-bootstrap";
 
-import { TVotingProps } from "../reducers/voting";
-import { TActionCreator } from "../actionCreators";
-import { VotingPropTypes } from "../reducers/voting";
-type NoState = {};
+import { VotingPropData } from "../selectors/voting";
+interface VotingProps extends VotingPropData {
+  onVote: (name: string) => void;
+}
 
-// export default function Voting(props: TVotingProps & TActionCreator): JSX.Element {
-export default class Voting extends React.Component<TVotingProps, NoState> {
+export default class Voting extends React.Component<VotingProps, {}> {
   render() {
     let voted: boolean = this.props.voted === this.props.movieA || this.props.voted === this.props.movieB;
     return (
@@ -23,7 +20,7 @@ export default class Voting extends React.Component<TVotingProps, NoState> {
           bsStyle={ this.props.voted !== this.props.movieB ? "primary" : "default" }
           disabled={ voted }
           block={ true }
-          onClick={ function() { return this.props.vote(this.props.movieA); } }
+          onClick={ function() { return this.props.onVote(this.props.movieA); } }
         >
         { this.props.movieA }
         </Button>
@@ -40,5 +37,3 @@ export default class Voting extends React.Component<TVotingProps, NoState> {
     );
   }
 }
-
-// Voting.propTypes = VotingPropTypes;

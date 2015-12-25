@@ -1,14 +1,15 @@
-/* @flow */
-
 import * as React from "react";
 
 import { Button, ButtonInput, Input, Table } from "react-bootstrap";
 
-import { TSetupProps } from "../reducers/setup";
-import { TActionCreator } from "../actionCreators";
-import { SetupPropTypes } from "../reducers/setup";
+import { SetupPropData } from "../selectors/setup"
+interface SetupProps extends SetupPropData {
+   onDelete: (movie: string) => void;
+   onAdd: (movie: string) => void;
+   onStart: () => void;
+}
 
-type TSetupState = {
+interface SetupState {
   movie: string;
 };
 
@@ -20,7 +21,7 @@ function renderRow(movie: string): JSX.Element {
         <Button
           bsSize="xsmall"
           bsStyle="link"
-          onClick={ this.handleDeleteClick(movie) }
+          onClick={ this.props.onDelete(movie) }
         >
           Delete
         </Button>
@@ -29,36 +30,18 @@ function renderRow(movie: string): JSX.Element {
   );
 }
 
-class Setup extends React.Component<TSetupProps & TActionCreator, TSetupState> {
+class Setup extends React.Component<SetupProps, SetupState> {
 
-  // $FlowSuppressExperimentalWarning
-  static propTypes = SetupPropTypes;
+  state: SetupState = { movie: "" };
 
-  // $FlowSuppressExperimentalWarning
-  state: TSetupState = { movie: "" };
-
-  props: TSetupProps & TActionCreator;
-
-  // $FlowSuppressExperimentalWarning
   handleTextChange: ((e: React.SyntheticEvent) => void) = (e: React.SyntheticEvent) => {
     const target = e.currentTarget as HTMLButtonElement;
     this.setState({ movie: target.value });
   };
 
-  // $FlowSuppressExperimentalWarning
-  handleStartClick: (() => void) = () => {
-    this.props.hostStart();
-  };
-
-  // $FlowSuppressExperimentalWarning
-  handleDeleteClick = (movie: string) => () => {
-    this.props.hostQueueDelete(movie);
-  };
-
-  // $FlowSuppressExperimentalWarning
   handleSubmit: ((e: React.SyntheticEvent) => void) = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    this.props.hostQueueAdd(this.state.movie.trim());
+    this.props.onAdd(this.state.movie.trim());
     this.setState({ movie: "" });
   };
 
@@ -81,7 +64,7 @@ class Setup extends React.Component<TSetupProps & TActionCreator, TSetupState> {
         bsSize="large"
         bsStyle="primary"
         block={ true }
-        onClick={ this.handleStartClick }
+        onClick={ this.props.onStart }
       >
         Start vote
       </Button>

@@ -1,5 +1,3 @@
-
-import { createSelector } from "reselect";
 import { RootData } from "../rootData";
 
 export interface SigninPropData {
