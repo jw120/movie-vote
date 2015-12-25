@@ -2,9 +2,10 @@ TODO
 
 * TSC conversion
 
-  + Remove stateless components
+  + Make reducer/signin work somehow
+  + DONE Remove stateless components
   + DONE Finish actionCreators, remove actionTypes, use these action types everywhere
-  + Apply same to state and props
+  + Work out state and props - use single simple state? use reselect? Apply same to state and props
   + Improve .d.ts files in myTypings
   + Restore conditional imports for Root and configureStore (and fix hot modules reloading in configure store)
   + Add CSS back
@@ -40,6 +41,7 @@ TODO
 # Sometime
 
 * Fix typing for Winner()
+* After TS 1.8 (and upgrades for react-redux .d.ts), use sfc's again
 * Consider splitting containers and components (two different directories, fewer containers)
 * more conventional reducer state and reducers layout? immutable?
 * Production build - use uglify?
@@ -150,10 +152,10 @@ Screen with 4 windows all in the same vote, one hosting, 3 others voting. Single
 Possible refactor
 
 containers
-* Signin (if )
+* Startup (if )
   + Uses Signin component
   + Data - hostname, name, movieA, movieB
-* Client (if hostname exists and name!=hostname and a/b exist or winner exists)
+* Participant (if hostname exists and name!=hostname and a/b exist or winner exists)
   + Uses Winner (if winner is set) or Voting components
    + Uses hostname, name, movieA, movieB, winner
 * Host (if queue defined)

@@ -41,7 +41,8 @@ class Setup extends React.Component<TSetupProps & TActionCreator, TSetupState> {
 
   // $FlowSuppressExperimentalWarning
   handleTextChange: ((e: React.SyntheticEvent) => void) = (e: React.SyntheticEvent) => {
-    this.setState({ movie: e.currentTarget.value });
+    const target = e.currentTarget as HTMLButtonElement;
+    this.setState({ movie: target.value });
   };
 
   // $FlowSuppressExperimentalWarning

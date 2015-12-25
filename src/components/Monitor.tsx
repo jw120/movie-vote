@@ -4,9 +4,15 @@ import * as React from "react";
 
 import { Button, Table } from "react-bootstrap";
 
-import { TMonitorProps } from "../reducers/monitor";
-import { TActionCreator } from "../actionCreators";
-import { MonitorPropTypes } from "../reducers/monitor";
+export type MonitorProps = {
+   name: string,
+   movieA: string,
+   movieB: string,
+   queue: string[],
+   scoreA: number,
+   scoreB: number,
+   onNextClick: () => void;
+}
 
 function row(movie: string) {
   return (
@@ -16,11 +22,13 @@ function row(movie: string) {
   );
 }
 
-export default function Monitor(props: TMonitorProps & TActionCreator): JSX.Element {
+export default class Monitor extends React.Component<MonitorProps, {}> {
+// export default function Monitor(props: TMonitorProps & TActionCreator): JSX.Element {
+  render() {
   return (
     <div className="monitor">
 
-      <h2 className="monitor-title">{ props.name }'s Movie Vote</h2>
+      <h2 className="monitor-title">{ this.props.name }'s Movie Vote</h2>
 
       <Table className="monitor-current">
         <thead>
@@ -28,12 +36,12 @@ export default function Monitor(props: TMonitorProps & TActionCreator): JSX.Elem
         </thead>
         <tbody>
           <tr>
-            <td>{ props.movieA }</td>
-            <td>{ props.scoreA }</td>
+            <td>{ this.props.movieA }</td>
+            <td>{ this.props.scoreA }</td>
           </tr>
           <tr>
-            <td>{ props.movieB }</td>
-            <td>{ props.scoreB }</td>
+            <td>{ this.props.movieB }</td>
+            <td>{ this.props.scoreB }</td>
           </tr>
         </tbody>
       </Table>
@@ -46,19 +54,20 @@ export default function Monitor(props: TMonitorProps & TActionCreator): JSX.Elem
           <tr><th>Voting queue</th></tr>
         </thead>
         <tbody>
-          { props.queue.map(row) }
+          { this.props.queue.map(row) }
         </tbody>
       </Table>
 
       <Button
         bsSize="large"
         bsStyle="primary"
-        onClick={ function() { return props.next(); } }
+        onClick={ function() { return this.props.onNextClick(); } }
       >
         Next vote
       </Button>
     </div>
   );
+}
 }
 
 // Monitor.propTypes = MonitorPropTypes;

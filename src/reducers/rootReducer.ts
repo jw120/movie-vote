@@ -9,7 +9,7 @@ import { IAction } from "../actionCreators";
 import { TSigninProps } from "./signin";
 import { TVotingProps } from "./voting";
 import { TSetupProps } from "./setup";
-import { TMonitorProps } from "./monitor";
+import { MonitorProps } from "../components/Monitor";
 import { TWinnerProps } from "./winner";
 
 import { signinReducer, mkSignin } from "./signin";
@@ -23,7 +23,7 @@ export type TMovieAppProps = {
   signin?: TSigninProps,
   setup?: TSetupProps,
   voting?: TVotingProps,
-  monitor?: TMonitorProps,
+  monitor?: MonitorProps,
   winner?: TWinnerProps
 };
 

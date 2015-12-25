@@ -13,18 +13,6 @@ import { TMovieAppProps } from "./rootReducer";
 import { mkVoting } from "./voting";
 import { mkSetup } from "./setup";
 
-export type TSigninProps = {
-   hostName: string,
-   movieA:   string,
-   movieB:   string
-}
-
-export const SigninProptypes = {
-  hostName: PropTypes.string,
-  movieA:   PropTypes.string,
-  movieB:  PropTypes.string
-};
-
 function promoteSignin(s: TSigninProps): TMovieAppProps {
   return {
     mode: "SIGNIN",

@@ -4,6 +4,12 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import configureStore from "./store/configureStore";
 
+import { Store } from "redux";
+import { Provider } from "react-redux";
+import App from "./containers/App";
+import SigninContainer from "./containers/SigninContainer";
+import DevTools from "./components/DevTools";
+
 // Load css via webpack
 // require("bootstrap.min.css");
 // require("../dist/styles.css");
@@ -19,7 +25,7 @@ const store = configureStore();
 import { initSocketClient } from "./socket";
 initSocketClient(store);
 
-import Root from "./components/Root";
+// import Root from "./components/Root";
 // import { mkSignin } from "./reducers/signin";
 //import { /* remoteHostReady, /* , join, */ startSetup /*, hostQueueAdd, hostStart, remoteWinner */ } from "./actionCreators";
 // import type TMovieAppProps from "./reducers/rootReducer";
@@ -44,9 +50,13 @@ import Root from "./components/Root";
 // store.dispatch(hostQueueAdd("Posiedon"));
 // store.dispatch(hostStart());
 
-//
-
 ReactDOM.render(
-  <Root store={ store }/>,
+  <Provider store={ store }>
+    <div>
+      <App />
+      <SigninContainer />
+      <DevTools />
+    </div>
+  </Provider>,
   document.getElementById("root")
 );

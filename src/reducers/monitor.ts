@@ -13,25 +13,9 @@ import { TMovieAppProps } from "./rootReducer";
 import { mkWinner } from "./winner";
 import { broadcastRemoteWinner, broadcastRemoteNext } from "../socket";
 
-export type TMonitorProps = {
-   name: string,
-   movieA: string,
-   movieB: string,
-   queue: string[],
-   scoreA: number,
-   scoreB: number,
-}
+import { MonitorProps } from "../components/Monitor";
 
-export const MonitorPropTypes = {
-  name:   PropTypes.string.isRequired,
-  movieA: PropTypes.string.isRequired,
-  movieB: PropTypes.string.isRequired,
-  queue:  PropTypes.arrayOf(PropTypes.string).isRequired,
-  scoreA: PropTypes.number.isRequired,
-  scoreB: PropTypes.number.isRequired
-};
-
-function promoteMonitor(m: TMonitorProps): TMovieAppProps {
+function promoteMonitor(m: MonitorProps): TMovieAppProps {
   return {
     mode: "MONITOR",
     monitor: m
@@ -42,7 +26,7 @@ export function mkMonitor(name: string, movieA: string, movieB: string, queue: s
   return promoteMonitor( { name, movieA, movieB, queue, scoreA, scoreB } );
 }
 
-export function unwrapMonitor(s: TMovieAppProps): TMonitorProps {
+export function unwrapMonitor(s: TMovieAppProps): MonitorProps {
   if (s.mode === "MONITOR") {
     return s.monitor;
   } else {
@@ -50,7 +34,7 @@ export function unwrapMonitor(s: TMovieAppProps): TMonitorProps {
   }
 }
 
-export function monitorReducer(m: TMonitorProps, action: IAction): TMovieAppProps {
+export function monitorReducer(m: MonitorProps, action: IAction): TMovieAppProps {
 
 if (isNextAction(action)) {
   let newQueue: string[] = [];

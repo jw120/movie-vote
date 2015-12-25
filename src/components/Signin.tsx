@@ -4,37 +4,23 @@ import * as React from "react";
 
 import { Button, Input } from "react-bootstrap";
 
-import { TSigninProps } from "../reducers/signin";
-import { TActionCreator } from "../actionCreators";
-import { SigninProptypes } from "../reducers/signin";
+import { SigninPropData } from "../selectors/signin";
+interface SigninProps extends SigninPropData {
+  onJoin: (name: string) => void;
+  onStartSetup: (name: string) => void;
+}
 
-type TSigninState = {
+type SigninState = {
   name: string;
 };
 
-class Signin extends React.Component<TSigninProps & TActionCreator, TSigninState> {
+class Signin extends React.Component<SigninProps, SigninState> {
 
-  // $FlowSuppressExperimentalWarning
-  static propTypes = SigninProptypes;
+  state: SigninState = { name: "" };
 
-  // $FlowSuppressExperimentalWarning
-  state: TSigninState = { name: "" };
-
-  props: TSigninProps & TActionCreator;
-
-  // $FlowSuppressExperimentalWarning
   handleTextChange: ((e: React.SyntheticEvent) => void) = (e: React.SyntheticEvent) => {
-    this.setState({ name: e.currentTarget.value });
-  };
-
-  // $FlowSuppressExperimentalWarning
-  handleJoinClick: (() => void) = () => {
-    this.props.join(this.state.name.trim());
-  };
-
-  // $FlowSuppressExperimentalWarning
-  handleSetupClick: (() => void) = () => {
-    this.props.startSetup(this.state.name.trim());
+    const target = e.currentTarget as HTMLButtonElement;
+    this.setState({ name: target.value });
   };
 
   // $FlowSuppressExperimentalWarning
@@ -61,7 +47,7 @@ class Signin extends React.Component<TSigninProps & TActionCreator, TSigninState
         bsSize="large"
         bsStyle="primary"
         block={ true }
-        onClick={ this.handleJoinClick }
+        onClick={ () => this.props.onJoin(this.state.name.trim()) }
       >
         Join { this.props.hostName }'s vote
       </Button>
@@ -86,7 +72,7 @@ class Signin extends React.Component<TSigninProps & TActionCreator, TSigninState
         bsSize="large"
         bsStyle="primary"
         block={ true }
-        onClick={ this.handleSetupClick }
+        onClick={ () => this.props.onStartSetup(this.state.name.trim()) }
       >
       Host a new vote
       </Button>
