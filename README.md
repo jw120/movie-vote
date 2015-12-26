@@ -2,16 +2,19 @@ TODO
 
 * TSC conversion
 
-  + Name consistency I for intergaces?
+  + tests
+      - make reducer tests pass
+      - avoid atom errors in reducers/*.ts from describe/it (like monitor? or in .d.ts?)
+      - add pretest, test to package.json
+  + overall compilation
   + Subtypes for states? (same as isJoinAction etc?)
   + Make reducer/signin work somehow
-  + DONE Remove stateless components
-  + DONE Finish actionCreators, remove actionTypes, use these action types everywhere
-  + Work out state and props - use single simple state? use reselect? Apply same to state and props
   + Improve .d.ts files in myTypings
   + Restore conditional imports for Root and configureStore (and fix hot modules reloading in configure store)
   + Add CSS back
   + Dynamic state checking for isChecks?
+  + Name consistency I for intergaces?
+
 
 * Check works with prod mode
 * Merge in server to repository - use as file server?
