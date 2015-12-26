@@ -1,6 +1,7 @@
 import { expect } from "chai";
 
 import { setup, monitor } from "../../src/stateCreators";
+import { REMOTE_HOST_READY } from "../../src/actionTypes";
 import { hostStart, hostQueueAdd, hostQueueDelete } from "../../src/actionCreators";
 import rootReducer from "../../src/reducers/rootReducer";
 
@@ -32,6 +33,13 @@ describe("setup reducer", () => {
     const s = setup("bob", []);
     const a = hostStart();
     expect(rootReducer(s, a)).to.deep.equal(s);
+  });
+  it("HOST_START requests broadcast of REMOTE_HOST_READY", () => {
+    const s = setup("bob", ["a", "b"]);
+    const a = hostStart();
+    mock.reset();
+    rootReducer(s, a);
+    expect(mock.emitted[0]).to.deep.equal(["broadcast-request", REMOTE_HOST_READY, "bob", "a", "b"]);
   });
 
   it("HOST_QUEUE_ADD adds a valid movie", () => {

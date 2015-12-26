@@ -1,7 +1,7 @@
 // mock versions of socket.io-client
 
-import { IAction } from "../../src/actionCreators";
-import { initSocketClient } from "../../src/socket";
+import { IAction } from "../src/actionCreators";
+import { initSocketClient } from "../src/socket";
 
 interface IMock {
   io: {

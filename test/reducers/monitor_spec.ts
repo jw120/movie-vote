@@ -1,9 +1,7 @@
 import { expect } from "chai";
-// import * as Mocha from "mocha";
-// declare var describe: Mocha.IContextDefinition;
-// declare var it: Mocha.ITestDefinition;
 
 import { next, remoteVoteReceived } from "../../src/actionCreators";
+import { REMOTE_NEXT, REMOTE_WINNER } from "../../src/actionTypes";
 import { winner, monitor } from "../../src/stateCreators";
 import rootReducer from "../../src/reducers/rootReducer";
 
@@ -72,6 +70,20 @@ describe("monitor reducer", () => {
     const a = next();
     const x = monitor("sid", "m1", "m2", [], 0, 0);
     expect(rootReducer(s, a)).to.deep.equal(x);
+  });
+  it("NEXT requests broadcast of REMOTE_NEXT", () => {
+    const s = monitor("sid", "m1", "m2", ["m3"], 3, 3);
+    const a = next();
+    mock.reset();
+    rootReducer(s, a);
+    expect(mock.emitted[0]).to.deep.equal(["broadcast-request", REMOTE_NEXT, "m3", "m1"]);
+  });
+  it("NEXT requests broadcast of REMOTE_WINNER", () => {
+    const s = monitor("sid", "m1", "m2", [], 3, 4);
+    const a = next();
+    mock.reset();
+    rootReducer(s, a);
+    expect(mock.emitted[0]).to.deep.equal(["broadcast-request", REMOTE_WINNER, "m2"]);
   });
 
   it("REMOTE_VOTE_RECEVIED with valid A vote", () => {

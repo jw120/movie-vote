@@ -43,7 +43,7 @@ export function broadcastRemoteWinner(movie: string) {
 }
 
 export function broadcastRemoteHostReady(hostName: string, movieA: string, movieB: string) {
-    d("Broadcasting REMOTE_HOST_READY", REMOTE_HOST_READY, hostName, movieA, movieB);
+  d("Broadcasting REMOTE_HOST_READY", REMOTE_HOST_READY, hostName, movieA, movieB);
   myIO.emit("broadcast-request", REMOTE_HOST_READY, hostName, movieA, movieB);
 }
 

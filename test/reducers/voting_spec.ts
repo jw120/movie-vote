@@ -25,7 +25,7 @@ describe("voting reducer", () => {
     expect(rootReducer(s, a)).to.deep.equal(x);
   });
 
-  it("VOTE emits a broadcast request for REMOTE_VOTE_RECEIVED", () => {
+  it("VOTE requests broadcast of REMOTE_VOTE_RECEIVED", () => {
     const s = voting("alice", "host", "m1", "m2", null);
     const a = vote("m1");
     mock.reset();

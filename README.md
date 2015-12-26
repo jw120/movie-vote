@@ -2,10 +2,6 @@ TODO
 
 * TSC conversion
 
-  + tests
-      - More mock tests
-      - avoid atom errors in reducers/*.ts from describe/it (like monitor? or in .d.ts?)
-      - add pretest, test to package.json
   + overall compilation
   + Subtypes for states? (same as isJoinAction etc?)
   + Make reducer/signin work somehow
