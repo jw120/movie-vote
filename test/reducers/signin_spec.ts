@@ -4,6 +4,10 @@ import { join, startSetup, remoteHostReady } from "../../src/actionCreators";
 import { signin, voting, setup } from "../../src/stateCreators";
 import rootReducer from "../../src/reducers/rootReducer";
 
+import mock from "../mocks";
+import { initSocketClient } from "../../src/socket";
+initSocketClient(mock.store, mock.io);
+
 describe("signin reducer", () => {
 
   it("JOIN triggers a move to voting mode with valid names", () => {

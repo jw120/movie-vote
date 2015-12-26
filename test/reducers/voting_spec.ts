@@ -1,8 +1,13 @@
 import { expect } from "chai";
 
 import { vote, remoteNext, remoteWinner } from "../../src/actionCreators";
+import { REMOTE_VOTE_RECEIVED } from "../../src/actionTypes";
 import { voting, winner } from "../../src/stateCreators";
 import rootReducer from "../../src/reducers/rootReducer";
+
+import mock from "../mocks";
+import { initSocketClient } from "../../src/socket";
+initSocketClient(mock.store, mock.io);
 
 describe("voting reducer", () => {
 
@@ -18,6 +23,14 @@ describe("voting reducer", () => {
     const a = vote("m2");
     const x = voting("alice", "host", "m1", "m2", "m2");
     expect(rootReducer(s, a)).to.deep.equal(x);
+  });
+
+  it("VOTE emits a broadcast request for REMOTE_VOTE_RECEIVED", () => {
+    const s = voting("alice", "host", "m1", "m2", null);
+    const a = vote("m1");
+    mock.reset();
+    rootReducer(s, a);
+    expect(mock.emitted[0]).to.deep.equal(["broadcast-request", REMOTE_VOTE_RECEIVED, "m1"]);
   });
 
   it("VOTE ignores an invalid movie", () => {

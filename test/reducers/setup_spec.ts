@@ -4,12 +4,9 @@ import { setup, monitor } from "../../src/stateCreators";
 import { hostStart, hostQueueAdd, hostQueueDelete } from "../../src/actionCreators";
 import rootReducer from "../../src/reducers/rootReducer";
 
-let ioOut: any[] = [];
-let io = {
-  emit: (...args: any[]) => {
-    ioOut = args;
-  }
-}
+import mock from "../mocks";
+import { initSocketClient } from "../../src/socket";
+initSocketClient(mock.store, mock.io);
 
 describe("setup reducer", () => {
 

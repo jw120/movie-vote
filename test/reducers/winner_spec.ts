@@ -4,6 +4,10 @@ import { join, remoteHostReady, startSetup } from "../../src/actionCreators";
 import { winner, voting, setup } from "../../src/stateCreators";
 import rootReducer from "../../src/reducers/rootReducer";
 
+import mock from "../mocks";
+import { initSocketClient } from "../../src/socket";
+initSocketClient(mock.store, mock.io);
+
 describe("winner reducer", () => {
 
   it("JOIN triggers a move to voting mode with valid host and movie names", () => {

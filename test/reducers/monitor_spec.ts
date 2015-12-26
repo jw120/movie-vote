@@ -7,6 +7,10 @@ import { next, remoteVoteReceived } from "../../src/actionCreators";
 import { winner, monitor } from "../../src/stateCreators";
 import rootReducer from "../../src/reducers/rootReducer";
 
+import mock from "../mocks";
+import { initSocketClient } from "../../src/socket";
+initSocketClient(mock.store, mock.io);
+
 describe("monitor reducer", () => {
 
   it("NEXT with 3 in queue  updates", () => {
