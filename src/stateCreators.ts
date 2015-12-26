@@ -10,7 +10,7 @@ export function signin(hostName?: string, movieA?: string, movieB?: string): Roo
 
 export function voting(name: string, hostName: string, movieA: string, movieB: string, voted: string): RootData {
   return {
-    mode: SETUP,
+    mode: VOTING,
     name, hostName, movieA, movieB, voted
   };
 }
@@ -18,7 +18,7 @@ export function voting(name: string, hostName: string, movieA: string, movieB: s
 export function setup(name: string, queue: string[]): RootData {
   return {
     mode: SETUP,
-    queue
+    name, queue
   };
 }
 

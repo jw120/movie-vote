@@ -22,7 +22,8 @@ const store = configureStore();
 
 // Setup socket client
 import { initSocketClient } from "./socket";
-initSocketClient(store);
+import * as sic from "socket.io-client";
+initSocketClient(store, sic("http://127.0.0.1:8003"));
 
 // import Root from "./components/Root";
 // import { mkSignin } from "./reducers/signin";

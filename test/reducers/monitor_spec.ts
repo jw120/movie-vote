@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import * as Mocha from "mocha";
-declare var describe: Mocha.IContextDefinition;
-declare var it: Mocha.ITestDefinition;
+// import * as Mocha from "mocha";
+// declare var describe: Mocha.IContextDefinition;
+// declare var it: Mocha.ITestDefinition;
 
 import { next, remoteVoteReceived } from "../../src/actionCreators";
 import { winner, monitor } from "../../src/stateCreators";

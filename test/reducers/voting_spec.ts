@@ -60,8 +60,8 @@ describe("voting reducer", () => {
 
   it("REMOTE_WINNER changes mode", () => {
     const s = voting("alice", "host", "m1", "m2", null);
-    const a = remoteWinner("m3");
-    const x = winner("alice", null, "m3", null, null);
+    const a = remoteWinner("m1");
+    const x = winner("alice", null, "m1", null, null);
     expect(rootReducer(s, a)).to.deep.equal(x);
   });
 

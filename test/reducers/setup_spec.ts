@@ -4,6 +4,13 @@ import { setup, monitor } from "../../src/stateCreators";
 import { hostStart, hostQueueAdd, hostQueueDelete } from "../../src/actionCreators";
 import rootReducer from "../../src/reducers/rootReducer";
 
+let ioOut: any[] = [];
+let io = {
+  emit: (...args: any[]) => {
+    ioOut = args;
+  }
+}
+
 describe("setup reducer", () => {
 
 // HOST_START -> monitor (and broadcasts)

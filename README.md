@@ -3,7 +3,8 @@ TODO
 * TSC conversion
 
   + tests
-      - make reducer tests pass
+      - Make mocking a module
+      - Mocking tests for listening and broadcasting
       - avoid atom errors in reducers/*.ts from describe/it (like monitor? or in .d.ts?)
       - add pretest, test to package.json
   + overall compilation
