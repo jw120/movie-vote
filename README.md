@@ -2,7 +2,7 @@ TODO
 
 * TSC conversion
 
-  + overall compilation
+  + Get to build as webpack-dev
   + Subtypes for states? (same as isJoinAction etc?)
   + Make reducer/signin work somehow
   + Improve .d.ts files in myTypings

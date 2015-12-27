@@ -1,12 +1,12 @@
 /* eslint-env mocha */
 /* @flow */
 
-import React from "react";
+import * as React from "react";
 import { Button, ButtonInput, Input, Table } from "react-bootstrap";
-import chai, { expect } from "chai";
+import { use, expect } from "chai";
 import jsxChai from "jsx-chai";
 import { createRenderer } from "react-addons-test-utils";
-chai.use(jsxChai);
+use(jsxChai);
 
 import Setup from "../../src/components/Setup";
 
@@ -19,8 +19,10 @@ describe("Setup component", () => {
   const shallowRenderer = createRenderer();
   shallowRenderer.render(
     <Setup
-      name="Bob"
       queue={ [ "Ascension", "Doom"] }
+      onAdd={ (s: string) => { } }
+      onDelete={ () => { } }
+      onStart={ () => { } }
     />
   );
   const actualElement = shallowRenderer.getRenderOutput();
@@ -43,7 +45,6 @@ describe("Setup component", () => {
           type="submit"
           bsSize="large"
           bsStyle="primary"
-          block={ false }
         >
           Add movie
         </ButtonInput>

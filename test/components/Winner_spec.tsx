@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 /* @flow */
 
-import React from "react";
+import * as React from "react";
 import { expect } from "chai";
 import { createRenderer } from "react-addons-test-utils";
 
@@ -13,8 +13,9 @@ describe("Winner component without host", () => {
 
   shallowRenderer.render(
     <Winner
-      name="bob"
       winner="Platoon"
+      onJoin={ (s: string) => { } }
+      onStartSetup={ (s: string) => { } }
     />
   );
   const v = shallowRenderer.getRenderOutput();
@@ -58,11 +59,12 @@ describe("Winner component with host", () => {
 
   shallowRenderer.render(
     <Winner
-      name="bob"
       hostName="henry"
       winner="Platoon"
       movieA="Frozen"
       movieB="Angry men"
+      onJoin={ (s: string) => { } }
+      onStartSetup={ (s: string) => { } }
     />
   );
   const v = shallowRenderer.getRenderOutput();

@@ -21,7 +21,7 @@ function renderRow(movie: string): JSX.Element {
         <Button
           bsSize="xsmall"
           bsStyle="link"
-          onClick={ this.props.onDelete(movie) }
+          onClick={ () => this.props.onDelete(movie) }
         >
           Delete
         </Button>

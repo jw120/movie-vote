@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 /* @flow */
 
-import React from "react";
+import * as React from "react";
 import { expect } from "chai";
 import { createRenderer } from "react-addons-test-utils";
 
@@ -19,6 +19,7 @@ describe("Monitor component", () => {
       scoreA={ 3 }
       scoreB={ 2 }
       queue={ [ "Ascension", "Doom"] }
+      onNext={ () => { } }
     />
   );
   const v = shallowRenderer.getRenderOutput();

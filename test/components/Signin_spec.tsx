@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 /* @flow */
 
-import React from "react";
+import * as React from "react";
 import { expect } from "chai";
 import { createRenderer } from "react-addons-test-utils";
 
@@ -12,7 +12,10 @@ const shallowRenderer = createRenderer();
 describe("Signin component without host", () => {
 
   shallowRenderer.render(
-    <Signin />
+    <Signin
+      onJoin={ (s: string) => { } }
+      onStartSetup={ (s: string) => { } }
+    />
   );
   const v = shallowRenderer.getRenderOutput();
 
@@ -67,6 +70,8 @@ describe("Signin component with host", () => {
       hostName="henry"
       movieA="Frozen"
       movieB="12 angry men"
+      onJoin={ (s: string) => { } }
+      onStartSetup={ (s: string) => { } }
     />
   );
   const v = shallowRenderer.getRenderOutput();

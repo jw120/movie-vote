@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 /* @flow */
 
-import React from "react";
+import * as React from "react";
 import { expect } from "chai";
 import { createRenderer } from "react-addons-test-utils";
 
@@ -17,6 +17,7 @@ describe("Voting component (no vote)", () => {
       hostName="Henry"
       movieA="Frozen"
       movieB="Doom"
+      onVote={ (s: string) => { } }
     />
   );
   const v = shallowRenderer.getRenderOutput();
@@ -65,6 +66,7 @@ describe("Voting component (vote for A)", () => {
       movieA="Frozen"
       movieB="Doom"
       voted="Frozen"
+      onVote={ (s: string) => { } }
     />
   );
   const v = shallowRenderer.getRenderOutput();
@@ -113,6 +115,7 @@ describe("Voting component (voted for B)", () => {
       movieA="Frozen"
       movieB="Doom"
       voted="Doom"
+      onVote={ (s: string) => { } }
     />
   );
   const v = shallowRenderer.getRenderOutput();
