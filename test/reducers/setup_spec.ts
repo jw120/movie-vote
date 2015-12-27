@@ -2,7 +2,7 @@ import { expect } from "chai";
 
 import { setup, monitor } from "../../src/stateCreators";
 import { REMOTE_HOST_READY } from "../../src/actionTypes";
-import { hostStart, hostQueueAdd, hostQueueDelete } from "../../src/actionCreators";
+import { hostStart, hostQueueAdd, hostQueueDelete, remoteWinner } from "../../src/actionCreators";
 import rootReducer from "../../src/reducers/rootReducer";
 
 import mock from "../mocks";
@@ -93,6 +93,12 @@ describe("setup reducer", () => {
   it("HOST_QUEUE_DELETE ignores an empty movie", () => {
     const s = setup("bob", ["a", "b", "c"]);
     const a = hostQueueDelete("");
+    expect(rootReducer(s, a)).to.deep.equal(s);
+  });
+
+  it("REMOTE_WINNER passed through", () => {
+    const s = setup("bob", ["a", "b", "c"]);
+    const a = remoteWinner("m");
     expect(rootReducer(s, a)).to.deep.equal(s);
   });
 

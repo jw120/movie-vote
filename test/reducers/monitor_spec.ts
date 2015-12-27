@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { next, remoteVoteReceived } from "../../src/actionCreators";
+import { next, remoteVoteReceived, hostQueueAdd } from "../../src/actionCreators";
 import { REMOTE_NEXT, REMOTE_WINNER } from "../../src/actionTypes";
 import { winner, monitor } from "../../src/stateCreators";
 import rootReducer from "../../src/reducers/rootReducer";
@@ -11,7 +11,13 @@ initSocketClient(mock.store, mock.io);
 
 describe("monitor reducer", () => {
 
-  it("NEXT with 3 in queue  updates", () => {
+  it("NEXT with 4 in queue updates", () => {
+    const s = monitor("sid", "m1", "m2", ["m3", "m4", "m5", "m6"], 5, 2);
+    const a = next();
+    const x = monitor("sid", "m3", "m4", ["m5", "m6", "m1"], 0, 0);
+    expect(rootReducer(s, a)).to.deep.equal(x);
+  });
+  it("NEXT with 3 in queue updates", () => {
     const s = monitor("sid", "m1", "m2", ["m3", "m4", "m5"], 5, 2);
     const a = next();
     const x = monitor("sid", "m3", "m4", ["m5", "m1"], 0, 0);
@@ -116,6 +122,12 @@ describe("monitor reducer", () => {
   it("REMOTE_VOTE_RECEVIED ignores a null vote", () => {
     const s = monitor("sid", "m1", "m2", ["q1"], 3, 3);
     const a = remoteVoteReceived(null);
+    expect(rootReducer(s, a)).to.deep.equal(s);
+  });
+
+  it("HOST_QUEUE_ADD passed through", () => {
+    const s = monitor("sid", "m1", "m2", ["q1"], 3, 3);
+    const a = hostQueueAdd("m");
     expect(rootReducer(s, a)).to.deep.equal(s);
   });
 

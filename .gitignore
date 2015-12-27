@@ -3,7 +3,8 @@ compiled/
 src/**/*.js
 test/**/*.js
 
-delme/
+/delme
+/coverage
 
 # Ignore webpack-created javascript file
 dist/bundle.js

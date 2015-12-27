@@ -22,7 +22,7 @@ if (isNextAction(action)) {
   if (newQueue.length === 1) {
     broadcastRemoteWinner(newQueue[0]);
     return winner(m.name, null, newQueue[0], null, null);
-  } else if (newQueue.length >= 2) {
+  } else {
     broadcastRemoteNext(newQueue[0], newQueue[1]);
     return monitor(m.name, newQueue[0], newQueue[1], newQueue.slice(2), 0, 0);
   }

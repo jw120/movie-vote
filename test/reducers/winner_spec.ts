@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { join, remoteHostReady, startSetup } from "../../src/actionCreators";
+import { join, remoteHostReady, startSetup, remoteWinner } from "../../src/actionCreators";
 import { winner, voting, setup } from "../../src/stateCreators";
 import rootReducer from "../../src/reducers/rootReducer";
 
@@ -59,6 +59,12 @@ describe("winner reducer", () => {
   it("REMOTE_HOST_READY does nothing with empty arguments", () => {
     const s = winner("bob", "henry", "ww", "m1", "m2");
     const a = remoteHostReady("host", "", "new2");
+    expect(rootReducer(s, a)).to.deep.equal(s);
+  });
+
+  it("REMOTE_WINNER passed through", () => {
+    const s = winner("bob", "henry", "ww", "m1", "m2");
+    const a = remoteWinner("m");
     expect(rootReducer(s, a)).to.deep.equal(s);
   });
 
