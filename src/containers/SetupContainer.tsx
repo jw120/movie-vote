@@ -3,16 +3,16 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
 import actionCreators, { hostQueueAdd, hostQueueDelete, hostStart } from "../actionCreators";
-import { setupSelector, SetupPropData } from "../selectors/setup";
+import { setupSelector, ISetupPropData } from "../selectors/setup";
 
 import Setup from "../components/Setup";
 
-interface SetupContainerProps {
-  setup: SetupPropData;
+interface ISetupContainerProps {
+  setup: ISetupPropData;
   dispatch: Dispatch;
 }
 
-class SetupContainer extends React.Component<SetupContainerProps, {}> {
+class SetupContainer extends React.Component<ISetupContainerProps, {}> {
   render(): JSX.Element {
     return (
       <Setup

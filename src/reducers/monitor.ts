@@ -1,14 +1,9 @@
-import { PropTypes } from "react";
-
-import {
-  isNextAction, isRemoteVoteReceivedAction, isRemoteWinnerAction,
-  IAction
-} from  "../actionCreators";
+import { isNextAction, isRemoteVoteReceivedAction, IAction } from  "../actionCreators";
 import { monitor, winner } from "../stateCreators";
-import { RootData } from "../RootData";
+import { IRootData } from "../RootData";
 import { broadcastRemoteWinner, broadcastRemoteNext } from "../socket";
 
-export function monitorReducer(m: RootData, action: IAction): RootData {
+export function monitorReducer(m: IRootData, action: IAction): IRootData {
 
   if (isNextAction(action)) {
     let newQueue: string[] = [];

@@ -2,7 +2,12 @@ import { expect } from "chai";
 
 import { remoteNext, remoteHostReady, remoteWinner, remoteVoteReceived } from "../src/actionCreators";
 import { REMOTE_NEXT, REMOTE_WINNER, REMOTE_HOST_READY, REMOTE_VOTE_RECEIVED } from "../src/actionTypes";
-import { broadcastRemoteNext, broadcastRemoteWinner, broadcastRemoteHostReady, broadcastRemoteVoteReceived } from "../src/socket";
+import {
+  broadcastRemoteNext,
+  broadcastRemoteWinner,
+  broadcastRemoteHostReady,
+  broadcastRemoteVoteReceived
+} from "../src/socket";
 import { initSocketClient } from "../src/socket";
 import mock from "./mocks";
 initSocketClient(mock.store, mock.io);

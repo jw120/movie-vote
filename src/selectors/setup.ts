@@ -1,10 +1,10 @@
-import { RootData } from "../rootData";
+import { IRootData } from "../rootData";
 
-export interface SetupPropData {
+export interface ISetupPropData {
    queue: string[];
 }
 
-export function setupSelector(s: RootData): { setup: SetupPropData } {
+export function setupSelector(s: IRootData): { setup: ISetupPropData } {
   return {
     setup: {
       queue: s.queue

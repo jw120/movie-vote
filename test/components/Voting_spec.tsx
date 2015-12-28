@@ -5,6 +5,7 @@ import * as React from "react";
 import { expect } from "chai";
 import { createRenderer } from "react-addons-test-utils";
 import { ShallowRenderer } from "../../src/myTypings/shallowRenderer";
+import dummyCallback from "../dummyCallback";
 
 import Voting from "../../src/components/Voting";
 
@@ -18,7 +19,7 @@ describe("Voting component (no vote)", () => {
       hostName="Henry"
       movieA="Frozen"
       movieB="Doom"
-      onVote={ (s: string) => { } }
+      onVote={ dummyCallback }
     />
   );
   const v: any = shallowRenderer.getRenderOutput();
@@ -67,7 +68,7 @@ describe("Voting component (vote for A)", () => {
       movieA="Frozen"
       movieB="Doom"
       voted="Frozen"
-      onVote={ (s: string) => { } }
+      onVote={ dummyCallback }
     />
   );
   const v: any = shallowRenderer.getRenderOutput();
@@ -116,7 +117,7 @@ describe("Voting component (voted for B)", () => {
       movieA="Frozen"
       movieB="Doom"
       voted="Doom"
-      onVote={ (s: string) => { } }
+      onVote={ dummyCallback }
     />
   );
   const v: any = shallowRenderer.getRenderOutput();

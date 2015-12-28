@@ -1,6 +1,6 @@
-import { RootData } from "../rootData";
+import { IRootData } from "../rootData";
 
-export interface MonitorPropData {
+export interface IMonitorPropData {
    name: string;
    movieA: string;
    movieB: string;
@@ -9,7 +9,7 @@ export interface MonitorPropData {
    scoreB: number;
 }
 
-export function monitorSelector(s: RootData): { monitor: MonitorPropData } {
+export function monitorSelector(s: IRootData): { monitor: IMonitorPropData } {
   return {
     monitor: {
       name: s.hostName,

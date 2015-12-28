@@ -2,14 +2,14 @@ import * as React from "react";
 
 import { Button, ButtonInput, Input, Table } from "react-bootstrap";
 
-import { SetupPropData } from "../selectors/setup";
-interface SetupProps extends SetupPropData {
+import { ISetupPropData } from "../selectors/setup";
+interface ISetupProps extends ISetupPropData {
    onDelete: (movie: string) => void;
    onAdd: (movie: string) => void;
    onStart: () => void;
 }
 
-interface SetupState {
+interface ISetupState {
   movie: string;
 };
 
@@ -30,9 +30,9 @@ function renderRow(movie: string): JSX.Element {
   );
 }
 
-class Setup extends React.Component<SetupProps, SetupState> {
+class Setup extends React.Component<ISetupProps, ISetupState> {
 
-  state: SetupState = { movie: "" };
+  state: ISetupState = { movie: "" };
 
   handleTextChange: ((e: React.SyntheticEvent) => void) = (e: React.SyntheticEvent) => {
     const target: HTMLButtonElement = e.currentTarget as HTMLButtonElement;
@@ -82,7 +82,6 @@ class Setup extends React.Component<SetupProps, SetupState> {
       </ButtonInput>
     );
   }
-
 
   render(): JSX.Element {
     return (

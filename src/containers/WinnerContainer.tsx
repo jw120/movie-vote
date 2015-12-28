@@ -3,16 +3,16 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
 import actionCreators, { join, startSetup } from "../actionCreators";
-import { winnerSelector, WinnerPropData } from "../selectors/winner";
+import { winnerSelector, IWinnerPropData } from "../selectors/winner";
 
 import Winner from "../components/Winner";
 
-interface WinnerContainerProps {
-  winner: WinnerPropData;
+interface IWinnerContainerProps {
+  winner: IWinnerPropData;
   dispatch: Dispatch;
 }
 
-class WinnerContainer extends React.Component<WinnerContainerProps, {}> {
+class WinnerContainer extends React.Component<IWinnerContainerProps, {}> {
   render(): JSX.Element {
     return (
       <Winner

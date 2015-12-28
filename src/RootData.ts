@@ -1,4 +1,4 @@
-export interface RootData {
+export interface IRootData {
   mode: string;
   name?: string;
   hostName?: string;

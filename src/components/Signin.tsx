@@ -2,19 +2,19 @@ import * as React from "react";
 
 import { Button, Input } from "react-bootstrap";
 
-import { SigninPropData } from "../selectors/signin";
-interface SigninProps extends SigninPropData {
+import { ISigninPropData } from "../selectors/signin";
+interface ISigninProps extends ISigninPropData {
   onJoin: (name: string) => void;
   onStartSetup: (name: string) => void;
 }
 
-interface SigninState {
+interface ISigninState {
   name: string;
 };
 
-class Signin extends React.Component<SigninProps, SigninState> {
+class Signin extends React.Component<ISigninProps, ISigninState> {
 
-  state: SigninState = { name: "" };
+  state: ISigninState = { name: "" };
 
   handleTextChange: ((e: React.SyntheticEvent) => void) = (e: React.SyntheticEvent) => {
     const target: HTMLButtonElement = e.currentTarget as HTMLButtonElement;

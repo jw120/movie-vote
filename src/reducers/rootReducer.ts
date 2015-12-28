@@ -1,7 +1,7 @@
 import { IAction } from "../actionCreators";
 import { signin } from "../stateCreators";
 
-import { RootData } from "../rootData";
+import { IRootData } from "../rootData";
 
 import { signinReducer } from "./signin";
 import { votingReducer } from "./voting";
@@ -11,7 +11,7 @@ import { winnerReducer } from "./winner";
 
 import { SIGNIN, VOTING, MONITOR, SETUP, WINNER } from "../stateTypes";
 
-export default function rootReducer(state: RootData = signin(), action: IAction): RootData {
+export default function rootReducer(state: IRootData = signin(), action: IAction): IRootData {
   switch (state.mode) {
     case SIGNIN:
       return signinReducer(state, action);
@@ -23,7 +23,7 @@ export default function rootReducer(state: RootData = signin(), action: IAction)
       return monitorReducer(state, action);
     case WINNER:
       return winnerReducer(state, action);
+    default:
+      return state;
   }
-
-  return state;
 }

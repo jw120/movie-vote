@@ -1,10 +1,11 @@
 import * as React from "react";
 
-import { createDevTools, CreateDevTools } from "redux-devtools";
+import { createDevTools, ICreateDevTools } from "redux-devtools";
 import LogMonitor from "redux-devtools-log-monitor";
 import DockMonitor from "redux-devtools-dock-monitor";
 
-const DevTools: CreateDevTools = createDevTools(
+/* tslint:disable:variable-name */
+const DevTools: ICreateDevTools = createDevTools(
   <DockMonitor
     toggleVisibilityKey="ctrl-h"
     changePositionKey="ctrl-q"

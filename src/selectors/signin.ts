@@ -1,12 +1,12 @@
-import { RootData } from "../rootData";
+import { IRootData } from "../rootData";
 
-export interface SigninPropData {
+export interface ISigninPropData {
    hostName?: string;
    movieA?:   string;
    movieB?:   string
 }
 
-export function signinSelector(s: RootData): { signin: SigninPropData } {
+export function signinSelector(s: IRootData): { signin: ISigninPropData } {
   return {
     signin: {
       hostName: s.hostName,

@@ -3,10 +3,10 @@ import {
   IAction
 } from "../actionCreators";
 
-import { RootData } from "../RootData";
+import { IRootData } from "../RootData";
 import { signin, voting, setup } from "../stateCreators";
 
-export function signinReducer(s: RootData, action: IAction): RootData {
+export function signinReducer(s: IRootData, action: IAction): IRootData {
 
   if (isJoinAction(action)) {
     if (s.hostName && action.name && s.movieA && s.movieB) {

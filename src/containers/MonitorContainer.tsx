@@ -3,16 +3,16 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
 import actionCreators, { next } from "../actionCreators";
-import { monitorSelector, MonitorPropData } from "../selectors/monitor";
+import { monitorSelector, IMonitorPropData } from "../selectors/monitor";
 
 import Monitor from "../components/Monitor";
 
-interface MonitorContainerProps {
-  monitor: MonitorPropData;
+interface IMonitorContainerProps {
+  monitor: IMonitorPropData;
   dispatch: Dispatch;
 }
 
-class MonitorContainer extends React.Component<MonitorContainerProps, {}> {
+class MonitorContainer extends React.Component<IMonitorContainerProps, {}> {
   render(): JSX.Element {
     return (
       <Monitor

@@ -4,13 +4,13 @@ import * as React from "react";
 
 import { Button } from "react-bootstrap";
 
-import { WinnerPropData } from "../selectors/winner";
-interface WinnerProps extends WinnerPropData {
+import { IWinnerPropData } from "../selectors/winner";
+interface IWinnerProps extends IWinnerPropData {
   onJoin: (name: string) => void;
   onStartSetup: (name: string) => void;
 }
 
-export default class Winner extends React.Component<WinnerProps, {}> {
+export default class Winner extends React.Component<IWinnerProps, {}> {
   render(): JSX.Element {
     let ready: boolean = !!(this.props.hostName && this.props.movieA && this.props.movieB);
     return (

@@ -5,6 +5,7 @@ import * as React from "react";
 import { expect } from "chai";
 import { createRenderer } from "react-addons-test-utils";
 import { ShallowRenderer } from "../../src/myTypings/shallowRenderer";
+import dummyCallback from "../dummyCallback";
 
 import Signin from "../../src/components/Signin";
 
@@ -14,8 +15,8 @@ describe("Signin component without host", () => {
 
   shallowRenderer.render(
     <Signin
-      onJoin={ (s: string) => { } }
-      onStartSetup={ (s: string) => { } }
+      onJoin={ dummyCallback }
+      onStartSetup={ dummyCallback }
     />
   );
   const v: JSX.Element = shallowRenderer.getRenderOutput();
@@ -71,8 +72,8 @@ describe("Signin component with host", () => {
       hostName="henry"
       movieA="Frozen"
       movieB="12 angry men"
-      onJoin={ (s: string) => { } }
-      onStartSetup={ (s: string) => { } }
+      onJoin={ dummyCallback}
+      onStartSetup={ dummyCallback }
     />
   );
   const v: any = shallowRenderer.getRenderOutput();

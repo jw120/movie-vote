@@ -2,12 +2,12 @@ import * as React from "react";
 
 import { Button } from "react-bootstrap";
 
-import { VotingPropData } from "../selectors/voting";
-interface VotingProps extends VotingPropData {
+import { IVotingPropData } from "../selectors/voting";
+interface IVotingProps extends IVotingPropData {
   onVote: (name: string) => void;
 }
 
-export default class Voting extends React.Component<VotingProps, {}> {
+export default class Voting extends React.Component<IVotingProps, {}> {
   render(): JSX.Element {
     let voted: boolean = this.props.voted === this.props.movieA || this.props.voted === this.props.movieB;
     return (

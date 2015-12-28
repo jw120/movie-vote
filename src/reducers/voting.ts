@@ -5,9 +5,9 @@ import {
 import { voting, winner } from "../stateCreators";
 import { broadcastRemoteVoteReceived } from "../socket";
 
-import { RootData } from "../rootData";
+import { IRootData } from "../rootData";
 
-export function votingReducer(v: RootData, action: IAction): RootData {
+export function votingReducer(v: IRootData, action: IAction): IRootData {
 
   if (isVoteAction(action)) {
     if ((action.movie === v.movieA || action.movie === v.movieB) && !v.voted) {

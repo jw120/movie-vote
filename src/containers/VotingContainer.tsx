@@ -3,16 +3,16 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
 import actionCreators, { vote } from "../actionCreators";
-import { votingSelector, VotingPropData } from "../selectors/voting";
+import { votingSelector, IVotingPropData } from "../selectors/voting";
 
 import Voting from "../components/Voting";
 
-interface VotingContainerProps {
-  voting: VotingPropData;
+interface IVotingContainerProps {
+  voting: IVotingPropData;
   dispatch: Dispatch;
 }
 
-class VotingContainer extends React.Component<VotingContainerProps, {}> {
+class VotingContainer extends React.Component<IVotingContainerProps, {}> {
   render(): JSX.Element {
     return (
       <Voting

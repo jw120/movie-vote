@@ -5,6 +5,7 @@ import * as React from "react";
 import { expect } from "chai";
 import { createRenderer } from "react-addons-test-utils";
 import { ShallowRenderer } from "../../src/myTypings/shallowRenderer";
+import dummyCallback from "../dummyCallback";
 
 import Monitor from "../../src/components/Monitor";
 
@@ -20,7 +21,7 @@ describe("Monitor component", () => {
       scoreA={ 3 }
       scoreB={ 2 }
       queue={ [ "Ascension", "Doom"] }
-      onNext={ () => { } }
+      onNext={ dummyCallback }
     />
   );
   const v: JSX.Element = shallowRenderer.getRenderOutput();

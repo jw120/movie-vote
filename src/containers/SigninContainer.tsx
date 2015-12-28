@@ -3,16 +3,16 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
 import actionCreators, { join, startSetup } from "../actionCreators";
-import { signinSelector, SigninPropData } from "../selectors/signin";
+import { signinSelector, ISigninPropData } from "../selectors/signin";
 
 import Signin from "../components/Signin";
 
-interface SigninContainerProps {
-  signin: SigninPropData;
+interface ISigninContainerProps {
+  signin: ISigninPropData;
   dispatch: Dispatch;
 }
 
-class SigninContainer extends React.Component<SigninContainerProps, {}> {
+class SigninContainer extends React.Component<ISigninContainerProps, {}> {
   render(): JSX.Element {
     return (
       <Signin

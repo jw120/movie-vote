@@ -2,8 +2,8 @@ import * as React from "react";
 
 import { Button, Table } from "react-bootstrap";
 
-import { MonitorPropData } from "../selectors/monitor";
-interface MonitorProps extends MonitorPropData {
+import { IMonitorPropData } from "../selectors/monitor";
+interface IMonitorProps extends IMonitorPropData {
    onNext: () => void;
 }
 
@@ -15,7 +15,7 @@ function row(movie: string): JSX.Element {
   );
 }
 
-export default class Monitor extends React.Component<MonitorProps, {}> {
+export default class Monitor extends React.Component<IMonitorProps, {}> {
   render(): JSX.Element {
     return (
       <div className="monitor">

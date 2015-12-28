@@ -2,7 +2,8 @@ TODO
 
 * TSC conversion
 
-  + Work through tslint rules
+  + Get tests to pass
+  * implement updateRootData(RootData, PartialRootData): RootData
   + Get to build as webpack-dev
   + Avoid any's
   + Add jsdoc comments

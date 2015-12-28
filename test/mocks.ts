@@ -1,20 +1,19 @@
-// mock versions of socket.io-client
+// Mock versions of socket.io-client
 
 import { IAction } from "../src/actionCreators";
-import { initSocketClient } from "../src/socket";
 
 interface IMock {
   io: {
-    emit: (args: any[]) => void; // mock emit - output added to .emitted
-    on: (keyword: string, callback: Function) => void; // mock of callback setup
-    test: (first: any, ...rest: any[]) => void;  // triggers callbacks
+    emit: (args: any[]) => void; // Mock emit - output added to .emitted
+    on: (keyword: string, callback: Function) => void; // Mock of callback setup
+    test: (first: any, ...rest: any[]) => void;  // Triggers callbacks
   };
   store: {
     dispatch: (action: IAction) => void;
   };
   emitted: any[];
   dispatched: IAction[];
-  reset: () => void; // resets emitted and dispatched (not onList)
+  reset: () => void; // Resets emitted and dispatched (not onList)
   onList: [string, Function][];
 }
 
@@ -50,5 +49,3 @@ let mock: IMock = {
 };
 
 export default mock;
-
-// initSocketClient(mockStore, mockIO);

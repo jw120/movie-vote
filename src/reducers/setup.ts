@@ -3,10 +3,10 @@ import {
   IAction
 } from "../actionCreators";
 import { setup, monitor } from "../stateCreators";
-import { RootData } from "../rootData";
+import { IRootData } from "../rootData";
 import { broadcastRemoteHostReady } from "../socket";
 
-export function setupReducer(s: RootData, action: IAction): RootData {
+export function setupReducer(s: IRootData, action: IAction): IRootData {
 
   if (isHostStartAction(action)) {
     if (s.queue.length >= 2) {
@@ -19,7 +19,6 @@ export function setupReducer(s: RootData, action: IAction): RootData {
     }
   } else if (isHostQueueDeleteAction(action)) {
     if (action.movie && s.queue.indexOf(action.movie) > -1) {
-      // function notPayload(x: string): boolean { return x !== action.payload; }
       return setup(s.name, s.queue.filter((x: string) => x !== action.movie));
     }
   }

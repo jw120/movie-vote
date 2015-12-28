@@ -2,11 +2,11 @@
 
 declare module "redux-devtools" {
   import { Component } from "react";
-  interface CreateDevTools {
+  interface ICreateDevTools {
     instrument(): Function,
     (): Component<any, any>
   }
-  export function createDevTools(children: any): CreateDevTools;
+  export function createDevTools(children: any): ICreateDevTools;
   export function persistState(sessionId: any, stateDeserializer?: Function, actionDeserializer?: Function): Function;
   // export function instrument(): Function;
   // export function ActionCreators(): Function;

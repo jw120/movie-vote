@@ -1,6 +1,6 @@
-import { RootData } from "../rootData";
+import { IRootData } from "../rootData";
 
-export interface VotingPropData {
+export interface IVotingPropData {
   name: string,
   hostName: string,
   movieA: string,
@@ -8,7 +8,7 @@ export interface VotingPropData {
   voted?: string
 }
 
-export function votingSelector(s: RootData): { voting: VotingPropData } {
+export function votingSelector(s: IRootData): { voting: IVotingPropData } {
   return {
     voting: {
       name: s.name,

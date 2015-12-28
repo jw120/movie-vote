@@ -3,9 +3,9 @@ import {
   IAction
 } from "../actionCreators";
 import { winner, voting, setup } from "../stateCreators";
-import { RootData } from "../rootData";
+import { IRootData } from "../rootData";
 
-export function winnerReducer(w: RootData, action: IAction): RootData {
+export function winnerReducer(w: IRootData, action: IAction): IRootData {
 
   if (isJoinAction(action)) {
     if (w.hostName && w.movieA && w.movieB) {
