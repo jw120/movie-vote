@@ -2,7 +2,10 @@ TODO
 
 * TSC conversion
 
+  + Work through tslint rules
   + Get to build as webpack-dev
+  + Avoid any's
+  + Add jsdoc comments
   + Subtypes for states? (same as isJoinAction etc?)
   + Make reducer/signin work somehow
   + Improve .d.ts files in myTypings

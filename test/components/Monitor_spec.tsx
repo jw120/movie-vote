@@ -4,10 +4,11 @@
 import * as React from "react";
 import { expect } from "chai";
 import { createRenderer } from "react-addons-test-utils";
+import { ShallowRenderer } from "../../src/myTypings/shallowRenderer";
 
 import Monitor from "../../src/components/Monitor";
 
-const shallowRenderer = createRenderer();
+const shallowRenderer: ShallowRenderer = createRenderer();
 
 describe("Monitor component", () => {
 
@@ -22,7 +23,7 @@ describe("Monitor component", () => {
       onNext={ () => { } }
     />
   );
-  const v = shallowRenderer.getRenderOutput();
+  const v: JSX.Element = shallowRenderer.getRenderOutput();
 
   it("renders a top level .monitor div with four children", () => {
     expect(v.type).to.equal("div");
@@ -31,15 +32,15 @@ describe("Monitor component", () => {
   });
 
   it("renders a second-level .montior-title h2", () => {
-    const v0 = v.props.children[0];
+    const v0: JSX.Element = v.props.children[0];
     expect(v0.type).to.equal("h2");
     expect(v0.props.className).to.equal("monitor-title");
     expect(v0.props.children.join("")).to.equal("Bob's Movie Vote");
   });
 
-  const v1 = v.props.children[1];
+  const v1: any = v.props.children[1];
   it("renders a second-level .monitor-current Table ", () => {
-    expect(v1.type.displayName).to.equal("Table");
+    expect(v1.type.displayName.to.equal("Table"));
     expect(v1.props.className).to.equal("monitor-current");
   });
 
@@ -50,7 +51,7 @@ describe("Monitor component", () => {
   });
 
   it("... with thead containing the header row ", () => {
-    const tr = v1.props.children[0].props.children;
+    const tr: JSX.Element = v1.props.children[0].props.children;
     expect(tr.type).to.equal("tr");
     expect(tr.props.children.length).to.equal(2);
     expect(tr.props.children[0].type).to.equal("th");
@@ -60,7 +61,7 @@ describe("Monitor component", () => {
   });
 
   it("... with tbody containing two rows with scores ", () => {
-    const trs = v1.props.children[1].props.children;
+    const trs: JSX.Element[] = v1.props.children[1].props.children;
     expect(trs.length).to.equal(2);
     expect(trs[0].type).to.equal("tr");
     expect(trs[0].props.children[0].type).to.equal("td");
@@ -76,7 +77,7 @@ describe("Monitor component", () => {
     expect(trs[1].props.children[1].props.children).to.equal(2);
   });
 
-  const v2 = v.props.children[2];
+  const v2: any = v.props.children[2];
   it("renders a second-level .monitor-queue condensed Table ", () => {
     expect(v2.type.displayName).to.equal("Table");
     expect(v2.props.className).to.equal("monitor-queue");
@@ -90,13 +91,13 @@ describe("Monitor component", () => {
   });
 
   it("... with thead containing the header row ", () => {
-    let tr = v2.props.children[0].props.children;
+    let tr: JSX.Element = v2.props.children[0].props.children;
     expect(tr.type).to.equal("tr");
     expect(tr.props.children.type).to.equal("th");
     expect(tr.props.children.props.children).to.equal("Voting queue");
   });
 
-  let trs = v2.props.children[1].props.children;
+  let trs: JSX.Element[] = v2.props.children[1].props.children;
   it("... with tbody containing two rows with queue ", () => {
     expect(trs.length).to.equal(2);
     expect(trs[0].type).to.equal("tr");
@@ -108,7 +109,7 @@ describe("Monitor component", () => {
   });
 
   it("renders a second-level host Button ", () => {
-    let v3 = v.props.children[3];
+    let v3: any = v.props.children[3];
     expect(v3.type.displayName).to.equal("Button");
     expect(v3.props.bsSize).to.equal("large");
     expect(v3.props.bsStyle).to.equal("primary");

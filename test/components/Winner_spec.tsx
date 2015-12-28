@@ -4,21 +4,22 @@
 import * as React from "react";
 import { expect } from "chai";
 import { createRenderer } from "react-addons-test-utils";
+import { ShallowRenderer } from "../../src/myTypings/shallowRenderer";
 
 import Winner from "../../src/components/Winner";
 
-const shallowRenderer = createRenderer();
+const shallowRenderer: ShallowRenderer = createRenderer();
 
 describe("Winner component without host", () => {
 
   shallowRenderer.render(
     <Winner
       winner="Platoon"
-      onJoin={ (s: string) => { } }
-      onStartSetup={ (s: string) => { } }
+      onJoin={ (s: string) => s }
+      onStartSetup={ (s: string) => s }
     />
   );
-  const v = shallowRenderer.getRenderOutput();
+  const v: any = shallowRenderer.getRenderOutput();
 
   it("renders a top level .winner div with three children", () => {
     expect(v.type).to.equal("div");
@@ -27,14 +28,14 @@ describe("Winner component without host", () => {
   });
 
   it("renders a second-level .winner-announce div", () => {
-    let v0 = v.props.children[0];
+    let v0: any = v.props.children[0];
     expect(v0.type).to.equal("div");
     expect(v0.props.className).to.equal("winner-announce");
     expect(v0.props.children.join("")).to.equal("The winner is Platoon");
   });
 
   it("renders a second-level disabled join Button ", () => {
-    let v1 = v.props.children[1];
+    let v1: any = v.props.children[1];
     expect(v1.type.displayName).to.equal("Button");
     expect(v1.props.bsSize).to.equal("large");
     expect(v1.props.bsStyle).to.equal("default");
@@ -44,7 +45,7 @@ describe("Winner component without host", () => {
   });
 
   it("renders a second-level host Button ", () => {
-    let v2 = v.props.children[2];
+    let v2: any = v.props.children[2];
     expect(v2.type.displayName).to.equal("Button");
     expect(v2.props.bsSize).to.equal("large");
     expect(v2.props.bsStyle).to.equal("primary");
@@ -63,11 +64,11 @@ describe("Winner component with host", () => {
       winner="Platoon"
       movieA="Frozen"
       movieB="Angry men"
-      onJoin={ (s: string) => { } }
-      onStartSetup={ (s: string) => { } }
+      onJoin={ (s: string) => s }
+      onStartSetup={ (s: string) => s }
     />
   );
-  const v = shallowRenderer.getRenderOutput();
+  const v: any = shallowRenderer.getRenderOutput();
 
   it("renders a top level .winner div with three children", () => {
     expect(v.type).to.equal("div");
@@ -76,14 +77,14 @@ describe("Winner component with host", () => {
   });
 
   it("renders a second-level .winner-announce div", () => {
-    let v0 = v.props.children[0];
+    let v0: any = v.props.children[0];
     expect(v0.type).to.equal("div");
     expect(v0.props.className).to.equal("winner-announce");
     expect(v0.props.children.join("")).to.equal("The winner is Platoon");
   });
 
   it("renders a second-level join Button ", () => {
-    let v1 = v.props.children[1];
+    let v1: any = v.props.children[1];
     expect(v1.type.displayName).to.equal("Button");
     expect(v1.props.bsSize).to.equal("large");
     expect(v1.props.bsStyle).to.equal("primary");
@@ -93,7 +94,7 @@ describe("Winner component with host", () => {
   });
 
   it("renders a second-level host Button ", () => {
-    let v2 = v.props.children[2];
+    let v2: any = v.props.children[2];
     expect(v2.type.displayName).to.equal("Button");
     expect(v2.props.bsSize).to.equal("large");
     expect(v2.props.bsStyle).to.equal("primary");

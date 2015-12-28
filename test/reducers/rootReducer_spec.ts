@@ -8,8 +8,8 @@ import { signin } from "../../src/stateCreators";
 describe("top-level reducer", () => {
 
   it("provides a default state", () => {
-    const nextState = frozenRootReducer(undefined, next());
-    const expectedState = signin();
+    const nextState: RootData = frozenRootReducer(undefined, next());
+    const expectedState: RootData = signin();
     expect(nextState).to.deep.equal(expectedState);
   });
 
@@ -17,7 +17,7 @@ describe("top-level reducer", () => {
     const startState: RootData = {
       mode: "UNKNOWN_STATE"
     };
-    const nextState = frozenRootReducer(startState, next());
+    const nextState: RootData = frozenRootReducer(startState, next());
     expect(nextState).to.deep.equal(startState);
   });
 

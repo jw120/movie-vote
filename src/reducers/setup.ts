@@ -20,7 +20,7 @@ export function setupReducer(s: RootData, action: IAction): RootData {
   } else if (isHostQueueDeleteAction(action)) {
     if (action.movie && s.queue.indexOf(action.movie) > -1) {
       // function notPayload(x: string): boolean { return x !== action.payload; }
-      return setup(s.name, s.queue.filter(x => x !== action.movie));
+      return setup(s.name, s.queue.filter((x: string) => x !== action.movie));
     }
   }
 

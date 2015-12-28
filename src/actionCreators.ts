@@ -1,4 +1,4 @@
-/* @flow */
+"use strict";
 
 import {
   JOIN, VOTE, NEXT, START_SETUP, HOST_START, HOST_QUEUE_ADD,
@@ -71,7 +71,7 @@ export function startSetup(name?: string): IStartSetupAction {
   };
 }
 
-// hostQueueAdd triggered from UI and adds a movie to the queue
+// The function hostQueueAdd is triggered from UI and adds a movie to the queue
 // No remote
 export interface IHostQueueAddAction extends IAction {
   movie: string;
@@ -86,7 +86,7 @@ export function hostQueueAdd(movie: string): IHostQueueAddAction {
   };
 }
 
-// hostQueueDelete triggerd from the UI and removes a movie from the queue
+// The function hostQueueDelete is triggered from the UI and removes a movie from the queue
 // No remote
 export interface IHostQueueDeleteAction extends IAction {
   movie: string;
@@ -101,7 +101,7 @@ export function hostQueueDelete(movie: string): IHostQueueDeleteAction {
   };
 }
 
-// hostStart triggered from UI and moves to monitor mode
+// The function hostStart triggered from UI and moves to monitor mode
 // Broadcasts REMOTE_HOST_READY
 export interface IHostStartAction extends IAction {
 }
@@ -116,9 +116,9 @@ export function hostStart(): IAction {
 
 // REMOTE_HOST_READY is triggered be the remote host and provides host's name and the first two movies
 export interface IRemoteHostReadyAction extends IAction {
-  hostName: string,
-  movieA: string,
-  movieB: string
+  hostName: string;
+  movieA: string;
+  movieB: string;
 }
 export function isRemoteHostReadyAction(action: IAction ): action is IRemoteHostReadyAction {
   return action.type === REMOTE_HOST_READY;
@@ -148,8 +148,8 @@ export function remoteVoteReceived (movie: string): IRemoteVoteReceivedAction {
 
 // REMOTE_NEXT is triggered on client by host
 export interface IRemoteNextAction extends IAction {
-  movieA: string,
-  movieB: string
+  movieA: string;
+  movieB: string;
 }
 export function isRemoteNextAction(action: IAction ): action is IRemoteNextAction {
   return action.type === REMOTE_NEXT;
@@ -164,7 +164,7 @@ export function remoteNext(movieA: string, movieB: string): IRemoteNextAction {
 
 // REMOTE_WINNER triggered on clients by host (instead of next)
 export interface IRemoteWinnerAction extends IAction {
-  movie: string
+  movie: string;
 }
 export function isRemoteWinnerAction(action: IAction ): action is IRemoteWinnerAction {
   return action.type === REMOTE_WINNER;
@@ -176,7 +176,7 @@ export function remoteWinner(movie: string): IRemoteWinnerAction {
   };
 }
 
-const actionCreators: MapDispatchToPropsObject = { //TActionCreator = {
+const actionCreators: MapDispatchToPropsObject = {
   join,
   vote,
   next,

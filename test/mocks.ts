@@ -15,18 +15,18 @@ interface IMock {
   emitted: any[];
   dispatched: IAction[];
   reset: () => void; // resets emitted and dispatched (not onList)
-  onList: [string, Function][]
+  onList: [string, Function][];
 }
 
 let mock: IMock = {
   io: {
-    emit: (...args: any[]) => {
+    emit: (...args: any[]): void => {
       mock.emitted.push(args);
     },
-    on: (keyword: string, callback: Function) => {
+    on: (keyword: string, callback: Function): void => {
       mock.onList.unshift([keyword, callback]);
     },
-    test: (first: any, ...rest: any[]) => {
+    test: (first: any, ...rest: any[]): void => {
       for (let [k, cb] of mock.onList) {
         if (first === k) {
           cb(...rest);
@@ -37,17 +37,17 @@ let mock: IMock = {
   },
   emitted: [],
   store: {
-    dispatch: (action: IAction) =>  {
+    dispatch: (action: IAction): void =>  {
       mock.dispatched.push(action);
     }
   },
   dispatched: [],
-  reset: () => {
+  reset: (): void => {
     mock.emitted = [];
     mock.dispatched = [];
   },
   onList: []
-}
+};
 
 export default mock;
 

@@ -17,7 +17,7 @@ class Signin extends React.Component<SigninProps, SigninState> {
   state: SigninState = { name: "" };
 
   handleTextChange: ((e: React.SyntheticEvent) => void) = (e: React.SyntheticEvent) => {
-    const target = e.currentTarget as HTMLButtonElement;
+    const target: HTMLButtonElement = e.currentTarget as HTMLButtonElement;
     this.setState({ name: target.value });
   };
 

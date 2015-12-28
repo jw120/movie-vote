@@ -8,5 +8,5 @@ export interface RootData {
   scoreB?: number;
   voted?: string;
   winner?: string;
-  queue?: string[]
+  queue?: string[];
 }

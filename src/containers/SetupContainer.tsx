@@ -8,12 +8,12 @@ import { setupSelector, SetupPropData } from "../selectors/setup";
 import Setup from "../components/Setup";
 
 interface SetupContainerProps {
-  setup: SetupPropData,
-  dispatch: Dispatch
+  setup: SetupPropData;
+  dispatch: Dispatch;
 }
 
 class SetupContainer extends React.Component<SetupContainerProps, {}> {
-  render() {
+  render(): JSX.Element {
     return (
       <Setup
         { ...this.props.setup }

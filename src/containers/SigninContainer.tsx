@@ -8,12 +8,12 @@ import { signinSelector, SigninPropData } from "../selectors/signin";
 import Signin from "../components/Signin";
 
 interface SigninContainerProps {
-  signin: SigninPropData,
-  dispatch: Dispatch
+  signin: SigninPropData;
+  dispatch: Dispatch;
 }
 
 class SigninContainer extends React.Component<SigninContainerProps, {}> {
-  render() {
+  render(): JSX.Element {
     return (
       <Signin
         { ...this.props.signin }

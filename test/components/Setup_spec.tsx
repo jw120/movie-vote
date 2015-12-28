@@ -6,17 +6,16 @@ import { Button, ButtonInput, Input, Table } from "react-bootstrap";
 import { use, expect } from "chai";
 import jsxChai from "jsx-chai";
 import { createRenderer } from "react-addons-test-utils";
+import { ShallowRenderer } from "../../src/myTypings/shallowRenderer";
 use(jsxChai);
 
 import Setup from "../../src/components/Setup";
 
-function dummyCallback() {
-  return {};
-}
+function dummyCallback(): void { }
 
 describe("Setup component", () => {
 
-  const shallowRenderer = createRenderer();
+  const shallowRenderer: ShallowRenderer = createRenderer();
   shallowRenderer.render(
     <Setup
       queue={ [ "Ascension", "Doom"] }
@@ -25,9 +24,9 @@ describe("Setup component", () => {
       onStart={ () => { } }
     />
   );
-  const actualElement = shallowRenderer.getRenderOutput();
+  const actualElement: JSX.Element = shallowRenderer.getRenderOutput();
 
-  const expectedElement = (
+  const expectedElement: JSX.Element = (
     <div className="setup">
       <form
         className="setup-form"

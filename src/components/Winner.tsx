@@ -11,7 +11,7 @@ interface WinnerProps extends WinnerPropData {
 }
 
 export default class Winner extends React.Component<WinnerProps, {}> {
-  render() {
+  render(): JSX.Element {
     let ready: boolean = !!(this.props.hostName && this.props.movieA && this.props.movieB);
     return (
       <div className="winner">

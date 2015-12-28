@@ -8,12 +8,12 @@ import { winnerSelector, WinnerPropData } from "../selectors/winner";
 import Winner from "../components/Winner";
 
 interface WinnerContainerProps {
-  winner: WinnerPropData,
-  dispatch: Dispatch
+  winner: WinnerPropData;
+  dispatch: Dispatch;
 }
 
 class WinnerContainer extends React.Component<WinnerContainerProps, {}> {
-  render() {
+  render(): JSX.Element {
     return (
       <Winner
         { ...this.props.winner }

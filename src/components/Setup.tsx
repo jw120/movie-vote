@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Button, ButtonInput, Input, Table } from "react-bootstrap";
 
-import { SetupPropData } from "../selectors/setup"
+import { SetupPropData } from "../selectors/setup";
 interface SetupProps extends SetupPropData {
    onDelete: (movie: string) => void;
    onAdd: (movie: string) => void;
@@ -35,7 +35,7 @@ class Setup extends React.Component<SetupProps, SetupState> {
   state: SetupState = { movie: "" };
 
   handleTextChange: ((e: React.SyntheticEvent) => void) = (e: React.SyntheticEvent) => {
-    const target = e.currentTarget as HTMLButtonElement;
+    const target: HTMLButtonElement = e.currentTarget as HTMLButtonElement;
     this.setState({ movie: target.value });
   };
 

@@ -5,13 +5,13 @@ import { RootData } from "../src/rootData";
 import { IAction } from "../src/actionCreators";
 import rootReducer from "../src/reducers/rootReducer";
 
-function deepFreeze (o: any) {
+function deepFreeze (o: any): void {
   if (o === undefined) {
     return o;
   }
   Object.freeze(o);
 
-  Object.getOwnPropertyNames(o).forEach(function (prop) {
+  Object.getOwnPropertyNames(o).forEach(function (prop: string): any {
     if (o.hasOwnProperty(prop)
     && o[prop] !== null
     && (typeof o[prop] === "object" || typeof o[prop] === "function")

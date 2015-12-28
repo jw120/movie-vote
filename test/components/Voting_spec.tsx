@@ -4,10 +4,11 @@
 import * as React from "react";
 import { expect } from "chai";
 import { createRenderer } from "react-addons-test-utils";
+import { ShallowRenderer } from "../../src/myTypings/shallowRenderer";
 
 import Voting from "../../src/components/Voting";
 
-const shallowRenderer = createRenderer();
+const shallowRenderer: ShallowRenderer = createRenderer();
 
 describe("Voting component (no vote)", () => {
 
@@ -20,7 +21,7 @@ describe("Voting component (no vote)", () => {
       onVote={ (s: string) => { } }
     />
   );
-  const v = shallowRenderer.getRenderOutput();
+  const v: any = shallowRenderer.getRenderOutput();
 
   it("renders a top level .voting div with three children", () => {
     expect(v.type).to.equal("div");
@@ -29,14 +30,14 @@ describe("Voting component (no vote)", () => {
   });
 
   it("renders a second-level .voting-label div with text", () => {
-    const v0 = v.props.children[0];
+    const v0: any = v.props.children[0];
     expect(v0.type).to.equal("div");
     expect(v0.props.className).to.equal("voting-label");
     expect(v0.props.children.join("")).to.equal("Henry's vote (Bob)");
   });
 
   it("renders a second-level movieA Button ", () => {
-    let v1 = v.props.children[1];
+    let v1: any = v.props.children[1];
     expect(v1.type.displayName).to.equal("Button");
     expect(v1.props.bsSize).to.equal("large");
     expect(v1.props.bsStyle).to.equal("primary");
@@ -46,7 +47,7 @@ describe("Voting component (no vote)", () => {
   });
 
   it("renders a second-level movieB Button ", () => {
-    let v2 = v.props.children[2];
+    let v2: any = v.props.children[2];
     expect(v2.type.displayName).to.equal("Button");
     expect(v2.props.bsSize).to.equal("large");
     expect(v2.props.bsStyle).to.equal("primary");
@@ -69,7 +70,7 @@ describe("Voting component (vote for A)", () => {
       onVote={ (s: string) => { } }
     />
   );
-  const v = shallowRenderer.getRenderOutput();
+  const v: any = shallowRenderer.getRenderOutput();
 
   it("renders a top level .voting div with three children", () => {
     expect(v.type).to.equal("div");
@@ -78,14 +79,14 @@ describe("Voting component (vote for A)", () => {
   });
 
   it("renders a second-level .voting-label div with text", () => {
-    const v0 = v.props.children[0];
+    const v0: any = v.props.children[0];
     expect(v0.type).to.equal("div");
     expect(v0.props.className).to.equal("voting-label");
     expect(v0.props.children.join("")).to.equal("Henry's vote (Bob)");
   });
 
   it("renders a second-level movieA Button ", () => {
-    let v1 = v.props.children[1];
+    let v1: any = v.props.children[1];
     expect(v1.type.displayName).to.equal("Button");
     expect(v1.props.bsSize).to.equal("large");
     expect(v1.props.bsStyle).to.equal("primary");
@@ -95,7 +96,7 @@ describe("Voting component (vote for A)", () => {
   });
 
   it("renders a second-level movieB Button ", () => {
-    let v2 = v.props.children[2];
+    let v2: any = v.props.children[2];
     expect(v2.type.displayName).to.equal("Button");
     expect(v2.props.bsSize).to.equal("large");
     expect(v2.props.bsStyle).to.equal("default");
@@ -118,7 +119,7 @@ describe("Voting component (voted for B)", () => {
       onVote={ (s: string) => { } }
     />
   );
-  const v = shallowRenderer.getRenderOutput();
+  const v: any = shallowRenderer.getRenderOutput();
 
   it("renders a top level .voting div with three children", () => {
     expect(v.type).to.equal("div");
@@ -127,14 +128,14 @@ describe("Voting component (voted for B)", () => {
   });
 
   it("renders a second-level .voting-label div with text", () => {
-    const v0 = v.props.children[0];
+    const v0: any = v.props.children[0];
     expect(v0.type).to.equal("div");
     expect(v0.props.className).to.equal("voting-label");
     expect(v0.props.children.join("")).to.equal("Henry's vote (Bob)");
   });
 
   it("renders a second-level movieA Button ", () => {
-    let v1 = v.props.children[1];
+    let v1: any = v.props.children[1];
     expect(v1.type.displayName).to.equal("Button");
     expect(v1.props.bsSize).to.equal("large");
     expect(v1.props.bsStyle).to.equal("default");
@@ -144,7 +145,7 @@ describe("Voting component (voted for B)", () => {
   });
 
   it("renders a second-level movieB Button ", () => {
-    let v2 = v.props.children[2];
+    let v2: any = v.props.children[2];
     expect(v2.type.displayName).to.equal("Button");
     expect(v2.props.bsSize).to.equal("large");
     expect(v2.props.bsStyle).to.equal("primary");

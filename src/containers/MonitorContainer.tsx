@@ -8,12 +8,12 @@ import { monitorSelector, MonitorPropData } from "../selectors/monitor";
 import Monitor from "../components/Monitor";
 
 interface MonitorContainerProps {
-  monitor: MonitorPropData,
-  dispatch: Dispatch
+  monitor: MonitorPropData;
+  dispatch: Dispatch;
 }
 
 class MonitorContainer extends React.Component<MonitorContainerProps, {}> {
-  render() {
+  render(): JSX.Element {
     return (
       <Monitor
         { ...this.props.monitor }

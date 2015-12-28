@@ -2,9 +2,9 @@ import * as React from "react";
 
 import { Button, Table } from "react-bootstrap";
 
-import { MonitorPropData } from "../selectors/monitor"
+import { MonitorPropData } from "../selectors/monitor";
 interface MonitorProps extends MonitorPropData {
-   onNext: () => void
+   onNext: () => void;
 }
 
 function row(movie: string): JSX.Element {
@@ -16,7 +16,7 @@ function row(movie: string): JSX.Element {
 }
 
 export default class Monitor extends React.Component<MonitorProps, {}> {
-  render() {
+  render(): JSX.Element {
     return (
       <div className="monitor">
 
@@ -53,7 +53,7 @@ export default class Monitor extends React.Component<MonitorProps, {}> {
         <Button
           bsSize="large"
           bsStyle="primary"
-          onClick={ function() { return this.props.onNext(); } }
+          onClick={ function(): void { return this.props.onNext(); } }
         >
           Next vote
         </Button>

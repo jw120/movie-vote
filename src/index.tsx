@@ -18,7 +18,7 @@ import * as MyDebug from "debug";
 MyDebug.enable("mvc:*");
 
 // const INITIAL_STATE: TMovieAppProps = mkSignin();
-const store = configureStore();
+const store: Store = configureStore();
 
 // Setup socket client
 import { initSocketClient } from "./socket";
@@ -27,7 +27,7 @@ initSocketClient(store, sic("http://127.0.0.1:8003"));
 
 // import Root from "./components/Root";
 // import { mkSignin } from "./reducers/signin";
-//import { /* remoteHostReady, /* , join, */ startSetup /*, hostQueueAdd, hostStart, remoteWinner */ } from "./actionCreators";
+// import { /* remoteHostReady, /* , join, */ startSetup /*, hostQueueAdd, hostStart, remoteWinner */ } from "./actionCreators";
 // import type TMovieAppProps from "./reducers/rootReducer";
 
 // Move into Signin state wth host available

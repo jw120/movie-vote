@@ -7,18 +7,14 @@
     "url": "http://github.com/jw120/movie-vote-client.git"
   },
   "main": "index.js",
-  "config": {
-    "babelInputDir": "src/",
-    "babelOutputDir": "compiled/",
-    "mochaTestDirs": "test/ test/reducers test/components"
-  },
   "scripts": {
     "build:prod": "webpack --config webpack-prod.config.js",
     "build:dev": "webpack-dev-server --config webpack-dev.config.js --hot",
     "compile": "tsc",
+    "lint": "tslint -c tslint.json src/*.ts* src/reducers/*.ts src/components/*.ts* src/containers/*.ts* test/*.ts test/reducers/*.ts test/components/*.ts*",
     "pretest": "tsc",
-    "test": "mocha $npm_package_config_mochaTestDirs",
-    "coverage": "istanbul cover node_modules/.bin/_mocha -- -u exports -R spec test/*_spec.js test/reducers/*_spec.js"
+    "test": "mocha test test/components test/reducers",
+    "coverage": "istanbul cover node_modules/.bin/_mocha -- -u exports -R spec test/*_spec.js test/reducers/*_spec.js test/coverage/*_spec.js"
   },
   "author": "",
   "license": "ISC",
@@ -49,6 +45,7 @@
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.1",
     "style-loader": "^0.13.0",
+    "tslint": "^3.2.1",
     "typescript": "^1.7.5",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9",

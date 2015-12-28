@@ -8,7 +8,7 @@ interface VotingProps extends VotingPropData {
 }
 
 export default class Voting extends React.Component<VotingProps, {}> {
-  render() {
+  render(): JSX.Element {
     let voted: boolean = this.props.voted === this.props.movieA || this.props.voted === this.props.movieB;
     return (
       <div className="voting">
@@ -20,7 +20,7 @@ export default class Voting extends React.Component<VotingProps, {}> {
           bsStyle={ this.props.voted !== this.props.movieB ? "primary" : "default" }
           disabled={ voted }
           block={ true }
-          onClick={ function() { return this.props.onVote(this.props.movieA); } }
+          onClick={ function(): void { return this.props.onVote(this.props.movieA); } }
         >
         { this.props.movieA }
         </Button>
@@ -29,7 +29,7 @@ export default class Voting extends React.Component<VotingProps, {}> {
           bsStyle={ this.props.voted !== this.props.movieA ? "primary" : "default" }
           disabled={ voted }
           block={ true }
-          onClick={ function() { return this.props.vote(this.props.movieB); } }
+          onClick={ function(): void { return this.props.vote(this.props.movieB); } }
         >
         { this.props.movieB }
         </Button>

@@ -8,12 +8,12 @@ import { votingSelector, VotingPropData } from "../selectors/voting";
 import Voting from "../components/Voting";
 
 interface VotingContainerProps {
-  voting: VotingPropData,
-  dispatch: Dispatch
+  voting: VotingPropData;
+  dispatch: Dispatch;
 }
 
 class VotingContainer extends React.Component<VotingContainerProps, {}> {
-  render() {
+  render(): JSX.Element {
     return (
       <Voting
         { ...this.props.voting }

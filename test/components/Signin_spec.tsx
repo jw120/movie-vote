@@ -4,10 +4,11 @@
 import * as React from "react";
 import { expect } from "chai";
 import { createRenderer } from "react-addons-test-utils";
+import { ShallowRenderer } from "../../src/myTypings/shallowRenderer";
 
 import Signin from "../../src/components/Signin";
 
-const shallowRenderer = createRenderer();
+const shallowRenderer: ShallowRenderer = createRenderer();
 
 describe("Signin component without host", () => {
 
@@ -17,7 +18,7 @@ describe("Signin component without host", () => {
       onStartSetup={ (s: string) => { } }
     />
   );
-  const v = shallowRenderer.getRenderOutput();
+  const v: JSX.Element = shallowRenderer.getRenderOutput();
 
   it("renders a top level .signin form with four children", () => {
     expect(v.type).to.equal("form");
@@ -26,15 +27,15 @@ describe("Signin component without host", () => {
   });
 
   it("renders a second-level .signin-heading h3", () => {
-    let v0 = v.props.children[0];
+    let v0: any = v.props.children[0];
     expect(v0.type).to.equal("h3");
     expect(v0.props.className).to.equal("signin-heading");
     expect(v0.props.children).to.equal("Welcome to Movie Vote");
   });
 
   it("renders a second-level .signin-input Input", () => {
-    let v1 = v.props.children[1];
-    expect(v1.type.name).to.equal("Input");
+    let v1: any = v.props.children[1];
+    expect(v1.type.name.to.equal("Input"));
     expect(v1.props.className).to.equal("signin-input");
     expect(v1.props.type).to.equal("text");
     expect(v1.props.placeholder).to.equal("Enter your name");
@@ -42,7 +43,7 @@ describe("Signin component without host", () => {
   });
 
   it("renders a second-level disabled join Button ", () => {
-    let v2 = v.props.children[2];
+    let v2: any = v.props.children[2];
     expect(v2.type.displayName).to.equal("Button");
     expect(v2.props.bsSize).to.equal("large");
     expect(v2.props.bsStyle).to.equal("default");
@@ -52,7 +53,7 @@ describe("Signin component without host", () => {
   });
 
   it("renders a second-level host Button ", () => {
-    let v3 = v.props.children[3];
+    let v3: any = v.props.children[3];
     expect(v3.type.displayName).to.equal("Button");
     expect(v3.props.bsSize).to.equal("large");
     expect(v3.props.bsStyle).to.equal("primary");
@@ -74,7 +75,7 @@ describe("Signin component with host", () => {
       onStartSetup={ (s: string) => { } }
     />
   );
-  const v = shallowRenderer.getRenderOutput();
+  const v: any = shallowRenderer.getRenderOutput();
 
   it("renders a top level .signin form with four children", () => {
     expect(v.type).to.equal("form");
@@ -83,14 +84,14 @@ describe("Signin component with host", () => {
   });
 
   it("renders a second-level .signin-heading h3", () => {
-    let v0 = v.props.children[0];
+    let v0: any = v.props.children[0];
     expect(v0.type).to.equal("h3");
     expect(v0.props.className).to.equal("signin-heading");
     expect(v0.props.children).to.equal("Welcome to Movie Vote");
   });
 
   it("renders a second-level .signin-input Input", () => {
-    let v1 = v.props.children[1];
+    let v1: any = v.props.children[1];
     expect(v1.type.name).to.equal("Input");
     expect(v1.props.className).to.equal("signin-input");
     expect(v1.props.type).to.equal("text");
@@ -99,7 +100,7 @@ describe("Signin component with host", () => {
   });
 
   it("renders a second-level join Button ", () => {
-    let v2 = v.props.children[2];
+    let v2: any = v.props.children[2];
     expect(v2.type.displayName).to.equal("Button");
     expect(v2.props.bsSize).to.equal("large");
     expect(v2.props.bsStyle).to.equal("primary");
@@ -109,7 +110,7 @@ describe("Signin component with host", () => {
   });
 
   it("renders a second-level host Button ", () => {
-    let v3 = v.props.children[3];
+    let v3: any = v.props.children[3];
     expect(v3.type.displayName).to.equal("Button");
     expect(v3.props.bsSize).to.equal("large");
     expect(v3.props.bsStyle).to.equal("primary");
