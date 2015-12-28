@@ -2,11 +2,13 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import configureStore from "./store/configureStore";
-
 import { Store } from "redux";
 import { Provider } from "react-redux";
-import SigninContainer from "./containers/SigninContainer";
+
+import { join, startSetup, hostQueueAdd, hostQueueDelete, hostStart, vote, next } from "./actionCreators";
+import { SIGNIN } from "./stateTypes";
+import configureStore from "./store/configureStore";
+import App from "./containers/App";
 import DevTools from "./components/DevTools";
 
 // Load css via webpack
@@ -17,8 +19,16 @@ import DevTools from "./components/DevTools";
 import * as MyDebug from "debug";
 MyDebug.enable("mvc:*");
 
-// const INITIAL_STATE: TMovieAppProps = mkSignin();
-const store: Store = configureStore();
+const store: Store = configureStore({
+  mode: SIGNIN,
+  onJoin: (name: string): void => store.dispatch(join(name)),
+  onStartSetup: (name: string): void => store.dispatch(startSetup(name)),
+  onAdd: (movie: string): void => store.dispatch(hostQueueAdd(movie)),
+  onDelete: (movie: string): void => store.dispatch(hostQueueDelete(movie)),
+  onStart: (): void => store.dispatch(hostStart()),
+  onVote: (movie: string): void => store.dispatch(vote(movie)),
+  onNext: (): void => store.dispatch(next())
+});
 
 // Setup socket client
 import { initSocketClient } from "./socket";
@@ -54,7 +64,7 @@ initSocketClient(store, sic("http://127.0.0.1:8003"));
 ReactDOM.render(
   <Provider store={ store }>
     <div>
-      <SigninContainer />
+      <App />
       <DevTools />
     </div>
   </Provider>,

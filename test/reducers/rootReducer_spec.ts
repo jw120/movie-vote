@@ -3,13 +3,13 @@ import { expect } from "chai";
 import frozenRootReducer from "../frozenRootReducer";
 import { IRootData } from "../../src/rootData";
 import { next } from "../../src/actionCreators";
-import { signin } from "../../src/stateCreators";
+import { UNKNOWN } from "../../src/stateTypes";
 
 describe("top-level reducer", () => {
 
   it("provides a default state", () => {
     const nextState: IRootData = frozenRootReducer(undefined, next());
-    const expectedState: IRootData = signin();
+    const expectedState: IRootData = { mode: UNKNOWN };
     expect(nextState).to.deep.equal(expectedState);
   });
 

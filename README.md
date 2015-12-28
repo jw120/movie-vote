@@ -2,10 +2,11 @@ TODO
 
 * TSC conversion
 
-  + Get tests to pass
-  * implement updateRootData(RootData, PartialRootData): RootData
-  + Get to build as webpack-dev
+  + Get CSS working again
+  + Re-assess where actions should be injected - at App container level?
+  + Should we filter props for our components? 
   + Avoid any's
+  + Are we immutable enough?
   + Add jsdoc comments
   + Subtypes for states? (same as isJoinAction etc?)
   + Make reducer/signin work somehow

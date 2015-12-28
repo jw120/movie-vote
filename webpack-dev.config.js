@@ -7,7 +7,7 @@ module.exports = {
   entry: [
     "webpack-dev-server/client?http://localhost:8080",
     "webpack/hot/only-dev-server",
-    "./src/index.jsx"
+    "./src/index.tsx"
   ],
   output: {
     path: path.join(__dirname, "dist"),
@@ -23,14 +23,14 @@ module.exports = {
   //   new webpack.HotModuleReplacementPlugin()
   // ],
   resolve: {
-    extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx"],
+    extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
     modulesDirectories: ["web_modules", "node_modules", path.join(__dirname, "node_modules/bootstrap/dist/css")]
   },
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
-        loaders: ["react-hot", "babel"],
+        test: /\.tsx?$/,
+        loaders: ["react-hot", "ts-loader"],
         include: path.join(__dirname, "src")
       },
       {

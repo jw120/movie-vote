@@ -13,21 +13,21 @@ initSocketClient(mock.store, mock.io);
 describe("voting reducer", () => {
 
   it("VOTE sets voted with a valid movieA", () => {
-    const s: IRootData = voting("alice", "host", "m1", "m2", null);
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", null);
     const a: IAction = vote("m1");
-    const x: IRootData = voting("alice", "host", "m1", "m2", "m1");
+    const x: IRootData = voting({ }, "alice", "host", "m1", "m2", "m1");
     expect(frozenRootReducer(s, a)).to.deep.equal(x);
   });
 
   it("VOTE sets voted with a valid movieB", () => {
-    const s: IRootData = voting("alice", "host", "m1", "m2", null);
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", null);
     const a: IAction = vote("m2");
-    const x: IRootData = voting("alice", "host", "m1", "m2", "m2");
+    const x: IRootData = voting({ }, "alice", "host", "m1", "m2", "m2");
     expect(frozenRootReducer(s, a)).to.deep.equal(x);
   });
 
   it("VOTE requests broadcast of REMOTE_VOTE_RECEIVED", () => {
-    const s: IRootData = voting("alice", "host", "m1", "m2", null);
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", null);
     const a: IAction = vote("m1");
     mock.reset();
     frozenRootReducer(s, a);
@@ -35,64 +35,64 @@ describe("voting reducer", () => {
   });
 
   it("VOTE ignores an invalid movie", () => {
-    const s: IRootData = voting("alice", "host", "m1", "m2", null);
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", null);
     const a: IAction = vote("m3");
     expect(frozenRootReducer(s, a)).to.deep.equal(s);
   });
 
   it("VOTE ignores a second vote", () => {
-    const s: IRootData = voting("alice", "host", "m1", "m2", "m1");
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", "m1");
     const a: IAction = vote("m2");
     expect(frozenRootReducer(s, a)).to.deep.equal(s);
   });
 
   it("REMOTE_NEXT changes movies", () => {
-    const s: IRootData = voting("alice", "host", "m1", "m2", null);
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", null);
     const a: IAction = remoteNext("m3", "m4");
-    const x: IRootData = voting("alice", "host", "m3", "m4", null);
+    const x: IRootData = voting({ }, "alice", "host", "m3", "m4", null);
     expect(frozenRootReducer(s, a)).to.deep.equal(x);
   });
 
   it("REMOTE_NEXT resets voted flag", () => {
-    const s: IRootData = voting("alice", "host", "m1", "m2", "m1");
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", "m1");
     const a: IAction = remoteNext("m3", "m4");
-    const x: IRootData = voting("alice", "host", "m3", "m4", null);
+    const x: IRootData = voting({ }, "alice", "host", "m3", "m4", null);
     expect(frozenRootReducer(s, a)).to.deep.equal(x);
   });
 
   it("REMOTE_NEXT ignores missing movie", () => {
-    const s: IRootData = voting("alice", "host", "m1", "m2", "m1");
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", "m1");
     const a: IAction = remoteNext("m3", undefined);
     expect(frozenRootReducer(s, a)).to.deep.equal(s);
   });
 
   it("REMOTE_NEXT ignores empty movie", () => {
-    const s: IRootData = voting("alice", "host", "m1", "m2", "m1");
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", "m1");
     const a: IAction = remoteNext("m3", "");
     expect(frozenRootReducer(s, a)).to.deep.equal(s);
   });
 
   it("REMOTE_WINNER changes mode", () => {
-    const s: IRootData = voting("alice", "host", "m1", "m2", null);
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", null);
     const a: IAction = remoteWinner("m1");
-    const x: IRootData = winner("alice", null, "m1", null, null);
+    const x: IRootData = winner(s, "alice", null, "m1", null, null);
     expect(frozenRootReducer(s, a)).to.deep.equal(x);
   });
 
   it("REMOTE_WINNER ignores a missing winner", () => {
-    const s: IRootData = voting("alice", "host", "m1", "m2", null);
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", null);
     const a: IAction = remoteWinner(undefined);
     expect(frozenRootReducer(s, a)).to.deep.equal(s);
   });
 
   it("REMOTE_WINNER ignores a null winner", () => {
-    const s: IRootData = voting("alice", "host", "m1", "m2", null);
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", null);
     const a: IAction = remoteWinner(null);
     expect(frozenRootReducer(s, a)).to.deep.equal(s);
   });
 
   it("REMOTE_WINNER ignores an empty winner", () => {
-    const s: IRootData = voting("alice", "host", "m1", "m2", null);
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", null);
     const a: IAction = remoteWinner("");
     expect(frozenRootReducer(s, a)).to.deep.equal(s);
   });

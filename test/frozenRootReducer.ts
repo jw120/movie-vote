@@ -5,7 +5,7 @@ import { IRootData } from "../src/rootData";
 import { IAction } from "../src/actionCreators";
 import rootReducer from "../src/reducers/rootReducer";
 
-function deepFreeze (o: any): void {
+export function deepFreeze (o: any): void {
   if (o === undefined) {
     return o;
   }
