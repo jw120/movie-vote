@@ -36,7 +36,7 @@ describe("Signin component without host", () => {
 
   it("renders a second-level .signin-input Input", () => {
     let v1: any = v.props.children[1];
-    expect(v1.type.name.to.equal("Input"));
+    expect(v1.type.name).to.equal("Input");
     expect(v1.props.className).to.equal("signin-input");
     expect(v1.props.type).to.equal("text");
     expect(v1.props.placeholder).to.equal("Enter your name");

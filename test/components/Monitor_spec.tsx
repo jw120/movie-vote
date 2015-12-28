@@ -41,7 +41,7 @@ describe("Monitor component", () => {
 
   const v1: any = v.props.children[1];
   it("renders a second-level .monitor-current Table ", () => {
-    expect(v1.type.displayName.to.equal("Table"));
+    expect(v1.type.displayName).to.equal("Table");
     expect(v1.props.className).to.equal("monitor-current");
   });
 
