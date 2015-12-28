@@ -14,7 +14,7 @@
     "lint": "tslint -c tslint.json src/*.ts* src/reducers/*.ts src/components/*.ts* src/containers/*.ts* test/*.ts test/reducers/*.ts test/components/*.ts*",
     "pretest": "tsc",
     "test": "mocha test test/components test/reducers",
-    "coverage": "istanbul cover node_modules/.bin/_mocha -- -u exports -R spec test/*_spec.js test/reducers/*_spec.js test/coverage/*_spec.js"
+    "coverage": "istanbul cover node_modules/.bin/_mocha -- -u exports -R spec test/*_spec.js test/reducers/*_spec.js test/components/*_spec.js"
   },
   "author": "",
   "license": "ISC",

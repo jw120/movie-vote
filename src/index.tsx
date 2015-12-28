@@ -11,10 +11,6 @@ import configureStore from "./store/configureStore";
 import App from "./containers/App";
 import DevTools from "./components/DevTools";
 
-// Load css via webpack
-// require("bootstrap.min.css");
-// require("../dist/styles.css");
-
 // Start debugging
 import * as MyDebug from "debug";
 MyDebug.enable("mvc:*");
