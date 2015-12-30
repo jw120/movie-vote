@@ -5,7 +5,7 @@ import * as ReactDOM from "react-dom";
 import { Store } from "redux";
 import { Provider } from "react-redux";
 
-import { join, startSetup, hostQueueAdd, hostQueueDelete, hostStart, vote, next } from "./actionCreators";
+// import { join, startSetup, hostQueueAdd, hostQueueDelete, hostStart, vote, next } from "./actionCreators";
 import { SIGNIN } from "./stateTypes";
 import configureStore from "./store/configureStore";
 import App from "./containers/App";
@@ -16,14 +16,14 @@ import * as MyDebug from "debug";
 MyDebug.enable("mvc:*");
 
 const store: Store = configureStore({
-  mode: SIGNIN,
-  onJoin: (name: string): void => store.dispatch(join(name)),
-  onStartSetup: (name: string): void => store.dispatch(startSetup(name)),
-  onAdd: (movie: string): void => store.dispatch(hostQueueAdd(movie)),
-  onDelete: (movie: string): void => store.dispatch(hostQueueDelete(movie)),
-  onStart: (): void => store.dispatch(hostStart()),
-  onVote: (movie: string): void => store.dispatch(vote(movie)),
-  onNext: (): void => store.dispatch(next())
+  mode: SIGNIN // ,
+  // onJoin: (name: string): void => store.dispatch(join(name)),
+  // onStartSetup: (name: string): void => store.dispatch(startSetup(name)),
+  // onAdd: (movie: string): void => store.dispatch(hostQueueAdd(movie)),
+  // onDelete: (movie: string): void => store.dispatch(hostQueueDelete(movie)),
+  // onStart: (): void => store.dispatch(hostStart()),
+  // onVote: (movie: string): void => store.dispatch(vote(movie)),
+  // onNext: (): void => store.dispatch(next())
 });
 
 // Setup socket client

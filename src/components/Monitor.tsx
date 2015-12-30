@@ -53,7 +53,7 @@ export default class Monitor extends React.Component<IMonitorProps, {}> {
         <Button
           bsSize="large"
           bsStyle="primary"
-          onClick={ function(): void { return this.props.onNext(); } }
+          onClick={ this.props.onNext }
         >
           Next vote
         </Button>

@@ -4,10 +4,8 @@ export interface ISetupPropData {
    queue: string[];
 }
 
-export function setupSelector(s: IRootData): { setup: ISetupPropData } {
+export function setupSelector(s: IRootData): ISetupPropData {
   return {
-    setup: {
-      queue: s.queue
-    }
+    queue: s.queue
   };
 }

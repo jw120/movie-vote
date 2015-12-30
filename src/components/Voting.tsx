@@ -20,7 +20,7 @@ export default class Voting extends React.Component<IVotingProps, {}> {
           bsStyle={ this.props.voted !== this.props.movieB ? "primary" : "default" }
           disabled={ voted }
           block={ true }
-          onClick={ function(): void { return this.props.onVote(this.props.movieA); } }
+          onClick={ () => this.props.onVote(this.props.movieA) }
         >
         { this.props.movieA }
         </Button>
@@ -29,7 +29,7 @@ export default class Voting extends React.Component<IVotingProps, {}> {
           bsStyle={ this.props.voted !== this.props.movieA ? "primary" : "default" }
           disabled={ voted }
           block={ true }
-          onClick={ function(): void { return this.props.vote(this.props.movieB); } }
+          onClick={ () => this.props.onVote(this.props.movieB) }
         >
         { this.props.movieB }
         </Button>

@@ -7,11 +7,9 @@ export interface IWinnerPropData {
   winner: string
 }
 
-export function winnerSelector(s: IRootData): { winner: IWinnerPropData } {
+export function winnerSelector(s: IRootData): IWinnerPropData {
   return {
-    winner: {
-      hostName: s.hostName,
-      winner: s.winner
-    }
+    hostName: s.hostName,
+    winner: s.winner
   };
 }

@@ -192,7 +192,7 @@ const actionCreators: MapDispatchToPropsObject = {
 
 export default actionCreators;
 
-export type TActionCreator = {
+export interface IActionCreators {
   join: (name?: string) => IJoinAction;
   vote: (movie: string) => IVoteAction;
   next: () => IAction;

@@ -2,11 +2,10 @@ TODO
 
 * TSC conversion
 
-  + Get CSS working again
-  + Re-assess where actions should be injected - at App container level?
-  + Should we filter props for our components?
+  + Tidy code
   + Check coverage
   + Avoid any's
+  + Reselect?
   + Clear out dependencies in node_modules
   + Are we immutable enough?
   + better way to set up css into /dist? Do we need all the fonts?

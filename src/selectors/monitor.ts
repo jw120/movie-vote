@@ -9,15 +9,13 @@ export interface IMonitorPropData {
    scoreB: number;
 }
 
-export function monitorSelector(s: IRootData): { monitor: IMonitorPropData } {
+export function monitorSelector(s: IRootData): IMonitorPropData {
   return {
-    monitor: {
-      name: s.hostName,
-      movieA: s.movieA,
-      movieB: s.movieB,
-      queue: s.queue,
-      scoreA: s.scoreA,
-      scoreB: s.scoreB
-    }
+    name: s.name,
+    movieA: s.movieA,
+    movieB: s.movieB,
+    queue: s.queue,
+    scoreA: s.scoreA,
+    scoreB: s.scoreB
   };
 }

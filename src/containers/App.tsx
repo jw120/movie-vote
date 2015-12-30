@@ -1,9 +1,9 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+// import { Dispatch } from "redux";
 
 import { IRootData } from "../rootData";
-import actionCreators from "../actionCreators";
+import actionCreators, { IActionCreators } from "../actionCreators";
 import { SIGNIN, VOTING, MONITOR, SETUP, WINNER } from "../stateTypes";
 
 import Signin from "../components/Signin";
@@ -12,31 +12,81 @@ import Monitor from "../components/Monitor";
 import Voting from "../components/Voting";
 import Winner from "../components/Winner";
 
-interface IInjectedProps extends IRootData {
-   dispatch?: Dispatch;
+import { signinSelector, ISigninPropData } from "../selectors/signin";
+import { setupSelector, ISetupPropData } from "../selectors/setup";
+import { monitorSelector, IMonitorPropData } from "../selectors/monitor";
+import { votingSelector, IVotingPropData } from "../selectors/voting";
+import { winnerSelector, IWinnerPropData } from "../selectors/winner";
+
+interface IAppProps {
+  mode: string;
+  signin: ISigninPropData;
+  setup: ISetupPropData;
+  monitor: IMonitorPropData;
+  voting: IVotingPropData;
+  winner: IWinnerPropData;
 }
 
-class App extends React.Component<IInjectedProps, {}> {
+class WrappedApp extends React.Component<IAppProps & IActionCreators, {}> {
   render(): JSX.Element {
     switch (this.props.mode) {
       case SIGNIN:
-        return <Signin { ...this.props } />;
+        return (
+          <Signin
+            { ...this.props.signin }
+            onJoin={ this.props.join }
+            onStartSetup= { this.props.startSetup }
+          />
+        );
       case SETUP:
-        return <Setup { ...this.props } />;
+        return (
+          <Setup
+            { ...this.props.setup }
+            onAdd= { this.props.hostQueueAdd }
+            onDelete = { this.props.hostQueueDelete }
+            onStart = { this.props.hostStart }
+          />
+        );
       case MONITOR:
-        return <Monitor { ...this.props } />;
+        return (
+          <Monitor
+            { ...this.props.monitor }
+            onNext = { this.props.next }
+          />
+        );
       case VOTING:
-        return <Voting { ...this.props } />;
+        return (
+          <Voting
+            { ...this.props.voting }
+            onVote = { this.props.vote }
+          />
+        );
       case WINNER:
-        return <Winner { ...this.props } />;
+        return (
+          <Winner
+            { ...this.props.winner }
+            onJoin={ this.props.join }
+            onStartSetup= { this.props.startSetup }
+          />
+        );
       default:
         return <div>Unknown mode</div>;
     }
   }
 }
 
-function allToProps(s: IRootData): IRootData {
-  return s;
+function allToProps(s: IRootData): IAppProps {
+  return {
+    mode: s.mode,
+    signin: signinSelector(s),
+    setup: setupSelector(s),
+    monitor: monitorSelector(s),
+    voting: votingSelector(s),
+    winner: winnerSelector(s)
+  };
 }
 
-export default connect(allToProps, actionCreators)(App);
+// We export ...
+export default connect(allToProps, actionCreators)(WrappedApp as React.ComponentClass<{ }>);
+
+// export default App; // connect(allToProps, actionCreators)(WrappedApp);

@@ -10,14 +10,12 @@ export interface IVotingPropData {
   // onStartSetup: (name: string) => void;
 }
 
-export function votingSelector(s: IRootData): { voting: IVotingPropData } {
+export function votingSelector(s: IRootData): IVotingPropData {
   return {
-    voting: {
-      name: s.name,
-      hostName: s.hostName,
-      movieA: s.movieA,
-      movieB: s.movieB,
-      voted: s.voted
-    }
+    name: s.name,
+    hostName: s.hostName,
+    movieA: s.movieA,
+    movieB: s.movieB,
+    voted: s.voted
   };
 }

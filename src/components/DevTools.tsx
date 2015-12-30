@@ -6,6 +6,7 @@ import DockMonitor from "redux-devtools-dock-monitor";
 
 /* tslint:disable:variable-name */
 const DevTools: ICreateDevTools = createDevTools(
+/* tslint:disable:variable-name */
   <DockMonitor
     toggleVisibilityKey="ctrl-h"
     changePositionKey="ctrl-q"
