@@ -8,7 +8,4 @@ declare module "redux-devtools" {
   }
   export function createDevTools(children: any): ICreateDevTools;
   export function persistState(sessionId: any, stateDeserializer?: Function, actionDeserializer?: Function): Function;
-  // export function instrument(): Function;
-  // export function ActionCreators(): Function;
-  // export function ActionTypes(): Function;
 }

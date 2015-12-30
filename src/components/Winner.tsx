@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as React from "react";
 
 import { Button } from "react-bootstrap";
@@ -18,30 +16,22 @@ export default class Winner extends React.Component<IWinnerProps, {}> {
         <div className="winner-announce">
           The winner is { this.props.winner }
         </div>
-        { ready ?
-          <Button
-            bsSize="large"
-            bsStyle="primary"
-            block={ true }
-            onClick={ this.props.onJoin }
-          >
-          Join { this.props.hostName }'s vote
-          </Button> :
-          <Button
-            bsSize="large"
-            disabled={ true }
-            block={ true }
-          >
-          No vote available to join
-          </Button>
-        }
+        <Button
+          bsSize="large"
+          bsStyle={ ready ? "primary" : "default" }
+          disabled={ !ready }
+          block={ true }
+          onClick={ this.props.onJoin }
+        >
+          { ready ? `Join ${this.props.hostName}s vote` : "No vote available to join" }
+        </Button>
         <Button
           bsSize="large"
           bsStyle="primary"
           block={ true }
           onClick={ this.props.onStartSetup }
         >
-        Host a new vote
+          Host a new vote
         </Button>
       </div>
     );

@@ -1,4 +1,4 @@
-// Mock versions of socket.io-client
+// Custom mock version of socket.io-client and redux store
 
 import { IAction } from "../src/actionCreators";
 

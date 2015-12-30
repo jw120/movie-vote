@@ -8,6 +8,7 @@ interface ISigninProps extends ISigninPropData {
   onStartSetup: (name: string) => void;
 }
 
+// Used by Input
 interface ISigninState {
   name: string;
 };
@@ -21,10 +22,9 @@ class Signin extends React.Component<ISigninProps, ISigninState> {
     this.setState({ name: target.value });
   };
 
-  // $FlowSuppressExperimentalWarning
   handleSubmit: ((e: React.SyntheticEvent) => void) = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    //  Do nothing
+    //  We do nothing if input is submitted (with enter), need one of the two buttons to be clicked
   };
 
   renderInput(): JSX.Element {

@@ -3,7 +3,7 @@ compiled/
 src/**/*.js
 test/**/*.js
 
-/delme
+# Ignore coverage files from Istanbul
 /coverage
 
 # Ignore webpack-created javascript file
@@ -27,3 +27,6 @@ npm-debug.log.*
 # Don't check in downloaded resources
 typings
 node_modules
+
+# Don't check in editor settings
+.vscode

@@ -6,6 +6,7 @@ import { broadcastRemoteWinner, broadcastRemoteNext } from "../socket";
 export function monitorReducer(m: IRootData, action: IAction): IRootData {
 
   if (isNextAction(action)) {
+
     let newQueue: string[] = [];
     if (m.scoreA > m.scoreB) {
       newQueue = m.queue.concat(m.movieA);
@@ -21,6 +22,7 @@ export function monitorReducer(m: IRootData, action: IAction): IRootData {
       broadcastRemoteNext(newQueue[0], newQueue[1]);
       return monitor(m, m.name, newQueue[0], newQueue[1], newQueue.slice(2), 0, 0);
     }
+
   } else if (isRemoteVoteReceivedAction(action)) {
     if (action.movie) {
       if (action.movie === m.movieA) {
@@ -29,6 +31,8 @@ export function monitorReducer(m: IRootData, action: IAction): IRootData {
         return monitor(m, m.name, m.movieA, m.movieB, m.queue, m.scoreA, m.scoreB + 1);
       }
     }
+
   }
+
   return m;
 }

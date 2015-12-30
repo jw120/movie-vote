@@ -1,6 +1,5 @@
 import * as React from "react";
 import { connect } from "react-redux";
-// import { Dispatch } from "redux";
 
 import { IRootData } from "../rootData";
 import actionCreators, { IActionCreators } from "../actionCreators";
@@ -27,6 +26,7 @@ interface IAppProps {
   winner: IWinnerPropData;
 }
 
+// The connect decorator injects our props and actions (as props)
 class WrappedApp extends React.Component<IAppProps & IActionCreators, {}> {
   render(): JSX.Element {
     switch (this.props.mode) {
@@ -86,7 +86,6 @@ function allToProps(s: IRootData): IAppProps {
   };
 }
 
-// We export ...
+// We export the decorated version of the container, over-riding the props as
+// they are injected by the connect decorator and not supplied when App is called
 export default connect(allToProps, actionCreators)(WrappedApp as React.ComponentClass<{ }>);
-
-// export default App; // connect(allToProps, actionCreators)(WrappedApp);

@@ -4,7 +4,7 @@ import { createDevTools, ICreateDevTools } from "redux-devtools";
 import LogMonitor from "redux-devtools-log-monitor";
 import DockMonitor from "redux-devtools-dock-monitor";
 
-/* tslint:disable:variable-name */
+/* tslint:disable:variable-name (tslint expects camelCase variable names) */
 const DevTools: ICreateDevTools = createDevTools(
 /* tslint:disable:variable-name */
   <DockMonitor

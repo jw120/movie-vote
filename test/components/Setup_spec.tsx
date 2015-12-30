@@ -1,6 +1,3 @@
-/* eslint-env mocha */
-/* @flow */
-
 import * as React from "react";
 import { Button, ButtonInput, Input, Table } from "react-bootstrap";
 import { use, expect } from "chai";

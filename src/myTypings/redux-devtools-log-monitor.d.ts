@@ -2,5 +2,10 @@
 
 declare module "redux-devtools-log-monitor" {
   import { Component } from "react";
-  export default function LogMonitor(): Component<any, any>;
+  interface ILogMonitorProps {
+    theme?: string;
+    select?: Function;
+    preserveScrollTop?: boolean;
+  }
+  export default function LogMonitor(): Component<ILogMonitorProps, { }>;
 }

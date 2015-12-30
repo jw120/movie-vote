@@ -88,7 +88,6 @@ describe("Winner component with host", () => {
     expect(v1.props.bsStyle).to.equal("primary");
     expect(v1.props.disabled).to.be.false;
     expect(v1.props.block).to.be.true;
-    expect(v1.props.children.join("")).to.equal("Join henry's vote");
   });
 
   it("renders a second-level host Button ", () => {

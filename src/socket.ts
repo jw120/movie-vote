@@ -1,5 +1,3 @@
-/* @flow */
-
 import { REMOTE_HOST_READY, REMOTE_VOTE_RECEIVED,  REMOTE_NEXT, REMOTE_WINNER } from "./actionTypes";
 import { remoteNext, remoteWinner, remoteHostReady, remoteVoteReceived} from "./actionCreators";
 

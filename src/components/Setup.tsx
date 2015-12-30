@@ -9,26 +9,10 @@ interface ISetupProps extends ISetupPropData {
    onStart: () => void;
 }
 
+// Used by our Input
 interface ISetupState {
   movie: string;
 };
-
-function renderRow(movie: string): JSX.Element {
-  return (
-    <tr key={ movie }>
-      <td>{ movie }</td>
-      <td>
-        <Button
-          bsSize="xsmall"
-          bsStyle="link"
-          onClick={ () => this.props.onDelete(movie) }
-        >
-          Delete
-        </Button>
-      </td>
-    </tr>
-  );
-}
 
 class Setup extends React.Component<ISetupProps, ISetupState> {
 
@@ -45,6 +29,23 @@ class Setup extends React.Component<ISetupProps, ISetupState> {
     this.setState({ movie: "" });
   };
 
+  renderRow(movie: string): JSX.Element {
+    return (
+      <tr key={ movie }>
+        <td>{ movie }</td>
+        <td>
+          <Button
+            bsSize="xsmall"
+            bsStyle="link"
+            onClick={ () => this.props.onDelete(movie) }
+          >
+            Delete
+          </Button>
+        </td>
+      </tr>
+    );
+  }
+
   renderTable(): JSX.Element {
     return (
       <Table className="setup-table">
@@ -52,7 +53,7 @@ class Setup extends React.Component<ISetupProps, ISetupState> {
           <tr><th>Movies listed for the vote</th><th></th></tr>
         </thead>
         <tbody>
-          { this.props.queue.map(renderRow, this) }
+          { this.props.queue.map(this.renderRow) }
         </tbody>
       </Table>
     );

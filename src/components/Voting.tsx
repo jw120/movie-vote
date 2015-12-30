@@ -8,31 +8,30 @@ interface IVotingProps extends IVotingPropData {
 }
 
 export default class Voting extends React.Component<IVotingProps, {}> {
+
+  renderButton(disabled: boolean, movie: string): JSX.Element {
+    return (
+      <Button
+        bsSize="large"
+        bsStyle={ disabled && this.props.voted !== movie ? "default" : "primary" }
+        disabled={ disabled }
+        block={ true }
+        onClick={ () => this.props.onVote(movie) }
+      >
+      { movie }
+      </Button>
+    );
+  }
+
   render(): JSX.Element {
-    let voted: boolean = this.props.voted === this.props.movieA || this.props.voted === this.props.movieB;
+    let hasVoted: boolean = this.props.voted === this.props.movieA || this.props.voted === this.props.movieB;
     return (
       <div className="voting">
         <div className="voting-label">
           { this.props.hostName }'s vote ({ this.props.name })
         </div>
-        <Button
-          bsSize="large"
-          bsStyle={ this.props.voted !== this.props.movieB ? "primary" : "default" }
-          disabled={ voted }
-          block={ true }
-          onClick={ () => this.props.onVote(this.props.movieA) }
-        >
-        { this.props.movieA }
-        </Button>
-        <Button
-          bsSize="large"
-          bsStyle={ this.props.voted !== this.props.movieA ? "primary" : "default" }
-          disabled={ voted }
-          block={ true }
-          onClick={ () => this.props.onVote(this.props.movieB) }
-        >
-        { this.props.movieB }
-        </Button>
+        { this.renderButton(hasVoted, this.props.movieA) }
+        { this.renderButton(hasVoted, this.props.movieB) }
       </div>
     );
   }

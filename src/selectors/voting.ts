@@ -6,8 +6,6 @@ export interface IVotingPropData {
   movieA: string;
   movieB: string;
   voted?: string;
-  // onJoin: (name: string) => void;
-  // onStartSetup: (name: string) => void;
 }
 
 export function votingSelector(s: IRootData): IVotingPropData {

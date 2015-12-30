@@ -2,23 +2,28 @@ TODO
 
 * TSC conversion
 
-  + Tidy code
+  + Check works
   + Check coverage
   + Avoid any's
   + Reselect?
+  + Sort out how to make /dist files (not in gitignore)
   + Clear out dependencies in node_modules
   + Are we immutable enough?
   + better way to set up css into /dist? Do we need all the fonts?
   + Add jsdoc comments
-  + Subtypes for states? (same as isJoinAction etc?)
-  + Make reducer/signin work somehow
   + Improve .d.ts files in myTypings
   + Restore conditional imports for Root and configureStore (and fix hot modules reloading in configure store)
-  + Add CSS back
   + Dynamic state checking for isChecks?
-  + Name consistency I for intergaces?
+  + Why errors from atom's lint?
+  + Tidy checkedin files
+  + Stardardize debugger lines
+  + Reducer hotloader in configureStore
 
+Notes
+- SFCs don't work with TS yet
+- No need for relect (as nothing computed), select mechanism is not efficient (but is tidy)
 
+* Checkout a babel version
 * Check works with prod mode
 * Merge in server to repository - use as file server?
 * Refactor - Reselect? Can we make state non-modal
