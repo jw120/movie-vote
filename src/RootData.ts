@@ -9,14 +9,7 @@ export interface IRootData {
   voted?: string;
   winner?: string;
   queue?: string[];
-  onJoin?: (name: string) => void;
-  onStartSetup?: (name: string) => void;
-  onAdd?: (movie: string) => void;
-  onDelete?: (movie: string) => void;
-  onStart?: () => void;
-  onVote?: (movie: string) => void;
-  onNext?: () => void;
-  [propName: string]: any;
+  [propName: string]: any; // needed so the assignments below type-check
 }
 
 // Immutably update the rootData with new elements

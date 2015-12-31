@@ -2,35 +2,32 @@ TODO
 
 * TSC conversion
 
-  + Check works
+  + Testinging
+    - Refactor Setup_spec
+    - Add handler tests to Setup_spec
+    - Upgrade others
+
+    + Merge Winner into Signin
+
+  + Improve component tests? Add click tests
   + Check coverage
   + Avoid any's
-  + Reselect?
   + Sort out how to make /dist files (not in gitignore)
-  + Clear out dependencies in node_modules
   + Are we immutable enough?
-  + better way to set up css into /dist? Do we need all the fonts?
   + Add jsdoc comments
-  + Improve .d.ts files in myTypings
   + Restore conditional imports for Root and configureStore (and fix hot modules reloading in configure store)
-  + Dynamic state checking for isChecks?
   + Why errors from atom's lint?
-  + Tidy checkedin files
   + Stardardize debugger lines
   + Reducer hotloader in configureStore
 
-Notes
+Notes/choices
 - SFCs don't work with TS yet
+- Manually immutable
 - No need for relect (as nothing computed), select mechanism is not efficient (but is tidy)
 
-* Checkout a babel version
-* Check works with prod mode
+* Can we do tests and instanbul on ts not js? Avoid unreachable code that we did not write
 * Merge in server to repository - use as file server?
-* Refactor - Reselect? Can we make state non-modal
 * expect=jsx for tests - not chai?
-* Remove extra code
-* deepFreeze in tests
-* Try typescript
 
 # Next
 

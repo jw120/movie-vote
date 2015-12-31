@@ -14,6 +14,24 @@ interface ISetupState {
   movie: string;
 };
 
+const renderRow: ((onDelete: Function) => (movie: string) => JSX.Element) =
+  (onDelete: Function)  => (movie: string): JSX.Element => {
+  return (
+    <tr key={ movie }>
+      <td>{ movie }</td>
+      <td>
+        <Button
+          bsSize="xsmall"
+          bsStyle="link"
+          onClick={ () => onDelete(movie) }
+        >
+          Delete
+        </Button>
+      </td>
+    </tr>
+  );
+};
+
 class Setup extends React.Component<ISetupProps, ISetupState> {
 
   state: ISetupState = { movie: "" };
@@ -29,23 +47,6 @@ class Setup extends React.Component<ISetupProps, ISetupState> {
     this.setState({ movie: "" });
   };
 
-  renderRow(movie: string): JSX.Element {
-    return (
-      <tr key={ movie }>
-        <td>{ movie }</td>
-        <td>
-          <Button
-            bsSize="xsmall"
-            bsStyle="link"
-            onClick={ () => this.props.onDelete(movie) }
-          >
-            Delete
-          </Button>
-        </td>
-      </tr>
-    );
-  }
-
   renderTable(): JSX.Element {
     return (
       <Table className="setup-table">
@@ -53,7 +54,7 @@ class Setup extends React.Component<ISetupProps, ISetupState> {
           <tr><th>Movies listed for the vote</th><th></th></tr>
         </thead>
         <tbody>
-          { this.props.queue.map(this.renderRow) }
+          { this.props.queue.map(renderRow(this.props.onDelete)) }
         </tbody>
       </Table>
     );
