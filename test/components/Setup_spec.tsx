@@ -1,10 +1,11 @@
 import * as React from "react";
 import { Button, ButtonInput, Input, Table } from "react-bootstrap";
-import { use, expect } from "chai";
-import jsxChai from "jsx-chai";
 import { createRenderer } from "react-addons-test-utils";
 import { ShallowRenderer } from "../../src/myTypings/shallowRenderer";
-use(jsxChai);
+
+import * as expect from "expect";
+import * as expectJSX from "expect-jsx";
+expect.extend(expectJSX);
 
 import Setup from "../../src/components/Setup";
 import dummyCallback from "../dummyCallback";
@@ -63,7 +64,7 @@ describe("Setup component", () => {
   );
 
   it("renders", () => {
-    expect(actualElement).to.deep.equal(expectedElement);
+    expect(actualElement).toEqualJSX(expectedElement);
   });
 
 });

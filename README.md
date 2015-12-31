@@ -3,9 +3,13 @@ TODO
 * TSC conversion
 
   + Test upgrades
+   - Convert to expect
+   - Get to compile with Setup_spec and a reducer
+   - Make .d.ts any-clean
     - Add handler tests to Setup_spec
     - Upgrade others
     - Broadcast tests?
+    - Remove mocha?
 
     + Merge Winner into Signin
 
