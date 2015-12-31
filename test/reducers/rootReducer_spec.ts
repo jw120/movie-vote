@@ -1,4 +1,4 @@
-import { expect } from "chai";
+import * as expect from "expect";
 
 import frozenRootReducer from "../frozenRootReducer";
 import { IRootData } from "../../src/rootData";
@@ -10,7 +10,7 @@ describe("top-level reducer", () => {
   it("provides a default state", () => {
     const nextState: IRootData = frozenRootReducer(undefined, next());
     const expectedState: IRootData = { mode: UNKNOWN };
-    expect(nextState).to.deep.equal(expectedState);
+    expect(nextState).toEqual(expectedState);
   });
 
   it("makes no change with unknown mode", () => {
@@ -18,7 +18,7 @@ describe("top-level reducer", () => {
       mode: "UNKNOWN_STATE"
     };
     const nextState: IRootData = frozenRootReducer(startState, next());
-    expect(nextState).to.deep.equal(startState);
+    expect(nextState).toEqual(startState);
   });
 
 });

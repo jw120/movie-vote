@@ -1,4 +1,4 @@
-import { expect } from "chai";
+import * as expect from "expect";
 
 import { addToRootData, IRootData } from "../src/rootData";
 import { deepFreeze } from "./frozenRootReducer";
@@ -10,7 +10,7 @@ describe("addToRootData", () => {
     let add: IRootData = { name: "n", scoreA: 22 };
     deepFreeze(start);
     deepFreeze(add);
-    expect(addToRootData(start, add)).to.deep.equal(add);
+    expect(addToRootData(start, add)).toEqual(add);
   });
 
   it("Adds properties to non-empty object", () => {
@@ -19,7 +19,7 @@ describe("addToRootData", () => {
     let end: IRootData = { name: "n", scoreA: 22, scoreB: 11 };
     deepFreeze(start);
     deepFreeze(add);
-    expect(addToRootData(start, add)).to.deep.equal(end);
+    expect(addToRootData(start, add)).toEqual(end);
   });
 
   it("Overwrites properties of non-empty object", () => {
@@ -28,7 +28,7 @@ describe("addToRootData", () => {
     let end: IRootData = { name: "n", scoreA: 22, scoreB: 11 };
     deepFreeze(start);
     deepFreeze(add);
-    expect(addToRootData(start, add)).to.deep.equal(end);
+    expect(addToRootData(start, add)).toEqual(end);
   });
 
 });

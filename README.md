@@ -3,9 +3,8 @@ TODO
 * TSC conversion
 
   + Test upgrades
-   - Convert to expect
-   - Get to compile with Setup_spec and a reducer
-   - Make .d.ts any-clean
+   - Convert component tests to expect - with spies?
+   - Make .d.ts any-clean, check all functions included
     - Add handler tests to Setup_spec
     - Upgrade others
     - Broadcast tests?
