@@ -3,6 +3,8 @@ TODO
 * TSC conversion
 
   + Test upgrades
+    - Finish Setup_spec.ts (for onClick's - cannot seem to manage onSubmit's)
+   - FInish fleshing out expect.d.ts
    - Convert component tests to expect - with spies?
    - Make .d.ts any-clean, check all functions included
     - Add handler tests to Setup_spec

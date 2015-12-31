@@ -10,21 +10,27 @@ expect.extend(expectJSX);
 import Setup from "../../src/components/Setup";
 import dummyCallback from "../dummyCallback";
 
+let onAddSpy = expect.createSpy();
+let onDeleteSpy = expect.createSpy();
+let onStartSpy = expect.createSpy();
+
+const dummyEvent: React.SyntheticEvent = { preventDefault: () => {} };
+
+const shallowRenderer: ShallowRenderer = createRenderer();
+shallowRenderer.render(
+  <Setup
+    queue={ [ "Ascension", "Doom"] }
+    onAdd={ onAddSpy }
+    onDelete={ onDeleteSpy }
+    onStart={ onStartSpy }
+  />
+);
+const actualElement: JSX.Element = shallowRenderer.getRenderOutput();
+
 describe("Setup component", () => {
 
-  const shallowRenderer: ShallowRenderer = createRenderer();
-  shallowRenderer.render(
-    <Setup
-      queue={ [ "Ascension", "Doom"] }
-      onAdd={ dummyCallback }
-      onDelete={ dummyCallback }
-      onStart={ dummyCallback }
-    />
-  );
-  const actualElement: JSX.Element = shallowRenderer.getRenderOutput();
-
   const expectedDeleteButton: JSX.Element = (
-    <Button bsSize="xsmall" bsStyle="link" onClick={ dummyCallback } >
+    <Button bsSize="xsmall" bsStyle="link" onClick={ onDeleteSpy } >
       Delete
     </Button>
   );
@@ -37,9 +43,9 @@ describe("Setup component", () => {
     );
   }
 
-  function expectedButton(s: string): JSX.Element {
+  function expectedButton(s: string, cb: Function): JSX.Element {
     return (
-      <Button bsSize="large" bsStyle="primary" block={ true } onClick={ dummyCallback }>
+      <Button bsSize="large" bsStyle="primary" block={ true } onClick={ cb }>
       { s }
       </Button>
     );
@@ -59,12 +65,27 @@ describe("Setup component", () => {
           <tr key="Doom"><td>Doom</td><td>{ expectedDeleteButton }</td></tr>
         </tbody>
       </Table>
-      { expectedButton("Start vote") }
+      { expectedButton("Start vote", onStartSpy) }
     </div>
   );
 
   it("renders", () => {
     expect(actualElement).toEqualJSX(expectedElement);
+  });
+
+  it("has a 3rd child which is a Button whose onClick calls onDelete", () => {
+    console.log(actualElement.props.children[0].props.children[2]);
+    const renderedForm = actualElement.props.children[0]; //.props.children[2]; //.props.children;
+    expect(renderedForm.type).toEqual("form");
+    renderedForm.props.onSubmit(dummyEvent);
+    expect(onAddSpy).toHaveBeenCalled();
+  });
+
+  it("has a 3rd child which is a Button whose onClick calls onDelete", () => {
+    const renderedStartButton = actualElement.props.children[2];
+    expect(renderedStartButton.type.displayName).toEqual("Button");
+    renderedStartButton.props.onClick();
+    expect(onStartSpy).toHaveBeenCalled();
   });
 
 });
