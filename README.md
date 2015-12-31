@@ -2,10 +2,10 @@ TODO
 
 * TSC conversion
 
-  + Testinging
-    - Refactor Setup_spec
+  + Test upgrades
     - Add handler tests to Setup_spec
     - Upgrade others
+    - Broadcast tests?
 
     + Merge Winner into Signin
 

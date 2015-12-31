@@ -22,67 +22,43 @@ describe("Setup component", () => {
   );
   const actualElement: JSX.Element = shallowRenderer.getRenderOutput();
 
+  const expectedDeleteButton: JSX.Element = (
+    <Button bsSize="xsmall" bsStyle="link" onClick={ dummyCallback } >
+      Delete
+    </Button>
+  );
+
+  function expectedButtonInput(s: string): JSX.Element {
+    return (
+      <ButtonInput type="submit" bsSize="large" bsStyle="primary">
+        { s }
+      </ButtonInput>
+    );
+  }
+
+  function expectedButton(s: string): JSX.Element {
+    return (
+      <Button bsSize="large" bsStyle="primary" block={ true } onClick={ dummyCallback }>
+      { s }
+      </Button>
+    );
+  }
+
   const expectedElement: JSX.Element = (
     <div className="setup">
-      <form
-        className="setup-form"
-        onSubmit={ dummyCallback }
-      >
+      <form className="setup-form" onSubmit={ dummyCallback } >
         <h3 className="setup-heading">Set up the vote</h3>
-        <Input
-          className="setup-input"
-          type="text"
-          value=""
-          onChange={ dummyCallback }
-          placeholder="Add movie"
-        />
-        <ButtonInput
-          type="submit"
-          bsSize="large"
-          bsStyle="primary"
-        >
-          Add movie
-        </ButtonInput>
+        <Input className="setup-input" type="text" value="" onChange={ dummyCallback } placeholder="Add movie" />
+        { expectedButtonInput("Add movie") }
       </form>
       <Table className="setup-table">
-        <thead>
-          <tr><th>Movies listed for the vote</th><th></th></tr>
-        </thead>
+        <thead><tr><th>Movies listed for the vote</th><th></th></tr></thead>
         <tbody>
-          <tr key="Ascension">
-            <td>Ascension</td>
-            <td>
-              <Button
-                bsSize="xsmall"
-                bsStyle="link"
-                onClick={ dummyCallback }
-              >
-                Delete
-              </Button>
-            </td>
-          </tr>
-          <tr key="Doom">
-            <td>Doom</td>
-            <td>
-              <Button
-                bsSize="xsmall"
-                bsStyle="link"
-                onClick={ dummyCallback }
-              >
-                Delete
-              </Button>
-            </td>
-          </tr>
+          <tr key="Ascension"><td>Ascension</td><td>{ expectedDeleteButton }</td></tr>
+          <tr key="Doom"><td>Doom</td><td>{ expectedDeleteButton }</td></tr>
         </tbody>
       </Table>
-      <Button
-        bsSize="large"
-        bsStyle="primary"
-        block={ true }
-        onClick={ dummyCallback }
-      >
-        Start vote
-      </Button>
+      { expectedButton("Start vote") }
     </div>
   );
 
