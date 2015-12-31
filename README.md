@@ -3,14 +3,10 @@ TODO
 * TSC conversion
 
   + Test upgrades
-    - Finish Setup_spec.ts (for onClick's - cannot seem to manage onSubmit's)
-   - FInish fleshing out expect.d.ts
-   - Convert component tests to expect - with spies?
-   - Make .d.ts any-clean, check all functions included
-    - Add handler tests to Setup_spec
+   - FInish with... in expect.d.ts
+   - Convert other component tests to expect
     - Upgrade others
     - Broadcast tests?
-    - Remove mocha?
 
     + Merge Winner into Signin
 
@@ -24,6 +20,8 @@ TODO
   + Why errors from atom's lint?
   + Stardardize debugger lines
   + Reducer hotloader in configureStore
+  + Any way to test onSubmit?
+  + Better JSX types in expect.d.ts
 
 Notes/choices
 - SFCs don't work with TS yet

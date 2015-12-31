@@ -1,21 +1,31 @@
 // Good-enough (for this project) declarations for mjackson/expect
 // Includes definitions for algolia/expect-jsx
 
-// import { Component } from "react"; // for expect-jsx declarations
 
-// declare function expect(target?: any): Expect.Expectation<T>;
 declare var expect: Expect.ExpectStatic;
 
 declare module Expect {
 
   interface ExpectStatic {
     <T>(o: T): Expectation<T>;
-    createSpy: any;
-    spyOn: any;
-    isSpy: any;
-    restoreSpies: any;
-    assert: any;
-    extend: any;
+    createSpy: (fn?: Function) => Spy
+    spyOn: (targetObject: any, targetMethod: string) => Spy;
+    isSpy: (o: any) => boolean;
+    restoreSpies: () => void;
+    assert: (condition: boolean, messageFormat: string) => void;
+    extend: (extension: any) => void;
+  }
+
+  interface Spy {
+    (...args: any[]): any;
+    calls: any[];
+    andCall: (fn: Function) => Spy;
+    andCallThrough: () => Spy;
+    andThrow: (o: any) => Spy;
+    andReturn: (o: any) => Spy;
+    getLastCall: () => any;
+    restore: () => Spy;
+    destroy: () => Spy;
   }
 
   class Expectation<T> {
@@ -37,7 +47,7 @@ declare module Expect {
     toInclude(value: any, compareValues: any, message?: string): Expectation<T>; // array or string contains
     toExclude(value: any, compareValues: any, message?: string): Expectation<T>;
     toHaveBeenCalled(message?: string): Expectation<T>; // spy
-    toHaveBeenCalledWith(args: any[]): Expectation<T>;
+    toHaveBeenCalledWith(...args: any[]): Expectation<T>;
     toNotHaveBeenCalled(message?: string): Expectation<T>;
 
     // withContext(context) - not yet implemented in this .d.ts
@@ -53,7 +63,10 @@ declare module Expect {
     toNotContain(value: any, compareValues: any, message?: string): Expectation<T>; // alias for toInclude
 
     // algolia/expect-jsx
-    toEqualJSX(e: any /* Component<any, any> | JSX.Element */): Expectation<T>;
+    toEqualJSX(e: any): Expectation<T>;
+    toNotEqualJSX(e: any): Expectation<T>;
+    toIncludeJSX(e: any): Expectation<T>;
+    toNotIncludeJSX(e: any): Expectation<T>;
 
   }
 

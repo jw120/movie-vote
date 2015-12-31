@@ -10,22 +10,19 @@ expect.extend(expectJSX);
 import Setup from "../../src/components/Setup";
 import dummyCallback from "../dummyCallback";
 
-let onAddSpy = expect.createSpy();
-let onDeleteSpy = expect.createSpy();
-let onStartSpy = expect.createSpy();
-
-const dummyEvent: React.SyntheticEvent = { preventDefault: () => {} };
+const onDeleteSpy = expect.createSpy();
+const onStartSpy = expect.createSpy();
 
 const shallowRenderer: ShallowRenderer = createRenderer();
 shallowRenderer.render(
   <Setup
     queue={ [ "Ascension", "Doom"] }
-    onAdd={ onAddSpy }
+    onAdd={ dummyCallback }
     onDelete={ onDeleteSpy }
     onStart={ onStartSpy }
   />
 );
-const actualElement: JSX.Element = shallowRenderer.getRenderOutput();
+const renderedElement: JSX.Element = shallowRenderer.getRenderOutput();
 
 describe("Setup component", () => {
 
@@ -70,19 +67,25 @@ describe("Setup component", () => {
   );
 
   it("renders", () => {
-    expect(actualElement).toEqualJSX(expectedElement);
+    expect(renderedElement).toEqualJSX(expectedElement);
   });
 
-  it("has a 3rd child which is a Button whose onClick calls onDelete", () => {
-    console.log(actualElement.props.children[0].props.children[2]);
-    const renderedForm = actualElement.props.children[0]; //.props.children[2]; //.props.children;
-    expect(renderedForm.type).toEqual("form");
-    renderedForm.props.onSubmit(dummyEvent);
-    expect(onAddSpy).toHaveBeenCalled();
+  it("contains a buttons whose onClick calls onDelete on the first movie", () => {
+    const renderedButton = renderedElement.props.children[1].props.children[1].props.children[0].props.children[1].props.children;
+    expect(renderedButton.type.displayName).toEqual("Button");
+    renderedButton.props.onClick();
+    expect(onDeleteSpy).toHaveBeenCalledWith("Ascension");
   });
 
-  it("has a 3rd child which is a Button whose onClick calls onDelete", () => {
-    const renderedStartButton = actualElement.props.children[2];
+  it("contains a button whose onClick calls onDelete on the second movie", () => {
+    const renderedButton = renderedElement.props.children[1].props.children[1].props.children[1].props.children[1].props.children;
+    expect(renderedButton.type.displayName).toEqual("Button");
+    renderedButton.props.onClick();
+    expect(onDeleteSpy).toHaveBeenCalledWith("Doom");
+  });
+
+  it("contains a Button whose onClick calls onStart", () => {
+    const renderedStartButton = renderedElement.props.children[2];
     expect(renderedStartButton.type.displayName).toEqual("Button");
     renderedStartButton.props.onClick();
     expect(onStartSpy).toHaveBeenCalled();
