@@ -1,63 +1,66 @@
 import * as React from "react";
-import { expect } from "chai";
+import { Button, Input} from "react-bootstrap";
 import { createRenderer } from "react-addons-test-utils";
 import { ShallowRenderer } from "../../src/myTypings/shallowRenderer";
-import dummyCallback from "../dummyCallback";
+
+import * as expect from "expect";
+import * as expectJSX from "expect-jsx";
+expect.extend(expectJSX);
 
 import Signin from "../../src/components/Signin";
+import dummyCallback from "../dummyCallback";
+
+const onJoinSpy: Expect.Spy = expect.createSpy();
+const onStartSetupSpy: Expect.Spy = expect.createSpy();
 
 const shallowRenderer: ShallowRenderer = createRenderer();
+
+function expectedElementWith(joinButton: JSX.Element): JSX.Element {
+  return (
+    <form className="signin"  onSubmit={ dummyCallback }>
+      <h3 className="signin-heading">Welcome to Movie Vote</h3>
+      <Input className="signin-input" type="text" value="" placeholder="Enter your name" onChange={ dummyCallback } />
+      { joinButton }
+      <Button bsSize="large" bsStyle="primary" block={ true } onClick={ onStartSetupSpy }>
+      Host a new vote
+      </Button>
+    </form>
+  );
+}
+
+const inactiveJoinButton: JSX.Element = (
+  <Button bsSize="large" disabled={ true } block={ true }>
+    No vote available to join
+  </Button>
+);
+
+const activeJoinButton: JSX.Element = (
+  <Button bsSize="large" bsStyle="primary" block={ true } onClick={ onJoinSpy }>
+    Join henry's vote
+  </Button>
+);
 
 describe("Signin component without host", () => {
 
   shallowRenderer.render(
     <Signin
-      onJoin={ dummyCallback }
-      onStartSetup={ dummyCallback }
+      onJoin={ onJoinSpy }
+      onStartSetup={ onStartSetupSpy }
     />
   );
-  const v: JSX.Element = shallowRenderer.getRenderOutput();
+  const renderedElement: JSX.Element = shallowRenderer.getRenderOutput();
 
-  it("renders a top level .signin form with four children", () => {
-    expect(v.type).to.equal("form");
-    expect(v.props.className).to.equal("signin");
-    expect(v.props.children.length).to.equal(4);
+  const expectedElement: JSX.Element = expectedElementWith(inactiveJoinButton);
+
+  it("renders", () => {
+    expect(renderedElement).toEqualJSX(expectedElement);
   });
 
-  it("renders a second-level .signin-heading h3", () => {
-    let v0: any = v.props.children[0];
-    expect(v0.type).to.equal("h3");
-    expect(v0.props.className).to.equal("signin-heading");
-    expect(v0.props.children).to.equal("Welcome to Movie Vote");
-  });
-
-  it("renders a second-level .signin-input Input", () => {
-    let v1: any = v.props.children[1];
-    expect(v1.type.name).to.equal("Input");
-    expect(v1.props.className).to.equal("signin-input");
-    expect(v1.props.type).to.equal("text");
-    expect(v1.props.placeholder).to.equal("Enter your name");
-    expect(v1.props.children).to.be.undefined;
-  });
-
-  it("renders a second-level disabled join Button ", () => {
-    let v2: any = v.props.children[2];
-    expect(v2.type.displayName).to.equal("Button");
-    expect(v2.props.bsSize).to.equal("large");
-    expect(v2.props.bsStyle).to.equal("default");
-    expect(v2.props.disabled).to.be.true;
-    expect(v2.props.block).to.be.true;
-    expect(v2.props.children).to.equal("No vote available to join");
-  });
-
-  it("renders a second-level host Button ", () => {
-    let v3: any = v.props.children[3];
-    expect(v3.type.displayName).to.equal("Button");
-    expect(v3.props.bsSize).to.equal("large");
-    expect(v3.props.bsStyle).to.equal("primary");
-    expect(v3.props.disabled).to.be.false;
-    expect(v3.props.block).to.be.true;
-    expect(v3.props.children).to.equal("Host a new vote");
+  it("contains a Button whose onClick calls onStartSetup", () => {
+    const renderedStartButton: JSX.Element = renderedElement.props.children[3];
+    expect((renderedStartButton.type as any).displayName).toEqual("Button");
+    renderedStartButton.props.onClick();
+    expect(onStartSetupSpy).toHaveBeenCalled();
   });
 
 });
@@ -69,52 +72,29 @@ describe("Signin component with host", () => {
       hostName="henry"
       movieA="Frozen"
       movieB="12 angry men"
-      onJoin={ dummyCallback}
-      onStartSetup={ dummyCallback }
+      onJoin={ onJoinSpy }
+      onStartSetup={ onStartSetupSpy }
     />
   );
-  const v: any = shallowRenderer.getRenderOutput();
+  const renderedElement: JSX.Element = shallowRenderer.getRenderOutput();
 
-  it("renders a top level .signin form with four children", () => {
-    expect(v.type).to.equal("form");
-    expect(v.props.className).to.equal("signin");
-    expect(v.props.children.length).to.equal(4);
+  const expectedElement: JSX.Element = expectedElementWith(activeJoinButton);
+
+  it("renders", () => {
+    expect(renderedElement).toEqualJSX(expectedElement);
   });
 
-  it("renders a second-level .signin-heading h3", () => {
-    let v0: any = v.props.children[0];
-    expect(v0.type).to.equal("h3");
-    expect(v0.props.className).to.equal("signin-heading");
-    expect(v0.props.children).to.equal("Welcome to Movie Vote");
+  it("contains a Button whose onClick calls onJoin", () => {
+    const renderedStartButton: JSX.Element = renderedElement.props.children[2];
+    expect((renderedStartButton.type as any).displayName).toEqual("Button");
+    renderedStartButton.props.onClick();
+    expect(onJoinSpy).toHaveBeenCalled();
   });
 
-  it("renders a second-level .signin-input Input", () => {
-    let v1: any = v.props.children[1];
-    expect(v1.type.name).to.equal("Input");
-    expect(v1.props.className).to.equal("signin-input");
-    expect(v1.props.type).to.equal("text");
-    expect(v1.props.placeholder).to.equal("Enter your name");
-    expect(v1.props.children).to.be.undefined;
+  it("contains a Button whose onClick calls onStartSetup", () => {
+    const renderedStartButton: JSX.Element = renderedElement.props.children[3];
+    expect((renderedStartButton.type as any).displayName).toEqual("Button");
+    renderedStartButton.props.onClick();
+    expect(onStartSetupSpy.calls.length).toEqual(2); // called for first time above
   });
-
-  it("renders a second-level join Button ", () => {
-    let v2: any = v.props.children[2];
-    expect(v2.type.displayName).to.equal("Button");
-    expect(v2.props.bsSize).to.equal("large");
-    expect(v2.props.bsStyle).to.equal("primary");
-    expect(v2.props.disabled).to.be.false;
-    expect(v2.props.block).to.be.true;
-    expect(v2.props.children.join("")).to.equal("Join henry's vote");
-  });
-
-  it("renders a second-level host Button ", () => {
-    let v3: any = v.props.children[3];
-    expect(v3.type.displayName).to.equal("Button");
-    expect(v3.props.bsSize).to.equal("large");
-    expect(v3.props.bsStyle).to.equal("primary");
-    expect(v3.props.disabled).to.be.false;
-    expect(v3.props.block).to.be.true;
-    expect(v3.props.children).to.equal("Host a new vote");
-  });
-
 });

@@ -16,7 +16,7 @@ declare module Expect {
     extend: (extension: any) => void;
   }
 
-  interface Spy {
+  export interface Spy {
     (...args: any[]): any;
     calls: any[];
     andCall: (fn: Function) => Spy;

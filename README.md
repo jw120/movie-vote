@@ -21,6 +21,7 @@ TODO
   + Reducer hotloader in configureStore
   + Any way to test onSubmit?
   + Better JSX types in expect.d.ts
+  + Avoid the as any for displayName
 
 Notes/choices
 - SFCs don't work with TS yet

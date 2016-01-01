@@ -8,9 +8,8 @@ import * as expectJSX from "expect-jsx";
 expect.extend(expectJSX);
 
 import Monitor from "../../src/components/Monitor";
-import dummyCallback from "../dummyCallback";
 
-const onNextSpy = expect.createSpy();
+const onNextSpy: Expect.Spy = expect.createSpy();
 
 const shallowRenderer: ShallowRenderer = createRenderer();
 shallowRenderer.render(
@@ -56,8 +55,8 @@ describe("Monitor component", () => {
   });
 
   it("contains a Button whose onClick calls onStart", () => {
-    const renderedNextButton = renderedElement.props.children[3];
-    expect(renderedNextButton.type.displayName).toEqual("Button");
+    const renderedNextButton: JSX.Element = renderedElement.props.children[3];
+    expect((renderedNextButton.type as any).displayName).toEqual("Button");
     renderedNextButton.props.onClick();
     expect(onNextSpy).toHaveBeenCalled();
   });
