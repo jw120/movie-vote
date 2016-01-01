@@ -50,8 +50,8 @@ declare module Expect {
     toHaveBeenCalledWith(...args: any[]): Expectation<T>;
     toNotHaveBeenCalled(message?: string): Expectation<T>;
 
-    // withContext(context) - not yet implemented in this .d.ts
-    // withArgs() - not yet implemented in this .d.ts
+    withArgs(...args: any[]): Expectation<T>;
+    withContext(...args: any[]): Expectation<T>;
 
     toBeAn(value: string, message?: string): Expectation<T>; // alias for toBeA
     toNotBeAn(value: string, message?: string): Expectation<T>;

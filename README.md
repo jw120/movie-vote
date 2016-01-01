@@ -3,7 +3,6 @@ TODO
 * TSC conversion
 
   + Test upgrades
-   - FInish with... in expect.d.ts
    - Convert other component tests to expect
     - Upgrade others
     - Broadcast tests?
