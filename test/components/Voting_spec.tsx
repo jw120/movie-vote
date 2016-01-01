@@ -1,10 +1,16 @@
 import * as React from "react";
-import { expect } from "chai";
+import { Button } from "react-bootstrap";
 import { createRenderer } from "react-addons-test-utils";
 import { ShallowRenderer } from "../../src/myTypings/shallowRenderer";
-import dummyCallback from "../dummyCallback";
+
+import * as expect from "expect";
+import * as expectJSX from "expect-jsx";
+expect.extend(expectJSX);
 
 import Voting from "../../src/components/Voting";
+import dummyCallback from "../dummyCallback";
+
+const onVoteSpy: Expect.Spy = expect.createSpy();
 
 const shallowRenderer: ShallowRenderer = createRenderer();
 
@@ -16,42 +22,39 @@ describe("Voting component (no vote)", () => {
       hostName="Henry"
       movieA="Frozen"
       movieB="Doom"
-      onVote={ dummyCallback }
+      onVote={ onVoteSpy }
     />
   );
-  const v: any = shallowRenderer.getRenderOutput();
+  const renderedElement: JSX.Element = shallowRenderer.getRenderOutput();
 
-  it("renders a top level .voting div with three children", () => {
-    expect(v.type).to.equal("div");
-    expect(v.props.className).to.equal("voting");
-    expect(v.props.children.length).to.equal(3);
+  const expectedElement: JSX.Element = (
+    <div className="voting">
+      <div className="voting-label">
+        Henry's vote (Bob)
+      </div>
+      <Button
+        bsSize="large" bsStyle="primary" disabled={ false } block={ true } onClick={ dummyCallback }>Frozen</Button>
+      <Button
+        bsSize="large" bsStyle="primary" disabled={ false } block={ true } onClick={ dummyCallback }>Doom</Button>
+    </div>
+  );
+
+  it("renders", () => {
+    expect(renderedElement).toEqualJSX(expectedElement);
   });
 
-  it("renders a second-level .voting-label div with text", () => {
-    const v0: any = v.props.children[0];
-    expect(v0.type).to.equal("div");
-    expect(v0.props.className).to.equal("voting-label");
-    expect(v0.props.children.join("")).to.equal("Henry's vote (Bob)");
+  it("contains a button whose onClick calls onVote on the first movie", () => {
+    const renderedButton: JSX.Element = renderedElement.props.children[1];
+    expect((renderedButton.type as any).displayName).toEqual("Button");
+    renderedButton.props.onClick();
+    expect(onVoteSpy).toHaveBeenCalledWith("Frozen");
   });
 
-  it("renders a second-level movieA Button ", () => {
-    let v1: any = v.props.children[1];
-    expect(v1.type.displayName).to.equal("Button");
-    expect(v1.props.bsSize).to.equal("large");
-    expect(v1.props.bsStyle).to.equal("primary");
-    expect(v1.props.disabled).to.be.false;
-    expect(v1.props.block).to.be.true;
-    expect(v1.props.children).to.equal("Frozen");
-  });
-
-  it("renders a second-level movieB Button ", () => {
-    let v2: any = v.props.children[2];
-    expect(v2.type.displayName).to.equal("Button");
-    expect(v2.props.bsSize).to.equal("large");
-    expect(v2.props.bsStyle).to.equal("primary");
-    expect(v2.props.disabled).to.be.false;
-    expect(v2.props.block).to.be.true;
-    expect(v2.props.children).to.equal("Doom");
+  it("contains a button whose onClick calls onVote on the second movie", () => {
+    const renderedButton: JSX.Element = renderedElement.props.children[2];
+    expect((renderedButton.type as any).displayName).toEqual("Button");
+    renderedButton.props.onClick();
+    expect(onVoteSpy).toHaveBeenCalledWith("Doom");
   });
 
 });
@@ -65,47 +68,30 @@ describe("Voting component (vote for A)", () => {
       movieA="Frozen"
       movieB="Doom"
       voted="Frozen"
-      onVote={ dummyCallback }
+      onVote={ onVoteSpy }
     />
   );
-  const v: any = shallowRenderer.getRenderOutput();
+  const renderedElement: JSX.Element = shallowRenderer.getRenderOutput();
 
-  it("renders a top level .voting div with three children", () => {
-    expect(v.type).to.equal("div");
-    expect(v.props.className).to.equal("voting");
-    expect(v.props.children.length).to.equal(3);
-  });
+  const expectedElement: JSX.Element = (
+    <div className="voting">
+      <div className="voting-label">
+        Henry's vote (Bob)
+      </div>
+      <Button
+        bsSize="large" bsStyle="primary" disabled={ true } block={ true } onClick={ dummyCallback }>Frozen</Button>
+      <Button
+        bsSize="large" bsStyle="default" disabled={ true } block={ true } onClick={ dummyCallback }>Doom</Button>
+    </div>
+  );
 
-  it("renders a second-level .voting-label div with text", () => {
-    const v0: any = v.props.children[0];
-    expect(v0.type).to.equal("div");
-    expect(v0.props.className).to.equal("voting-label");
-    expect(v0.props.children.join("")).to.equal("Henry's vote (Bob)");
-  });
-
-  it("renders a second-level movieA Button ", () => {
-    let v1: any = v.props.children[1];
-    expect(v1.type.displayName).to.equal("Button");
-    expect(v1.props.bsSize).to.equal("large");
-    expect(v1.props.bsStyle).to.equal("primary");
-    expect(v1.props.disabled).to.be.true;
-    expect(v1.props.block).to.be.true;
-    expect(v1.props.children).to.equal("Frozen");
-  });
-
-  it("renders a second-level movieB Button ", () => {
-    let v2: any = v.props.children[2];
-    expect(v2.type.displayName).to.equal("Button");
-    expect(v2.props.bsSize).to.equal("large");
-    expect(v2.props.bsStyle).to.equal("default");
-    expect(v2.props.disabled).to.be.true;
-    expect(v2.props.block).to.be.true;
-    expect(v2.props.children).to.equal("Doom");
+  it("renders", () => {
+    expect(renderedElement).toEqualJSX(expectedElement);
   });
 
 });
 
-describe("Voting component (voted for B)", () => {
+describe("Voting component (vote for B)", () => {
 
   shallowRenderer.render(
     <Voting
@@ -114,42 +100,25 @@ describe("Voting component (voted for B)", () => {
       movieA="Frozen"
       movieB="Doom"
       voted="Doom"
-      onVote={ dummyCallback }
+      onVote={ onVoteSpy }
     />
   );
-  const v: any = shallowRenderer.getRenderOutput();
+  const renderedElement: JSX.Element = shallowRenderer.getRenderOutput();
 
-  it("renders a top level .voting div with three children", () => {
-    expect(v.type).to.equal("div");
-    expect(v.props.className).to.equal("voting");
-    expect(v.props.children.length).to.equal(3);
-  });
+  const expectedElement: JSX.Element = (
+    <div className="voting">
+      <div className="voting-label">
+        Henry's vote (Bob)
+      </div>
+      <Button
+        bsSize="large" bsStyle="default" disabled={ true } block={ true } onClick={ dummyCallback }>Frozen</Button>
+      <Button
+        bsSize="large" bsStyle="primary" disabled={ true } block={ true } onClick={ dummyCallback }>Doom</Button>
+    </div>
+  );
 
-  it("renders a second-level .voting-label div with text", () => {
-    const v0: any = v.props.children[0];
-    expect(v0.type).to.equal("div");
-    expect(v0.props.className).to.equal("voting-label");
-    expect(v0.props.children.join("")).to.equal("Henry's vote (Bob)");
-  });
-
-  it("renders a second-level movieA Button ", () => {
-    let v1: any = v.props.children[1];
-    expect(v1.type.displayName).to.equal("Button");
-    expect(v1.props.bsSize).to.equal("large");
-    expect(v1.props.bsStyle).to.equal("default");
-    expect(v1.props.disabled).to.be.true;
-    expect(v1.props.block).to.be.true;
-    expect(v1.props.children).to.equal("Frozen");
-  });
-
-  it("renders a second-level movieB Button ", () => {
-    let v2: any = v.props.children[2];
-    expect(v2.type.displayName).to.equal("Button");
-    expect(v2.props.bsSize).to.equal("large");
-    expect(v2.props.bsStyle).to.equal("primary");
-    expect(v2.props.disabled).to.be.true;
-    expect(v2.props.block).to.be.true;
-    expect(v2.props.children).to.equal("Doom");
+  it("renders", () => {
+    expect(renderedElement).toEqualJSX(expectedElement);
   });
 
 });
