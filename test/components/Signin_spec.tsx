@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button, Input} from "react-bootstrap";
+import { Input} from "react-bootstrap";
 import { createRenderer } from "react-addons-test-utils";
 import { ShallowRenderer } from "../../src/myTypings/shallowRenderer";
 
@@ -8,93 +8,84 @@ import * as expectJSX from "expect-jsx";
 expect.extend(expectJSX);
 
 import Signin from "../../src/components/Signin";
+import Entry from "../../src/components/Entry";
 import dummyCallback from "../dummyCallback";
 
-const onJoinSpy: Expect.Spy = expect.createSpy();
-const onStartSetupSpy: Expect.Spy = expect.createSpy();
-
 const shallowRenderer: ShallowRenderer = createRenderer();
-
-function expectedElementWith(joinButton: JSX.Element): JSX.Element {
-  return (
-    <form className="signin"  onSubmit={ dummyCallback }>
-      <h3 className="signin-heading">Welcome to Movie Vote</h3>
-      <Input className="signin-input" type="text" value="" placeholder="Enter your name" onChange={ dummyCallback } />
-      { joinButton }
-      <Button bsSize="large" bsStyle="primary" block={ true } onClick={ onStartSetupSpy }>
-      Host a new vote
-      </Button>
-    </form>
-  );
-}
-
-const inactiveJoinButton: JSX.Element = (
-  <Button bsSize="large" disabled={ true } block={ true }>
-    No vote available to join
-  </Button>
-);
-
-const activeJoinButton: JSX.Element = (
-  <Button bsSize="large" bsStyle="primary" block={ true } onClick={ onJoinSpy }>
-    Join henry's vote
-  </Button>
-);
 
 describe("Signin component without host", () => {
 
   shallowRenderer.render(
     <Signin
-      onJoin={ onJoinSpy }
-      onStartSetup={ onStartSetupSpy }
+      onJoin={ dummyCallback }
+      onStartSetup={ dummyCallback }
     />
   );
   const renderedElement: JSX.Element = shallowRenderer.getRenderOutput();
 
-  const expectedElement: JSX.Element = expectedElementWith(inactiveJoinButton);
+  const expectedElement: JSX.Element = (
+    <form className="signin"  onSubmit={ dummyCallback }>
+      <h3 className="signin-heading">Welcome to Movie Vote</h3>
+      <Input className="signin-input" type="text" value="" placeholder="Enter your name" onChange={ dummyCallback } />
+      <Entry hostName={ undefined } onJoin={ dummyCallback } onStartSetup={ dummyCallback }/>
+    </form>
+  );
 
   it("renders", () => {
     expect(renderedElement).toEqualJSX(expectedElement);
   });
 
-  it("contains a Button whose onClick calls onStartSetup", () => {
-    const renderedStartButton: JSX.Element = renderedElement.props.children[3];
-    expect((renderedStartButton.type as any).displayName).toEqual("Button");
-    renderedStartButton.props.onClick();
-    expect(onStartSetupSpy).toHaveBeenCalled();
-  });
-
 });
 
-describe("Signin component with host", () => {
+describe("Signin component with host and moives", () => {
 
   shallowRenderer.render(
     <Signin
       hostName="henry"
       movieA="Frozen"
       movieB="12 angry men"
-      onJoin={ onJoinSpy }
-      onStartSetup={ onStartSetupSpy }
+      onJoin={ dummyCallback }
+      onStartSetup={ dummyCallback }
     />
   );
   const renderedElement: JSX.Element = shallowRenderer.getRenderOutput();
 
-  const expectedElement: JSX.Element = expectedElementWith(activeJoinButton);
+  const expectedElement: JSX.Element = (
+    <form className="signin"  onSubmit={ dummyCallback }>
+      <h3 className="signin-heading">Welcome to Movie Vote</h3>
+      <Input className="signin-input" type="text" value="" placeholder="Enter your name" onChange={ dummyCallback } />
+      <Entry hostName="henry" onJoin={ dummyCallback } onStartSetup={ dummyCallback } />
+    </form>
+  );
 
   it("renders", () => {
     expect(renderedElement).toEqualJSX(expectedElement);
   });
 
-  it("contains a Button whose onClick calls onJoin", () => {
-    const renderedStartButton: JSX.Element = renderedElement.props.children[2];
-    expect((renderedStartButton.type as any).displayName).toEqual("Button");
-    renderedStartButton.props.onClick();
-    expect(onJoinSpy).toHaveBeenCalled();
+});
+
+describe("Signin component with host but missing a movie", () => {
+
+  shallowRenderer.render(
+    <Signin
+      hostName="henry"
+      movieA="Frozen"
+      onJoin={ dummyCallback }
+      onStartSetup={ dummyCallback }
+    />
+  );
+  const renderedElement: JSX.Element = shallowRenderer.getRenderOutput();
+
+  const expectedElement: JSX.Element = (
+    <form className="signin"  onSubmit={ dummyCallback }>
+      <h3 className="signin-heading">Welcome to Movie Vote</h3>
+      <Input className="signin-input" type="text" value="" placeholder="Enter your name" onChange={ dummyCallback } />
+      <Entry hostName={ undefined } onJoin={ dummyCallback } onStartSetup={ dummyCallback } />
+    </form>
+  );
+
+  it("renders", () => {
+    expect(renderedElement).toEqualJSX(expectedElement);
   });
 
-  it("contains a Button whose onClick calls onStartSetup", () => {
-    const renderedStartButton: JSX.Element = renderedElement.props.children[3];
-    expect((renderedStartButton.type as any).displayName).toEqual("Button");
-    renderedStartButton.props.onClick();
-    expect(onStartSetupSpy.calls.length).toEqual(2); // called for first time above
-  });
 });

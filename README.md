@@ -2,15 +2,10 @@ TODO
 
 * TSC conversion
 
-  + Test upgrades
-   - Convert other component tests to expect
-    - Upgrade others
+  + Check test coverage
+  + Check ={ true }s
     - Broadcast tests?
 
-    + Merge Winner into Signin
-
-  + Improve component tests? Add click tests
-  + Check coverage
   + Avoid any's
   + Sort out how to make /dist files (not in gitignore)
   + Are we immutable enough?

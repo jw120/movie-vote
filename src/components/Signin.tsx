@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { Button, Input } from "react-bootstrap";
+import Entry from "./Entry";
 
 import { ISigninPropData } from "../selectors/signin";
 interface ISigninProps extends ISigninPropData {
@@ -78,7 +79,6 @@ class Signin extends React.Component<ISigninProps, ISigninState> {
   }
 
   render(): JSX.Element {
-    let ready: boolean = !!(this.props.hostName && this.props.movieA && this.props.movieB);
     return (
       <form
         className="signin"
@@ -86,8 +86,11 @@ class Signin extends React.Component<ISigninProps, ISigninState> {
       >
         <h3 className="signin-heading">Welcome to Movie Vote</h3>
         { this.renderInput() }
-        { ready ? this.renderActiveJoinButton() : this.renderInactiveJoinButton() }
-        { this.renderHostButton() }
+        <Entry
+          hostName={ this.props.movieA && this.props.movieB && this.props.hostName }
+          onJoin={ () => this.props.onJoin(this.state.name.trim()) }
+          onStartSetup={ () => this.props.onStartSetup(this.state.name.trim()) }
+        />
       </form>
     );
   }
