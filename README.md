@@ -1,4 +1,4 @@
-Movie voting app with React, Redux and Typescript
+# Movie voting app with React, Redux and Typescript
 
 Simple multi-client cooperative voting application based very loosely on the
 [article](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
@@ -12,18 +12,18 @@ It uses
 *
 and is built with Typescript 1.7 and webpack (with hot loading) with mocha and mjackson/expect for tests
 
-### Design notes and choices
+## Design notes and choices
 
 Single SPA that allows any client to be a vote host or participant. Extremely simple server (which does not serve files)
 
 UI design is very modal with the app's state shared across the modes, so the reducer is sub-divided by mode rather than being treated as a tree of sub-states. This means it is simplest to preserve state manually and there is no need to use selectors/reselect.
 
-### Typescript challenges
+## Typescript challenges
 
 * Istanbul on ts
 * connect type
 
-### Running the application
+## Running the application
 
 ```
 git clone http://https://github.com/jw120/movie-vote
@@ -32,12 +32,12 @@ npm run start:server
 open http://http://127.0.0.1:8080
 ```
 
-### Snags
+## Snags
 
 * Shallow render tests - type.displayName works for most react-bootstrap types but Input needs type.name
 
 
-### TODOs
+## TODOs
 
   + Check test coverage
   * Merge in server to repository and rename - use as file server?
