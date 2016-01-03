@@ -1,6 +1,6 @@
 {
   "name": "movie-vote",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Movie voting app with React, Redux and Typescript",
   "repository": {
     "type": "git",

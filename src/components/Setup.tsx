@@ -1,8 +1,19 @@
 import * as React from "react";
-
 import { Button, ButtonInput, Input, Table } from "react-bootstrap";
 
-import { ISetupPropData } from "../selectors/setup";
+import { IRootData } from "../rootData";
+
+interface ISetupPropData {
+   queue: string[];
+}
+
+// Select data we use from the main redux store
+export function setupSelector(s: IRootData): ISetupPropData {
+  return {
+    queue: s.queue
+  };
+}
+
 interface ISetupProps extends ISetupPropData {
    onDelete: (movie: string) => void;
    onAdd: (movie: string) => void;

@@ -1,9 +1,24 @@
 import * as React from "react";
-
 import { Button, Input } from "react-bootstrap";
+
+import { IRootData } from "../rootData";
 import Entry from "./Entry";
 
-import { ISigninPropData } from "../selectors/signin";
+interface ISigninPropData {
+   hostName?: string;
+   movieA?:   string;
+   movieB?:   string;
+}
+
+// Select data we use from the main redux store
+export function signinSelector(s: IRootData): ISigninPropData {
+  return {
+    hostName: s.hostName,
+    movieA: s.movieA,
+    movieB: s.movieB
+  };
+}
+
 interface ISigninProps extends ISigninPropData {
   onJoin: (name: string) => void;
   onStartSetup: (name: string) => void;

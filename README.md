@@ -33,13 +33,13 @@ React and redux are not written with extensive static typing in mind. Typescript
 ## Running the application
 
 To run locally in development mode, first download the code and build the client
-```
+```sh
 git clone http://https://github.com/jw120/movie-vote
 cd movie-vote
 npm run build:dev
 ```
 Then in a new terminal window start the server
-```
+```sh
 npm run start
 ```
 and open several client browser windows to http://127.0.0.1:8080/
@@ -47,7 +47,7 @@ and open several client browser windows to http://127.0.0.1:8080/
 ## TODO
 
   + Clean test and screenshot
-  + Eliminate selectors?
+  + Do the selector functions serve any useful purpose?
   + Implement production build
   + Check test coverage and add tests
   + Share constants with server

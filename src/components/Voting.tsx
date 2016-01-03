@@ -1,8 +1,27 @@
 import * as React from "react";
-
 import { Button } from "react-bootstrap";
 
-import { IVotingPropData } from "../selectors/voting";
+import { IRootData } from "../rootData";
+
+export interface IVotingPropData {
+  name: string;
+  hostName: string;
+  movieA: string;
+  movieB: string;
+  voted?: string;
+}
+
+// Select data we use from the main redux store
+export function votingSelector(s: IRootData): IVotingPropData {
+  return {
+    name: s.name,
+    hostName: s.hostName,
+    movieA: s.movieA,
+    movieB: s.movieB,
+    voted: s.voted
+  };
+}
+
 interface IVotingProps extends IVotingPropData {
   onVote: (name: string) => void;
 }

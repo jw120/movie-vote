@@ -5,7 +5,6 @@ import DevTools from "./components/DevTools";
 
 const finalCreateStore: Function = compose(
   // applyMiddleware(d1, d2, d3),
-  // Required! Enable Redux DevTools with the monitors you chose
   DevTools.instrument(),
   persistState(getDebugSessionKey())
 )(createStore);

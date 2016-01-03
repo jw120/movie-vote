@@ -1,8 +1,29 @@
 import * as React from "react";
-
 import { Button, Table } from "react-bootstrap";
 
-import { IMonitorPropData } from "../selectors/monitor";
+import { IRootData } from "../rootData";
+
+interface IMonitorPropData {
+   name: string;
+   movieA: string;
+   movieB: string;
+   queue: string[];
+   scoreA: number;
+   scoreB: number;
+}
+
+// Select data we use from the main redux store
+export function monitorSelector(s: IRootData): IMonitorPropData {
+  return {
+    name: s.name,
+    movieA: s.movieA,
+    movieB: s.movieB,
+    queue: s.queue,
+    scoreA: s.scoreA,
+    scoreB: s.scoreB
+  };
+}
+
 interface IMonitorProps extends IMonitorPropData {
    onNext: () => void;
 }

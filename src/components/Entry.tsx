@@ -1,7 +1,6 @@
 // Join and Host buttons used by Singin and Winner
 
 import * as React from "react";
-
 import { Button } from "react-bootstrap";
 
 interface IEntryProps {
