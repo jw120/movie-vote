@@ -1,6 +1,6 @@
 import * as expect from "expect";
 
-import { join, startSetup, remoteHostReady, IAction } from "../../src/actionCreators";
+import { join, startSetup, remoteHostReady, hostQueueAdd, IAction } from "../../src/actionCreators";
 import { signin, voting, setup } from "../../src/stateCreators";
 import frozenRootReducer from "../frozenRootReducer";
 import { IRootData } from "../../src/rootData";
@@ -79,6 +79,12 @@ describe("signin reducer", () => {
   it("REMOTE_HOST_READY does nothing with empty arguments", () => {
     const s: IRootData = signin({ });
     const a: IAction = remoteHostReady("h", "a", "");
+    expect(frozenRootReducer(s, a)).toEqual(s);
+  });
+
+  it("HOST_QUEUE_ADD passed through", () => {
+    const s: IRootData = signin({ });
+    const a: IAction = hostQueueAdd("m");
     expect(frozenRootReducer(s, a)).toEqual(s);
   });
 

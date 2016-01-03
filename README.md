@@ -9,11 +9,11 @@ It uses
 * React 0.14 (with ES6 class-style components)
 * Redux 3.0 and react-redux 4.0
 * Bootstrap 3.3 via React-bootstrap 0.28
-* socket.io
+* Socket.io 1.3
 
-and is built with Typescript 1.7 and webpack (with hot loading) and uses mocha and
+and is built with Typescript 1.7 and webpack (with hot loading). Testing is done with mocha,
 [expect](https://github.com/mjackson/expect)
-for tests and istanbul for test coverage.
+and istanbul.
 
 ## Design notes and choices
 
@@ -47,6 +47,8 @@ and open several client browser windows to http://127.0.0.1:8080/
 ## TODO
 
   + Clean test and screenshot
+  + Add a test to probe hasOwnProperty in addToRootData
+  + Add tests for selector functions
   + Do the selector functions serve any useful purpose?
   + Implement production build
   + Check test coverage and add tests

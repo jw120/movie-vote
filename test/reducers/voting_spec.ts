@@ -1,6 +1,6 @@
 import * as expect from "expect";
 
-import { vote, remoteNext, remoteWinner, IAction } from "../../src/actionCreators";
+import { vote, remoteNext, remoteWinner, hostQueueAdd, IAction } from "../../src/actionCreators";
 import { REMOTE_VOTE_RECEIVED } from "../../src/actionTypes";
 import { voting, winner } from "../../src/stateCreators";
 import frozenRootReducer from "../frozenRootReducer";
@@ -94,6 +94,12 @@ describe("voting reducer", () => {
   it("REMOTE_WINNER ignores an empty winner", () => {
     const s: IRootData = voting({ }, "alice", "host", "m1", "m2", null);
     const a: IAction = remoteWinner("");
+    expect(frozenRootReducer(s, a)).toEqual(s);
+  });
+
+  it("HOST_QUEUE_ADD passed through", () => {
+    const s: IRootData = voting({ }, "alice", "host", "m1", "m2", null);
+    const a: IAction = hostQueueAdd("m");
     expect(frozenRootReducer(s, a)).toEqual(s);
   });
 
