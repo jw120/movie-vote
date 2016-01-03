@@ -1,11 +1,48 @@
-TODO
+Movie voting app with React, Redux and Typescript
 
-* TSC conversion
+Simple multi-client cooperative voting application based very loosely on the
+[article](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
+by
+[Tero Parviainen](http://teropa.info/) [(@teropa)](https://twitter.com/teropa)
+It uses
+
+* React 0.14 (with ES6 class-style components - unfortunately Typescript does not yet work with stateless functional components)
+* Redux 3.0 and react-redux 4.0
+* Bootstrap 3.3 via React-bootstrap 0.28
+*
+and is built with Typescript 1.7 and webpack (with hot loading) with mocha and mjackson/expect for tests
+
+### Design notes and choices
+
+Single SPA that allows any client to be a vote host or participant. Extremely simple server (which does not serve files)
+
+UI design is very modal with the app's state shared across the modes, so the reducer is sub-divided by mode rather than being treated as a tree of sub-states. This means it is simplest to preserve state manually and there is no need to use selectors/reselect.
+
+### Typescript challenges
+
+* Istanbul on ts
+* connect type
+
+### Running the application
+
+```
+git clone http://https://github.com/jw120/movie-vote
+npm run build:dev
+npm run start:server
+open http://http://127.0.0.1:8080
+```
+
+### Snags
+
+* Shallow render tests - type.displayName works for most react-bootstrap types but Input needs type.name
+
+
+### TODOs
 
   + Check test coverage
+  * Merge in server to repository and rename - use as file server?
   + Check ={ true }s
-    - Broadcast tests?
-
+  + Broadcast tests?
   + Avoid any's
   + Sort out how to make /dist files (not in gitignore)
   + Are we immutable enough?
@@ -17,154 +54,5 @@ TODO
   + Any way to test onSubmit?
   + Better JSX types in expect.d.ts
   + Avoid the as any for displayName
-
-Notes/choices
-- SFCs don't work with TS yet
-- Manually immutable
-- No need for relect (as nothing computed), select mechanism is not efficient (but is tidy)
-
-* Can we do tests and instanbul on ts not js? Avoid unreachable code that we did not write
-* Merge in server to repository - use as file server?
-* expect=jsx for tests - not chai?
-
-# Next
-
-* 1. reducers - DONE
-* 2. components/react:
-
-  + Get first component on screen - DONE
-  + Stateless functional components - DONE
-  + get components React-bootstrapped - DONE
-  + tests for components? - DONE
-  + Add callbacks and connect states
-
-    * Signin - onClicks (with Form) done, TODO - sending 1x remote
-    * Winner - onClicks done, TODO - sending 1x remote
-    * Setup - 3x onClicks (with Form) done
-    * Monitor - onClicks done, TODO - sending 1x remote
-    * Voting - onClicks done. TODO - sending of 2x remotes
-
-* 3. server and sockets
-
-# Sometime
-
-* Fix typing for Winner()
-* After TS 1.8 (and upgrades for react-redux .d.ts), use sfc's again
-* Consider splitting containers and components (two different directories, fewer containers)
-* more conventional reducer state and reducers layout? immutable?
-* Production build - use uglify?
-* refactor state to be single tree?
-* work out hot reducer replacement in configureStore.dev
-* How best to do react tests? tests for callbacks?
-* Check propTypes does something (change a type and see warning? In tests?)
-* Check import consistency - don't use defaults? what to use for React?
-* What is the significance of button types (submit etc?)
-* Can we unify winner and signin
-* Protect vs multiple votes (or allow them)
-* What if more than one person clicks setup?
-
-# Note
-
-* Shallow render tests - type.displayName works for most react-bootstrap types but Input needs type.name
-
-
-
-# Design
-
-Basic choices
-
-* Cooperative voting - no authentication
-* Client-side SPA for hosting and participating
-* Very light server just to just re-broadcast messages
-
-To consider
-
-* What to send back and forth to server
-* Auto next when everyone has voted?
-* Send whole state to host, only pieces to voters?
-
-Questions
-
-* Do we need a server? Or just to handle the socket setup?
-* How to handle syncing with socket-io? Track logins? Re-sync?
-
-## Concept
-
-Screen with 4 windows all in the same vote, one hosting, 3 others voting. Single server updating via socket-io
-
-## UI screens
-
-* ClientSignIn - everyone starts here
-* ClientVoting - main screen for everyone except host
-* HostSetup - initial screen for whoever volunteers to host
-* HostMonitor - main screen for host
-* AllWinner - final screen for all
-
-## Props and actions for each screen
-
-### ClientSignIn
-
-* Props - name of host
-* Actions - joinVote, startHostSetup
-
-### ClientVote
-
-* Props - movieA, moviaB, round
-* Action - vote
-
-### HostSetup
-
-* Props - entries
-* Actions - addEntry, deleteEntry, next
-
-### HostMonitor
-
-* Props - movieA, movieB, scoreA, scoreB, entries
-* Action - next
-
-### AllWinner
-
-* Props - winner
-* Action - joinVote, offerToHost
-
-## Client state
-
-* MyName
-* HostName
-* MovieA, MovieB
-* Round
-* Winner
-* ScoreA, ScoreB (host only)
-* Entries (host only)<
-
-## Server state
-
-* HostName
-* VoterNames
-* As above
-
-## Client actions
-
-* joinVote(myName, hostName)
-* offerToHost(myName)
-* vote(movie)
-* Host - next
-
-## Server design
-
-* Just echo any message received
-
-
-
-
-Possible refactor
-
-containers
-* Startup (if )
-  + Uses Signin component
-  + Data - hostname, name, movieA, movieB
-* Participant (if hostname exists and name!=hostname and a/b exist or winner exists)
-  + Uses Winner (if winner is set) or Voting components
-   + Uses hostname, name, movieA, movieB, winner
-* Host (if queue defined)
-  + Uses setup and monitor (if a and b exist) components
+  * Production build - use uglify?
+  * What if more than one person clicks setup?
