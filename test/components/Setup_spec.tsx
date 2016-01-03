@@ -40,7 +40,7 @@ function expectedButtonInput(s: string): JSX.Element {
 
 function expectedButton(s: string, cb: Function): JSX.Element {
   return (
-    <Button bsSize="large" bsStyle="primary" block={ true } onClick={ cb }>
+    <Button bsSize="large" bsStyle="primary" block onClick={ cb }>
     { s }
     </Button>
   );

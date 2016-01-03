@@ -17,7 +17,7 @@ class Entry extends React.Component<IEntryProps, { }> {
       <Button
         bsSize="large"
         bsStyle="primary"
-        block={ true }
+        block
         onClick={ this.props.onJoin }
       >
         Join { this.props.hostName }'s vote
@@ -29,8 +29,8 @@ class Entry extends React.Component<IEntryProps, { }> {
     return (
       <Button
         bsSize="large"
-        disabled={ true }
-        block={ true }
+        disabled
+        block
       >
         No vote available to join
       </Button>
@@ -42,7 +42,7 @@ class Entry extends React.Component<IEntryProps, { }> {
       <Button
         bsSize="large"
         bsStyle="primary"
-        block={ true }
+        block
         onClick={ this.props.onStartSetup }
       >
       Host a new vote

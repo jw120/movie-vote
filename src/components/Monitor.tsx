@@ -40,7 +40,7 @@ export default class Monitor extends React.Component<IMonitorProps, {}> {
 
         <Table
           className="monitor-queue"
-          condensed={ true }
+          condensed
         >
           <thead>
             <tr><th>Voting queue</th></tr>

@@ -5,3 +5,5 @@ declare var exportJSX: any; // to be used with expect.extend()
 declare module "expect-jsx" {
   export default exportJSX;
 }
+
+// functions provided are in our expect.d.ts

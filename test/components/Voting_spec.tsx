@@ -33,9 +33,9 @@ describe("Voting component (no vote)", () => {
         Henry's vote (Bob)
       </div>
       <Button
-        bsSize="large" bsStyle="primary" disabled={ false } block={ true } onClick={ dummyCallback }>Frozen</Button>
+        bsSize="large" bsStyle="primary" disabled={ false } block onClick={ dummyCallback }>Frozen</Button>
       <Button
-        bsSize="large" bsStyle="primary" disabled={ false } block={ true } onClick={ dummyCallback }>Doom</Button>
+        bsSize="large" bsStyle="primary" disabled={ false } block onClick={ dummyCallback }>Doom</Button>
     </div>
   );
 
@@ -79,9 +79,9 @@ describe("Voting component (vote for A)", () => {
         Henry's vote (Bob)
       </div>
       <Button
-        bsSize="large" bsStyle="primary" disabled={ true } block={ true } onClick={ dummyCallback }>Frozen</Button>
+        bsSize="large" bsStyle="primary" disabled block onClick={ dummyCallback }>Frozen</Button>
       <Button
-        bsSize="large" bsStyle="default" disabled={ true } block={ true } onClick={ dummyCallback }>Doom</Button>
+        bsSize="large" bsStyle="default" disabled block onClick={ dummyCallback }>Doom</Button>
     </div>
   );
 
@@ -111,9 +111,9 @@ describe("Voting component (vote for B)", () => {
         Henry's vote (Bob)
       </div>
       <Button
-        bsSize="large" bsStyle="default" disabled={ true } block={ true } onClick={ dummyCallback }>Frozen</Button>
+        bsSize="large" bsStyle="default" disabled block onClick={ dummyCallback }>Frozen</Button>
       <Button
-        bsSize="large" bsStyle="primary" disabled={ true } block={ true } onClick={ dummyCallback }>Doom</Button>
+        bsSize="large" bsStyle="primary" disabled block onClick={ dummyCallback }>Doom</Button>
     </div>
   );
 

@@ -65,7 +65,7 @@ class Setup extends React.Component<ISetupProps, ISetupState> {
       <Button
         bsSize="large"
         bsStyle="primary"
-        block={ true }
+        block
         onClick={ this.props.onStart }
       >
         Start vote

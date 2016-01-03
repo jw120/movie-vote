@@ -35,7 +35,7 @@ const expectedElement: JSX.Element = (
         <tr><td>Frozen</td><td>2</td></tr>
       </tbody>
     </Table>
-    <Table className="monitor-queue" condensed={ true }>
+    <Table className="monitor-queue" condensed>
       <thead><tr><th>Voting queue</th></tr></thead>
       <tbody>
         <tr><td>Ascension</td></tr>

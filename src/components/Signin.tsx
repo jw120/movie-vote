@@ -45,7 +45,7 @@ class Signin extends React.Component<ISigninProps, ISigninState> {
       <Button
         bsSize="large"
         bsStyle="primary"
-        block={ true }
+        block
         onClick={ () => this.props.onJoin(this.state.name.trim()) }
       >
         Join { this.props.hostName }'s vote
@@ -57,8 +57,8 @@ class Signin extends React.Component<ISigninProps, ISigninState> {
     return (
       <Button
         bsSize="large"
-        disabled={ true }
-        block={ true }
+        disabled
+        block
       >
         No vote available to join
       </Button>
@@ -70,7 +70,7 @@ class Signin extends React.Component<ISigninProps, ISigninState> {
       <Button
         bsSize="large"
         bsStyle="primary"
-        block={ true }
+        block
         onClick={ () => this.props.onStartSetup(this.state.name.trim()) }
       >
       Host a new vote

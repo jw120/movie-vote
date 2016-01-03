@@ -1,58 +1,57 @@
 # Movie voting app with React, Redux and Typescript
 
-Simple multi-client cooperative voting application based very loosely on the
+Simple multi-client cooperative voting application based loosely on the
 [article](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
 by
-[Tero Parviainen](http://teropa.info/) [(@teropa)](https://twitter.com/teropa)
+[Tero Parviainen](http://teropa.info/) [(@teropa)](https://twitter.com/teropa).
 It uses
 
-* React 0.14 (with ES6 class-style components - unfortunately Typescript does not yet work with stateless functional components)
+* React 0.14 (with ES6 class-style components)
 * Redux 3.0 and react-redux 4.0
 * Bootstrap 3.3 via React-bootstrap 0.28
-*
-and is built with Typescript 1.7 and webpack (with hot loading) with mocha and mjackson/expect for tests
+* socket.io
+
+and is built with Typescript 1.7 and webpack (with hot loading) and uses mocha and
+[expect](https://github.com/mjackson/expect)
+for tests and istanbul for test coverage.
 
 ## Design notes and choices
 
-Single SPA that allows any client to be a vote host or participant. Extremely simple server (which does not serve files)
+Single SPA that allows any client to be a vote host or participant. Extremely simple socket.io server connects the clients (which does not serve files)
 
-UI design is very modal with the app's state shared across the modes, so the reducer is sub-divided by mode rather than being treated as a tree of sub-states. This means it is simplest to preserve state manually and there is no need to use selectors/reselect.
+UI design is modal with the app's state shared across the modes, so the reducer is sub-divided by mode rather than being treated as a tree of sub-states. This means there is no need to use selectors or reselect and the state is simple enough to manage immutability manually
 
 ## Typescript challenges
 
-* Istanbul on ts
-* connect type
+React and redux are not written with extensive static typing in mind. Typescript is used to add as much type-information as possible. Imperfections include:
+* Stateless functional components not supported
+* Typecast needed to handle the `connect()` call (in `App.tsx`)
+* Typecast to `any` used in component tests to navigate the rendered output (which includes data not part of `Element`)
+* Istanbul runs on the `.js` output, not the `.ts` directly which distorts the coverage metrics
+* Had to write custom `.d.ts` files (in `src/myTypings`) which are likely not very robust nor fully general
 
 ## Running the application
 
+To run locally in development mode, first download the code and build the client
 ```
 git clone http://https://github.com/jw120/movie-vote
+cd movie-vote
 npm run build:dev
-npm run start:server
-open http://http://127.0.0.1:8080
 ```
+Then in a new terminal window start the server
+```
+npm run start
+```
+and open several client browser windows to http://127.0.0.1:8080/
 
-## Snags
+## TODO
 
-* Shallow render tests - type.displayName works for most react-bootstrap types but Input needs type.name
-
-
-## TODOs
-
-  + Check test coverage
-  * Merge in server to repository and rename - use as file server?
-  + Check ={ true }s
-  + Broadcast tests?
-  + Avoid any's
-  + Sort out how to make /dist files (not in gitignore)
-  + Are we immutable enough?
-  + Add jsdoc comments
-  + Restore conditional imports for Root and configureStore (and fix hot modules reloading in configure store)
-  + Why errors from atom's lint?
-  + Stardardize debugger lines
-  + Reducer hotloader in configureStore
-  + Any way to test onSubmit?
-  + Better JSX types in expect.d.ts
-  + Avoid the as any for displayName
-  * Production build - use uglify?
-  * What if more than one person clicks setup?
+  + Clean test and screenshot
+  + Eliminate selectors?
+  + Implement production build
+  + Check test coverage and add tests
+  + Share constants with server
+  + Add jsdoc comments?
+  + Find a way to avoid key errors from React code using atom's lint?
+  + Check reducer hotloader code in configureStore
+  + Find a way to test submit code

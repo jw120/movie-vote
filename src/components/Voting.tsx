@@ -15,7 +15,7 @@ export default class Voting extends React.Component<IVotingProps, {}> {
         bsSize="large"
         bsStyle={ disabled && this.props.voted !== movie ? "default" : "primary" }
         disabled={ disabled }
-        block={ true }
+        block
         onClick={ () => this.props.onVote(movie) }
       >
       { movie }

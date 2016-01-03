@@ -10,10 +10,6 @@ import configureStore from "./configureStore";
 import App from "./containers/App";
 import DevTools from "./components/DevTools";
 
-// Start debugger
-import * as MyDebug from "debug";
-MyDebug.enable("mvc:*");
-
 // Initalize the redux store and specify the initial App state
 const store: Store = configureStore({
   mode: SIGNIN
