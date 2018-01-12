@@ -31,4 +31,24 @@ describe("addToRootData", () => {
     expect(addToRootData(start, add)).toEqual(end);
   });
 
+  it("Ignores prototype properties in source", () => {
+    let start: IRootData = { scoreB: 11, name: "Q" };
+    (start as any).__proto__ = { protoProp: 33 }
+    let add: IRootData = { hostname: "n", scoreA: 22 };
+    let end: IRootData = { name: "Q", hostname: "n", scoreA: 22, scoreB: 11 };
+    deepFreeze(start);
+    deepFreeze(add);
+    expect(addToRootData(start, add)).toEqual(end);
+  });
+
+  it("Ignores prototype properties in template", () => {
+    let start: IRootData = { scoreB: 11, name: "Q" };
+    let add: IRootData = { hostname: "n", scoreA: 22 };
+    (add as any).__proto__ = { protoProp: 44 }
+    let end: IRootData = { name: "Q", hostname: "n", scoreA: 22, scoreB: 11 };
+    deepFreeze(start);
+    deepFreeze(add);
+    expect(addToRootData(start, add)).toEqual(end);
+  });
+
 });

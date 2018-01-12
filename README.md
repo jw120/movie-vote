@@ -47,7 +47,7 @@ and open several client browser windows to http://127.0.0.1:8080/
 ## TODO
 
   + Clean test and screenshot
-  + Add a test to probe hasOwnProperty in addToRootData
+  + Consider migrating resting to enzyme
   + Add tests for selector functions
   + Do the selector functions serve any useful purpose?
   + Implement production build
